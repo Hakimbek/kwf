@@ -1,8 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
 :root {
-  --red: #FF0000;
+  --white: #f1f4f7;
+  --black: #070709;
+  --dark-black: #000000;
+  --dark: #16171d;
+  --dark-purple: #22262d;
+  --red: #ff0000;
   --blue: #0077ff;
   --green: #008000;
-  --black: #000;
   --dark-gray: #7d9fb5;
-  --white: #fff;
+  --purple: #494aca;
+
+  --font-rubik: "Rubik", sans-serif;
+}
+
+body {
+  font-family: var(--font-rubik), serif;
+  background-color: var(--dark);
 }

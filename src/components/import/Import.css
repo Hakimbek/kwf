@@ -1,0 +1,38 @@
+.import-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.import-input {
+  background-color: var(--dark);
+  color: var(--white);
+  border: 2px solid var(--dark-purple);
+  border-radius: 4px;
+}
+
+.import-input::file-selector-button {
+  height: 30px;
+  background-color: var(--dark-purple);
+  color: var(--white);
+  border: none;
+  border-right: 2px solid var(--dark-purple);
+}
+
+.import-button {
+  height: 33px;
+  padding: 0 15px;
+  background-color: var(--black);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+}
+
+.import-button:hover {
+  background-color: var(--dark-black);
+  transition: all 0.3s ease;
+}
+
+.import-button:disabled {
+  background-color: var(--dark-purple);
+}

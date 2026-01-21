@@ -1,6 +1,6 @@
-import useLocalStorage from "use-local-storage"
-import { Table } from "reactstrap"
-import type { RowDataType } from "../../utils/groupByField.tsx"
+import useLocalStorage from "use-local-storage";
+import { Table } from "reactstrap";
+import type { RowDataType } from "../../utils/groupByField.tsx";
 
 export const Data = () => {
   const [rawData] = useLocalStorage("rawData", "");
@@ -21,19 +21,29 @@ export const Data = () => {
           </tr>
         </thead>
         <tbody>
-          {jsonData.map(({ Manager, Region, Product, Plan_Oy, Plan_Kun, Fact_Kun, Type }: RowDataType) => (
-            <tr key={Manager + Region + Product + Type}>
-              <td>{Manager}</td>
-              <td>{Region}</td>
-              <td>{Product}</td>
-              <td>{Plan_Oy}</td>
-              <td>{Plan_Kun}</td>
-              <td>{Fact_Kun}</td>
-              <td>{Type}</td>
-            </tr>
-          ))}
+          {jsonData.map(
+            ({
+              Manager,
+              Region,
+              Product,
+              Plan_Oy,
+              Plan_Kun,
+              Fact_Kun,
+              Type,
+            }: RowDataType) => (
+              <tr key={Manager + Region + Product + Type}>
+                <td>{Manager}</td>
+                <td>{Region}</td>
+                <td>{Product}</td>
+                <td>{Plan_Oy}</td>
+                <td>{Plan_Kun}</td>
+                <td>{Fact_Kun}</td>
+                <td>{Type}</td>
+              </tr>
+            ),
+          )}
         </tbody>
       </Table>
     </div>
-  )
-}
+  );
+};

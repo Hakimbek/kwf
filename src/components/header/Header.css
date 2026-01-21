@@ -1,0 +1,30 @@
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-right: 3px solid var(--dark-purple);
+  border-left: 3px solid var(--dark-purple);
+  border-bottom: 3px solid var(--dark-purple);
+  background-color: var(--dark);
+  z-index: 100;
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-button {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.active,
+.nav-button:hover {
+  color: var(--purple);
+  transition: all 0.3s ease;
+}

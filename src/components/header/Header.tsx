@@ -1,31 +1,31 @@
-import { useNavigate, useLocation } from "react-router-dom"
-import { Import } from "../form/Import.tsx"
-import { Button } from "reactstrap"
+import { NavLink } from "react-router-dom";
+import { Import } from "../import/Import.tsx";
+import "./Header.css";
 
 export const Header = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
   return (
-    <header className="d-flex justify-content-between bg-light p-4 border rounded">
-      <nav className="col-6 d-flex align-items-center gap-4">
-        <h1 className="p-0 m-0">KWF</h1>
-          <div className="d-flex gap-4">
-            <Button
-              onClick={() => navigate("/reports")}
-              color="primary"
-              outline={!location.pathname.includes('/reports')}>
-              Визуализация
-            </Button>
-            <Button
-              onClick={() => navigate("/data")}
-              color="primary"
-              outline={!location.pathname.includes('/data')}>
-              Данные
-            </Button>
-          </div>
+    <header className="header">
+      <nav className="nav">
+        <div className="d-flex gap-3">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "nav-button active" : "nav-button"
+            }
+            to={"/reports"}
+          >
+            Визуализация
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "nav-button active" : "nav-button"
+            }
+            to={"/data"}
+          >
+            Данные
+          </NavLink>
+        </div>
+        <Import />
       </nav>
-      <Import />
     </header>
-  )
-}
+  );
+};

@@ -1,18 +1,12 @@
-import {
-  BarChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  XAxis,
-  YAxis
-} from "recharts";
-import type { GroupedDataType } from "../../utils/groupByField.tsx"
-import { BarComponent } from "./BarComponent.tsx"
+import { BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import type { GroupedDataType } from "../../utils/groupByField.tsx";
+import { BarComponent } from "./BarComponent.tsx";
 
 export type BarChartDataType = {
   aggregatedData: GroupedDataType[];
   xOffset: number;
   height: number;
-}
+};
 
 export const BarChartComponent = ({
   aggregatedData,
@@ -20,17 +14,36 @@ export const BarChartComponent = ({
   height,
 }: BarChartDataType) => {
   return (
-    <div className="border p-4 rounded bg-light w-100">
-      <ResponsiveContainer width="100%" height={height}>
-        <BarChart data={aggregatedData} responsive margin={{ top: 40 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="Group" fontWeight="bold" tick={{ fill: "var(--black)" }} />
-          <YAxis width="auto" />
-          <BarComponent dataKey="Plan_Oy" xOffset={xOffset} aggregatedData={aggregatedData} isFact={false} fill="var(--dark-gray)" />
-          <BarComponent dataKey="Plan_Kun" xOffset={xOffset} aggregatedData={aggregatedData} isFact={false} fill="var(--dark-gray)" />
-          <BarComponent dataKey="Fact_Kun" xOffset={xOffset} aggregatedData={aggregatedData} isFact={true} />
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
-  )
-}
+    <ResponsiveContainer width="100%" height={height} className="border">
+      <BarChart
+        data={aggregatedData}
+        responsive
+        margin={{ top: 40 }}
+        layout="vertical"
+      >
+        <XAxis fontWeight="bold" tick={false} type="number" axisLine={false} />
+        <YAxis dataKey="Group" type="category" angle={-90} axisLine={false} />
+        <BarComponent
+          dataKey="Plan_Oy"
+          xOffset={xOffset}
+          aggregatedData={aggregatedData}
+          isFact={false}
+          fill="var(--dark-gray)"
+        />
+        <BarComponent
+          dataKey="Plan_Kun"
+          xOffset={xOffset}
+          aggregatedData={aggregatedData}
+          isFact={false}
+          fill="var(--dark-gray)"
+        />
+        <BarComponent
+          dataKey="Fact_Kun"
+          xOffset={xOffset}
+          aggregatedData={aggregatedData}
+          isFact={true}
+        />
+      </BarChart>
+    </ResponsiveContainer>
+  );
+};

@@ -1,8 +1,8 @@
-import useLocalStorage from "use-local-storage"
-import { Button, Input } from "reactstrap"
-import { toast } from 'react-toastify'
-import { useState, useRef } from "react"
-import * as XLSX from "xlsx"
+import useLocalStorage from "use-local-storage";
+import { toast } from "react-toastify";
+import { useState, useRef } from "react";
+import * as XLSX from "xlsx";
+import "./Import.css";
 
 type ExcelRow = Record<string, string | number | boolean | null>;
 
@@ -18,12 +18,12 @@ export const Import = () => {
 
   const handleImport = () => {
     if (!file) {
-      toast.error('Файл не выбран');
+      toast.error("Файл не выбран");
       return;
     }
 
     if (!/\.(xls|xlsx)$/i.test(file.name)) {
-      toast.error('Не верный тип файла');
+      toast.error("Не верный тип файла");
       return;
     }
 
@@ -32,7 +32,7 @@ export const Import = () => {
     reader.onload = (event) => {
       const buffer = event.target?.result;
       if (!buffer) {
-        toast.error('Не верный контент файла');
+        toast.error("Не верный контент файла");
         return;
       }
 
@@ -43,8 +43,8 @@ export const Import = () => {
       const json: ExcelRow[] = XLSX.utils.sheet_to_json(worksheet, {
         defval: null,
       });
-      console.log(json);
-      toast.success('Успешно');
+
+      toast.success("Успешно");
       setRawData(JSON.stringify(json));
       setFile(null);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -54,16 +54,19 @@ export const Import = () => {
   };
 
   return (
-    <form className="col-6 d-flex gap-2 align-items-center">
-      <Input
+    <form className="import-form">
+      <input
         id="excelFile"
         name="file"
         type="file"
         accept=".xls,.xlsx"
-        innerRef={fileInputRef}
+        ref={fileInputRef}
         onChange={handleFileChange}
+        className="import-input"
       />
-      <Button disabled={!file} color="primary" onClick={handleImport}>Импортировать</Button>
+      <button disabled={!file} className="import-button" onClick={handleImport}>
+        Импортировать
+      </button>
     </form>
-  )
-}
+  );
+};

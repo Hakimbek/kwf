@@ -17,12 +17,12 @@ export type GroupedDataType = {
 
 export function groupByField(
   data: RowDataType[],
-  field: keyof Pick<RowDataType, 'Region' | 'Product' | 'Manager'>,
+  field: keyof Pick<RowDataType, "Region" | "Product" | "Manager">,
   type: "Sum" | "AKB",
 ): GroupedDataType[] {
   const map = new Map<string, GroupedDataType>();
 
-  data.forEach(item => {
+  data.forEach((item) => {
     const groupKey = String(item[field]);
 
     if (!map.has(groupKey)) {
