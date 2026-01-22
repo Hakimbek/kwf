@@ -1,9 +1,11 @@
 .table-container {
+  width: 100%;
   background: var(--dark);
 }
 
 .table-container th,
 .table-container td {
+  padding: 8px;
   background: var(--dark);
   color: var(--white);
   border-bottom: 3px solid var(--dark-purple);

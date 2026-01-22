@@ -1,5 +1,4 @@
 import useLocalStorage from "use-local-storage";
-import { Table } from "reactstrap";
 import type { RowDataType } from "../../utils/groupByField.tsx";
 import "./Data.css";
 
@@ -8,7 +7,7 @@ export const Data = () => {
   const jsonData: RowDataType[] = rawData ? JSON.parse(rawData) : [];
 
   return (
-    <Table className="table-container">
+    <table className="table-container">
       <thead>
         <tr>
           <th>Manager</th>
@@ -43,6 +42,6 @@ export const Data = () => {
           ),
         )}
       </tbody>
-    </Table>
+    </table>
   );
 };
