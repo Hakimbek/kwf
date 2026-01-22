@@ -6,11 +6,12 @@
   --dark-black: #000000;
   --dark: #16171d;
   --dark-purple: #22262d;
-  --red: #ff0000;
-  --blue: #0077ff;
-  --green: #008000;
-  --dark-gray: #7d9fb5;
+  --red: #dc3545;
+  --blue: #0d6efd;
+  --green: #198754;
+  --dark-gray: #f8f9fa;
   --purple: #494aca;
+  --orange: #fd7e14;
 
   --font-rubik: "Rubik", sans-serif;
 }

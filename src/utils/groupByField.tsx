@@ -15,32 +15,42 @@ export type GroupedDataType = {
   Fact_Kun: number;
 };
 
-export function groupByField(
+type Filters = {
+  Product?: string;
+  Region?: string;
+  Manager?: string;
+};
+
+const isActiveFilter = (value?: string) =>
+  value !== undefined && value !== "All";
+
+export function sumData(
   data: RowDataType[],
-  field: keyof Pick<RowDataType, "Region" | "Product" | "Manager">,
   type: "Sum" | "AKB",
+  filters: Filters = {},
 ): GroupedDataType[] {
-  const map = new Map<string, GroupedDataType>();
+  const total: GroupedDataType = {
+    Group: "Total",
+    Plan_Oy: 0,
+    Plan_Kun: 0,
+    Fact_Kun: 0,
+  };
 
-  data.forEach((item) => {
-    const groupKey = String(item[field]);
+  for (const item of data) {
+    if (item.Type !== type) continue;
 
-    if (!map.has(groupKey)) {
-      map.set(groupKey, {
-        Group: groupKey,
-        Plan_Oy: 0,
-        Plan_Kun: 0,
-        Fact_Kun: 0,
-      });
+    if (
+      (isActiveFilter(filters.Product) && item.Product !== filters.Product) ||
+      (isActiveFilter(filters.Region) && item.Region !== filters.Region) ||
+      (isActiveFilter(filters.Manager) && item.Manager !== filters.Manager)
+    ) {
+      continue;
     }
 
-    if (item.Type === type) {
-      const acc = map.get(groupKey)!;
-      acc.Plan_Oy += Math.round(Number(item.Plan_Oy));
-      acc.Plan_Kun += Math.round(Number(item.Plan_Kun));
-      acc.Fact_Kun += Math.round(Number(item.Fact_Kun));
-    }
-  });
+    total.Plan_Oy += Math.round(+item.Plan_Oy);
+    total.Plan_Kun += Math.round(+item.Plan_Kun);
+    total.Fact_Kun += Math.round(+item.Fact_Kun);
+  }
 
-  return Array.from(map.values());
+  return [total];
 }

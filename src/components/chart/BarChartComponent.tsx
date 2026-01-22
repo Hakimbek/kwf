@@ -4,42 +4,36 @@ import { BarComponent } from "./BarComponent.tsx";
 
 export type BarChartDataType = {
   aggregatedData: GroupedDataType[];
-  xOffset: number;
   height: number;
 };
 
 export const BarChartComponent = ({
   aggregatedData,
-  xOffset,
   height,
 }: BarChartDataType) => {
   return (
-    <ResponsiveContainer width="100%" height={height} className="border">
+    <ResponsiveContainer height={height}>
       <BarChart
         data={aggregatedData}
-        responsive
-        margin={{ top: 40 }}
+        margin={{ right: 50, left: 20 }}
         layout="vertical"
       >
-        <XAxis fontWeight="bold" tick={false} type="number" axisLine={false} />
-        <YAxis dataKey="Group" type="category" angle={-90} axisLine={false} />
+        <XAxis type="number" axisLine={false} tick={false} />
+        <YAxis dataKey="Group" type="category" axisLine={false} tick={false} />
         <BarComponent
           dataKey="Plan_Oy"
-          xOffset={xOffset}
           aggregatedData={aggregatedData}
           isFact={false}
-          fill="var(--dark-gray)"
+          fill="var(--orange)"
         />
         <BarComponent
           dataKey="Plan_Kun"
-          xOffset={xOffset}
           aggregatedData={aggregatedData}
           isFact={false}
-          fill="var(--dark-gray)"
+          fill="var(--orange)"
         />
         <BarComponent
           dataKey="Fact_Kun"
-          xOffset={xOffset}
           aggregatedData={aggregatedData}
           isFact={true}
         />

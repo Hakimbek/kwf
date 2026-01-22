@@ -1,8 +1,8 @@
 import { Header } from "./components/header/Header.tsx";
 import { ToastContainer } from "react-toastify";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Reports } from "./components/page/Reports.tsx";
-import { Data } from "./components/page/Data.tsx";
+import { Reports } from "./components/reports/Reports.tsx";
+import { Data } from "./components/data/Data.tsx";
 
 function App() {
   return (

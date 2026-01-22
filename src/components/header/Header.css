@@ -1,14 +1,11 @@
 .header {
-  position: sticky;
   top: 0;
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 7px;
   border-right: 3px solid var(--dark-purple);
   border-left: 3px solid var(--dark-purple);
   border-bottom: 3px solid var(--dark-purple);
-  background-color: var(--dark);
-  z-index: 100;
 }
 
 .nav {

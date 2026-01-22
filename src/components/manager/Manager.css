@@ -1,0 +1,24 @@
+.manager-container {
+  display: flex;
+}
+
+.manager-sales,
+.manager-akb {
+  width: 100%;
+  border-bottom: 3px solid var(--dark-purple);
+}
+
+.manager-sales {
+  border-right: 3px solid var(--dark-purple);
+  border-left: 3px solid var(--dark-purple);
+}
+
+.manager-akb {
+  border-right: 3px solid var(--dark-purple);
+}
+
+.manager-title {
+  margin: 10px 0 0 0;
+  text-align: center;
+  color: var(--purple);
+}

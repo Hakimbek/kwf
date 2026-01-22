@@ -1,0 +1,12 @@
+.table-container {
+  background: var(--dark);
+}
+
+.table-container th,
+.table-container td {
+  background: var(--dark);
+  color: var(--white);
+  border-bottom: 3px solid var(--dark-purple);
+  border-right: 3px solid var(--dark-purple);
+  border-left: 3px solid var(--dark-purple);
+}

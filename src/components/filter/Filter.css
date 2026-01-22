@@ -1,0 +1,25 @@
+.filter-container {
+  display: flex;
+  border-right: 3px solid var(--dark-purple);
+  border-left: 3px solid var(--dark-purple);
+  border-bottom: 3px solid var(--dark-purple);
+}
+
+.filter-option {
+  display: flex;
+  gap: 20px;
+  padding: 5px 10px;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 14px;
+}
+
+.filter-option:hover {
+  background: var(--dark-purple);
+  transition: all 0.3s ease;
+}
+
+.active-filter {
+  background: var(--dark-purple);
+}
