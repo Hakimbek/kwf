@@ -12,3 +12,20 @@
   text-align: center;
   font-size: 18px;
 }
+
+.wrapper {
+  display: flex;
+  margin: 10px;
+  background-color: var(--dark-purple);
+  border: 2px solid var(--blue);
+  border-radius: 20px;
+}
+
+.vertical {
+  padding: 10px;
+  margin: 0;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: var(--white);
+  user-select: none;
+}

@@ -2,7 +2,7 @@ import useLocalStorage from "use-local-storage";
 import "./Filter.css";
 
 export const FilterManager = () => {
-  const [manager, setManager] = useLocalStorage("manager", "All");
+  const [manager, setManager] = useLocalStorage("kwf", "All");
 
   return (
     <div className="filter-container">

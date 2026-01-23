@@ -7,7 +7,7 @@ import "./Import.css";
 type ExcelRow = Record<string, string | number | boolean | null>;
 
 export const Import = () => {
-  const [, setRawData] = useLocalStorage("rawData", "");
+  const [, setKWFData] = useLocalStorage("kwfData", "");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImport = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +42,7 @@ export const Import = () => {
       });
 
       toast.success("Успешно");
-      setRawData(JSON.stringify(json));
+      setKWFData(JSON.stringify(json));
       if (fileInputRef.current) fileInputRef.current.value = "";
     };
 
@@ -60,7 +60,9 @@ export const Import = () => {
         onChange={handleImport}
         hidden
       />
-      <label htmlFor="excelFile" className="import-label">Выберите файл</label>
+      <label htmlFor="excelFile" className="import-label">
+        Выберите файл
+      </label>
     </form>
   );
 };
