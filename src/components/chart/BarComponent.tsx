@@ -34,15 +34,13 @@ export const BarComponent = ({
         dataKey={dataKey}
         position="right"
         fill="var(--white)"
-        fontSize={12}
-        fontWeight="bold"
+        fontSize={9}
       />
       <LabelList
         dataKey={dataKey}
         position="left"
-        fontSize={12}
+        fontSize={9}
         fill="var(--white)"
-        fontWeight="bold"
         formatter={() => dataKey}
       />
     </Bar>

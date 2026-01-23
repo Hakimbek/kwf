@@ -9,6 +9,7 @@
   color: var(--white);
   border: 2px solid var(--dark-purple);
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .import-input::file-selector-button {
@@ -17,22 +18,20 @@
   color: var(--white);
   border: none;
   border-right: 2px solid var(--dark-purple);
+  cursor: pointer;
 }
 
 .import-button {
   height: 33px;
   padding: 0 15px;
-  background-color: var(--black);
+  background-color: var(--dark-purple);
   color: var(--white);
   border: none;
   border-radius: 4px;
-}
-
-.import-button:hover {
-  background-color: var(--dark-black);
-  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .import-button:disabled {
   background-color: var(--dark-purple);
+  cursor: not-allowed;
 }

@@ -1,0 +1,13 @@
+.report-wrapper {
+  display: flex;
+}
+
+.report-header {
+    margin: 0;
+    padding: 10px 0;
+    color: var(--white);
+    border-right: 3px solid  var(--dark-purple);
+    border-left: 3px solid var(--dark-purple);
+    border-bottom: 3px solid var(--dark-purple);
+    text-align: center;
+}

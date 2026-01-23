@@ -1,32 +1,45 @@
-import { sumData } from "../../utils/groupByField.tsx";
-import useLocalStorage from "use-local-storage";
 import { Manager } from "../manager/Manager.tsx";
-import { FilterManager } from "../filter/FilterManager.tsx";
-import { FilterRegion } from "../filter/FilterRegion.tsx";
-import { FilterProduct } from "../filter/FilterProduct.tsx";
+import { Product } from "../product/Product.tsx";
+import "./Reports.css";
 
 export const Reports = () => {
-  const [rawData] = useLocalStorage("rawData", "");
-  const [manager] = useLocalStorage("manager", "All");
-  const [region] = useLocalStorage("region", "All");
-  const [product] = useLocalStorage("product", "All");
-  const sales = sumData(rawData ? JSON.parse(rawData) : [], "Sum", {
-    Manager: manager,
-    Region: region,
-    Product: product,
-  });
-  const akb = sumData(rawData ? JSON.parse(rawData) : [], "AKB", {
-    Manager: manager,
-    Region: region,
-    Product: product,
-  });
-
   return (
     <>
-      <FilterManager />
-      <FilterRegion />
-      <FilterProduct />
-      <Manager sales={sales} akb={akb} />
+      <div className="report-wrapper">
+        <Manager managerName="Farrux" />
+        <Manager managerName="Murod" />
+        <Manager managerName="Shokirjon" />
+      </div>
+      <h4 className="report-header">Farrux</h4>
+      <div className="report-wrapper">
+        <Product productName="wRSC" managerName="Farrux" />
+        <Product productName="RSC" managerName="Farrux" />
+        <Product productName="non-RSC" managerName="Farrux" />
+        <Product productName="SnP" managerName="Farrux" />
+        <Product productName="SnP Lam" managerName="Farrux" />
+        <Product productName="Gofrolist" managerName="Farrux" />
+        <Product productName="Monokarton" managerName="Farrux" />
+      </div>
+      <h4 className="report-header">Murod</h4>
+      <div className="report-wrapper">
+        <Product productName="wRSC" managerName="Murod" />
+        <Product productName="RSC" managerName="Murod" />
+        <Product productName="non-RSC" managerName="Murod" />
+        <Product productName="SnP" managerName="Murod" />
+        <Product productName="SnP Lam" managerName="Murod" />
+        <Product productName="Gofrolist" managerName="Murod" />
+        <Product productName="Monokarton" managerName="Murod" />
+      </div>
+      <h4 className="report-header">Shokirjon</h4>
+      <div className="report-wrapper">
+        <Product productName="wRSC" managerName="Shokirjon" />
+        <Product productName="RSC" managerName="Shokirjon" />
+        <Product productName="non-RSC" managerName="Shokirjon" />
+        <Product productName="SnP" managerName="Shokirjon" />
+        <Product productName="SnP Lam" managerName="Shokirjon" />
+        <Product productName="Gofrolist" managerName="Shokirjon" />
+        <Product productName="Monokarton" managerName="Shokirjon" />
+      </div>
     </>
   );
 };

@@ -22,6 +22,6 @@
 
 .active,
 .nav-button:hover {
-  color: var(--purple);
+  color: var(--blue);
   transition: all 0.3s ease;
 }

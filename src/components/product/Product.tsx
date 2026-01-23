@@ -1,27 +1,34 @@
 import { BarChartComponent } from "../chart/BarChartComponent.tsx";
 import useLocalStorage from "use-local-storage";
 import { sumData } from "../../utils/groupByField.tsx";
-import "./Manager.css";
+import "./Product.css";
 
-type ManagerPropsType = {
+type ProductPropsType = {
+  productName: string;
   managerName: string;
 };
 
-export const Manager = ({ managerName }: ManagerPropsType) => {
+export const Product = ({ productName, managerName }: ProductPropsType) => {
   const [rawData] = useLocalStorage("rawData", "");
-  const sales = sumData(rawData ? JSON.parse(rawData) : [], "Sum", { Manager: managerName });
-  const akb = sumData(rawData ? JSON.parse(rawData) : [], "AKB", { Manager: managerName });
+  const sales = sumData(rawData ? JSON.parse(rawData) : [], "Sum", {
+    Manager: managerName,
+    Product: productName
+  });
+  const akb = sumData(rawData ? JSON.parse(rawData) : [], "AKB", {
+    Manager: managerName,
+    Product: productName
+  });
 
   return (
     <div className="w-100">
-      <h4 className="manager-header">{managerName}</h4>
-      <div className="d-flex">
+      <p className="manager-header">{productName}</p>
+      <div>
         <div className="manager-sales">
-          <h5 className="manager-title">Sales</h5>
+          <p className="manager-title">Sales</p>
           <BarChartComponent aggregatedData={sales} height={90} />
         </div>
         <div className="manager-akb">
-          <h5 className="manager-title">AKB</h5>
+          <p className="manager-title">AKB</p>
           <BarChartComponent aggregatedData={akb} height={90} />
         </div>
       </div>
