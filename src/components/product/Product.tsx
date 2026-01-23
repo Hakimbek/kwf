@@ -12,11 +12,11 @@ export const Product = ({ productName, managerName }: ProductPropsType) => {
   const [rawData] = useLocalStorage("rawData", "");
   const sales = sumData(rawData ? JSON.parse(rawData) : [], "Sum", {
     Manager: managerName,
-    Product: productName
+    Product: productName,
   });
   const akb = sumData(rawData ? JSON.parse(rawData) : [], "AKB", {
     Manager: managerName,
-    Product: productName
+    Product: productName,
   });
 
   return (

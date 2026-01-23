@@ -9,8 +9,12 @@ type ManagerPropsType = {
 
 export const Manager = ({ managerName }: ManagerPropsType) => {
   const [rawData] = useLocalStorage("rawData", "");
-  const sales = sumData(rawData ? JSON.parse(rawData) : [], "Sum", { Manager: managerName });
-  const akb = sumData(rawData ? JSON.parse(rawData) : [], "AKB", { Manager: managerName });
+  const sales = sumData(rawData ? JSON.parse(rawData) : [], "Sum", {
+    Manager: managerName,
+  });
+  const akb = sumData(rawData ? JSON.parse(rawData) : [], "AKB", {
+    Manager: managerName,
+  });
 
   return (
     <div className="w-100">
