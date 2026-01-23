@@ -6,7 +6,7 @@ import { Data } from "./components/data/Data.tsx";
 
 function App() {
   return (
-    <div className="mx-3">
+    <div>
       <Header />
       <Routes>
         <Route path="/" element={<Navigate to="/reports" />} />

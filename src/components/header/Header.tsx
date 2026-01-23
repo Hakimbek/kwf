@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <header className="header">
       <nav className="nav">
-        <div className="d-flex gap-3">
+        <div className="d-flex gap-4">
           <NavLink
             className={({ isActive }) =>
               isActive ? "nav-button active" : "nav-button"
