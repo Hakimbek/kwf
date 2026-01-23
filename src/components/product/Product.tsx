@@ -24,11 +24,9 @@ export const Product = ({ productName, managerName }: ProductPropsType) => {
       <p className="manager-header">{productName}</p>
       <div>
         <div className="manager-sales">
-          <p className="manager-title">Sales</p>
           <BarChartComponent aggregatedData={sales} height={90} />
         </div>
         <div className="manager-akb">
-          <p className="manager-title">AKB</p>
           <BarChartComponent aggregatedData={akb} height={90} />
         </div>
       </div>

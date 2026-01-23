@@ -21,11 +21,11 @@ export const Manager = ({ managerName }: ManagerPropsType) => {
       <h4 className="manager-header">{managerName}</h4>
       <div className="d-flex">
         <div className="manager-sales">
-          <h5 className="manager-title">Sales</h5>
+          <p className="manager-title">Sales</p>
           <BarChartComponent aggregatedData={sales} height={90} />
         </div>
         <div className="manager-akb">
-          <h5 className="manager-title">AKB</h5>
+          <p className="manager-title">AKB</p>
           <BarChartComponent aggregatedData={akb} height={90} />
         </div>
       </div>
