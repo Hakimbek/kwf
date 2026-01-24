@@ -10,7 +10,7 @@ type ExcelRow = Record<string, string | number | boolean | null>;
 
 type ImportPropsType = {
   type: "kwfData" | "mpData";
-}
+};
 
 export const Import = ({ type }: ImportPropsType) => {
   const [, setData] = useLocalStorage(type, "");

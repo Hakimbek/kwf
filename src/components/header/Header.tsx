@@ -10,23 +10,25 @@ export const Header = () => {
       <nav className="nav">
         <div className="d-flex gap-4">
           <NavLink
-              className={({ isActive }) =>
-                  isActive ? "nav-button active" : "nav-button"
-              }
-              to={"/kwf"}
+            className={({ isActive }) =>
+              isActive ? "nav-button active" : "nav-button"
+            }
+            to={"/kwf"}
           >
             KWF
           </NavLink>
           <NavLink
-              className={({ isActive }) =>
-                  isActive ? "nav-button active" : "nav-button"
-              }
-              to={"/mp"}
+            className={({ isActive }) =>
+              isActive ? "nav-button active" : "nav-button"
+            }
+            to={"/mp"}
           >
             MP
           </NavLink>
         </div>
-        <Import type={location.pathname.includes("kwf") ? "kwfData" : "mpData"} />
+        <Import
+          type={location.pathname.includes("kwf") ? "kwfData" : "mpData"}
+        />
       </nav>
     </header>
   );
