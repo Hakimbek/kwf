@@ -1,30 +1,32 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Import } from "../import/Import.tsx";
 import "./Header.css";
 
 export const Header = () => {
+  const location = useLocation();
+
   return (
     <header className="header">
       <nav className="nav">
         <div className="d-flex gap-4">
           <NavLink
-            className={({ isActive }) =>
-              isActive ? "nav-button active" : "nav-button"
-            }
-            to={"/reports"}
+              className={({ isActive }) =>
+                  isActive ? "nav-button active" : "nav-button"
+              }
+              to={"/kwf"}
           >
-            Визуализация
+            KWF
           </NavLink>
           <NavLink
-            className={({ isActive }) =>
-              isActive ? "nav-button active" : "nav-button"
-            }
-            to={"/data"}
+              className={({ isActive }) =>
+                  isActive ? "nav-button active" : "nav-button"
+              }
+              to={"/mp"}
           >
-            Данные
+            MP
           </NavLink>
         </div>
-        <Import />
+        <Import type={location.pathname.includes("kwf") ? "kwfData" : "mpData"} />
       </nav>
     </header>
   );

@@ -8,8 +8,12 @@ import "./Import.css";
 
 type ExcelRow = Record<string, string | number | boolean | null>;
 
-export const Import = () => {
-  const [, setKWFData] = useLocalStorage("kwfData", "");
+type ImportPropsType = {
+  type: "kwfData" | "mpData";
+}
+
+export const Import = ({ type }: ImportPropsType) => {
+  const [, setData] = useLocalStorage(type, "");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImport = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +48,7 @@ export const Import = () => {
       });
 
       toast.success("Успешно");
-      setKWFData(JSON.stringify(json));
+      setData(JSON.stringify(json));
       if (fileInputRef.current) fileInputRef.current.value = "";
     };
 

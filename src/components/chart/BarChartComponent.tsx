@@ -2,6 +2,7 @@ import {BarChart, ResponsiveContainer, XAxis, YAxis} from "recharts";
 import { BarComponent } from "./BarComponent.tsx";
 import useLocalStorage from "use-local-storage";
 import { sumData } from "../../utils/groupByField.tsx";
+import { useMemo } from "react";
 import "./BarChart.css";
 
 export type BarChartPropsType = {
@@ -22,14 +23,14 @@ export const BarChartComponent = ({
   title,
 }: BarChartPropsType) => {
   const [kwfData] = useLocalStorage(data, "");
-  const groupedData = sumData(kwfData ? JSON.parse(kwfData) : [], type, {
+  const groupedData = useMemo(() => sumData(kwfData ? JSON.parse(kwfData) : [], type, {
     Manager: managerName,
     Product: productName,
     Region: regionName,
-  });
+  }), [])
 
   return (
-    <ResponsiveContainer className="bar-wrapper">
+    <ResponsiveContainer className="bar-wrapper" minHeight={100} minWidth={200}>
       <BarChart data={groupedData} margin={{ right: 50, left: 20, top: 30, bottom: 0 }} layout="vertical">
         <text x={20} y={20} fill="white" fontSize={14} textAnchor="start">{title}</text>
         <XAxis type="number" axisLine={false} tick={false} />

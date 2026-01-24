@@ -1,11 +1,11 @@
-import { BarChartComponent } from "../chart/BarChartComponent.tsx";
-import "./Reports.css";
+import { BarChartComponent } from "../../chart/BarChartComponent.tsx";
+import "../Reports.css";
 
 type ReportsPropsType = {
   manager?: string;
 }
 
-export const Reports = ({ manager = "All" }: ReportsPropsType) => {
+export const KwfReports = ({ manager = "All" }: ReportsPropsType) => {
   return (
       <div className="report-wrapper">
         <p className="vertical">{manager}</p>
