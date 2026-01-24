@@ -30,7 +30,7 @@ export const BarChartComponent = ({
         Product: productName,
         Region: regionName,
       }),
-    [],
+    [kwfData, managerName, regionName, managerName],
   );
 
   return (
