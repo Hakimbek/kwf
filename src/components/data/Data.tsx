@@ -3,7 +3,7 @@ import type { RowDataType } from "../../utils/groupByField.tsx";
 import "./Data.css";
 
 export const Data = () => {
-  const [rawData] = useLocalStorage("rawData", "");
+  const [rawData] = useLocalStorage("kwfData", "");
   const jsonData: RowDataType[] = rawData ? JSON.parse(rawData) : [];
 
   return (
