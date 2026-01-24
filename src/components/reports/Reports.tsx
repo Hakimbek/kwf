@@ -24,11 +24,11 @@ export const Reports = ({ manager = "All" }: ReportsPropsType) => {
         <div className="d-flex flex-column gap-1">
           <div className="d-flex flex-column gap-1">
             <p className="vertical flex-fill">Product</p>
-            <p className="vertical flex-fill">Reg ion</p>
+            <p className="vertical flex-fill">Regions</p>
           </div>
           <div className="d-flex flex-column gap-1">
             <p className="vertical flex-fill">Product</p>
-            <p className="vertical flex-fill">Reg ion</p>
+            <p className="vertical flex-fill">Regions</p>
           </div>
         </div>
         <div className="report">
