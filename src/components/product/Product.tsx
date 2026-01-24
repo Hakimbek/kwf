@@ -24,10 +24,10 @@ export const Product = ({ productName, managerName }: ProductPropsType) => {
       <p className="manager-header">{productName}</p>
       <div>
         <div className="manager-sales">
-          <BarChartComponent aggregatedData={sales} height={90} />
+          {/*<BarChartComponent aggregatedData={sales} height={90} />*/}
         </div>
         <div className="manager-akb">
-          <BarChartComponent aggregatedData={akb} height={90} />
+          {/*<BarChartComponent aggregatedData={akb} height={90} />*/}
         </div>
       </div>
     </div>
