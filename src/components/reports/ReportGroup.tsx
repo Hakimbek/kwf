@@ -4,9 +4,9 @@ export const ReportGroup = () => {
     return (
         <div className="d-flex flex-column gap-3">
             <Reports />
-            <Reports manager="Murod" />
-            <Reports manager="Farrux" />
-            <Reports manager="Shokirjon" />
+            <Reports manager="Шарипов Мурод" />
+            <Reports manager="Одилбеков Фаррухбек" />
+            <Reports manager="Искандаров Шокиржон" />
         </div>
     )
 }

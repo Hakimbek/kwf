@@ -2,6 +2,8 @@ import useLocalStorage from "use-local-storage";
 import { toast } from "react-toastify";
 import { useRef } from "react";
 import * as XLSX from "xlsx";
+import cptable from "codepage";
+XLSX.set_cptable(cptable);
 import "./Import.css";
 
 type ExcelRow = Record<string, string | number | boolean | null>;
@@ -33,7 +35,7 @@ export const Import = () => {
         return;
       }
 
-      const workbook = XLSX.read(buffer, { type: "string" });
+      const workbook = XLSX.read(buffer, { type: "array", codepage: 1251 });
       const sheetName = workbook.SheetNames[0];
       const worksheet = workbook.Sheets[sheetName];
 
