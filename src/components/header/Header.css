@@ -5,7 +5,6 @@
   justify-content: space-between;
   padding: 10px 30px;
   background: var(--dark-purple);
-  border-bottom: 2px solid var(--blue);
   z-index: 100;
 }
 

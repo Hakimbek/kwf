@@ -1,57 +1,76 @@
-import { KWF } from "../kwf/KWF.tsx";
+import { BarChartComponent } from "../chart/BarChartComponent.tsx";
 import "./Reports.css";
 
-export const Reports = () => {
+type ReportsPropsType = {
+  manager?: string;
+}
+
+export const Reports = ({ manager = "All" }: ReportsPropsType) => {
   return (
-    <div>
-      <div className="wrapper">
-        <p className="vertical text-center">Umumiy</p>
-        <div>
-          <div className="d-flex">
-            <p className="vertical">Sotuv</p>
-            <KWF type="Sum" />
+      <div className="report-wrapper">
+        <p className="vertical">{manager}</p>
+        <div className="d-flex flex-column gap-1">
+          <p className="vertical flex-fill">Sotuv</p>
+          <p className="vertical flex-fill">A K B</p>
+        </div>
+        <div className="report w-25">
+          <div className="flex-fill">
+            <BarChartComponent type="Sum" data="kwfData" />
           </div>
-          <div className="d-flex">
-            <p className="vertical">AKB</p>
-            <KWF type="AKB" />
+          <div className="flex-fill">
+            <BarChartComponent type="AKB" data="kwfData" />
+          </div>
+        </div>
+        <div className="d-flex flex-column gap-1">
+          <div className="d-flex flex-column gap-1">
+            <p className="vertical flex-fill">Product</p>
+            <p className="vertical flex-fill">Reg ion</p>
+          </div>
+          <div className="d-flex flex-column gap-1">
+            <p className="vertical flex-fill">Product</p>
+            <p className="vertical flex-fill">Reg ion</p>
+          </div>
+        </div>
+        <div className="report">
+          <div className="d-flex flex-fill gap-1">
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} productName="wRSC" title="wRSC" />
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} productName="non-RSC" title="non-RSC" />
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} productName="RSC" title="RSC" />
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} productName="SnP" title="SnP" />
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} productName="SnP Lam" title="SnP Lam" />
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} productName="Gofrolist" title="Gofrolist" />
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} productName="Monokarton" title="Monokarton" />
+          </div>
+          <div className="d-flex flex-fill gap-1">
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} regionName="Buxoro va Navoiy" title="Buxoro va Navoiy" />
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} regionName="Vodiy: FAN" title="Vodiy: FAN" />
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} regionName="Kash va Surx" title="Kash va Surx" />
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} regionName="Sam, Jizz, Sir" title="Sam, Jizz, Sir" />
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} regionName="Toshkent" title="Toshkent" />
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} regionName="Xorazm va QQP" title="Xorazm va QQP" />
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} regionName="Eksport (kushni)" title="Eksport (kushni)" />
+            <BarChartComponent type="Sum" data="kwfData" managerName={manager} regionName="Eksport (kushni emas)" title="Eksport (kushni emas)" />
+          </div>
+          <div className="d-flex flex-fill gap-1">
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} productName="wRSC" title="wRSC" />
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} productName="non-RSC" title="non-RSC" />
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} productName="RSC" title="RSC" />
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} productName="SnP" title="SnP" />
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} productName="SnP Lam" title="SnP Lam" />
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} productName="Gofrolist" title="Gofrolist" />
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} productName="Monokarton" title="Monokarton" />
+          </div>
+          <div className="d-flex flex-fill gap-1">
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} regionName="Buxoro va Navoiy" title="Buxoro va Navoiy" />
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} regionName="Vodiy: FAN" title="Vodiy: FAN" />
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} regionName="Kash va Surx" title="Kash va Surx" />
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} regionName="Sam, Jizz, Sir" title="Sam, Jizz, Sir" />
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} regionName="Toshkent" title="Toshkent" />
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} regionName="Xorazm va QQP" title="Xorazm va QQP" />
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} regionName="Eksport (kushni)" title="Eksport (kushni)" />
+            <BarChartComponent type="AKB" data="kwfData" managerName={manager} regionName="Eksport (kushni emas)" title="Eksport (kushni emas)" />
           </div>
         </div>
       </div>
-      {/*<div className="report-wrapper">*/}
-      {/*  <KWF managerName="Farrux" />*/}
-      {/*  <KWF managerName="Murod" />*/}
-      {/*  <KWF managerName="Shokirjon" />*/}
-      {/*</div>*/}
-      {/*<h4 className="report-header">Farrux</h4>*/}
-      {/*<div className="report-wrapper">*/}
-      {/*  <Product productName="wRSC" managerName="Farrux" />*/}
-      {/*  <Product productName="RSC" managerName="Farrux" />*/}
-      {/*  <Product productName="non-RSC" managerName="Farrux" />*/}
-      {/*  <Product productName="SnP" managerName="Farrux" />*/}
-      {/*  <Product productName="SnP Lam" managerName="Farrux" />*/}
-      {/*  <Product productName="Gofrolist" managerName="Farrux" />*/}
-      {/*  <Product productName="Monokarton" managerName="Farrux" />*/}
-      {/*</div>*/}
-      {/*<h4 className="report-header">Murod</h4>*/}
-      {/*<div className="report-wrapper">*/}
-      {/*  <Product productName="wRSC" managerName="Murod" />*/}
-      {/*  <Product productName="RSC" managerName="Murod" />*/}
-      {/*  <Product productName="non-RSC" managerName="Murod" />*/}
-      {/*  <Product productName="SnP" managerName="Murod" />*/}
-      {/*  <Product productName="SnP Lam" managerName="Murod" />*/}
-      {/*  <Product productName="Gofrolist" managerName="Murod" />*/}
-      {/*  <Product productName="Monokarton" managerName="Murod" />*/}
-      {/*</div>*/}
-      {/*<h4 className="report-header">Shokirjon</h4>*/}
-      {/*<div className="report-wrapper">*/}
-      {/*  <Product productName="wRSC" managerName="Shokirjon" />*/}
-      {/*  <Product productName="RSC" managerName="Shokirjon" />*/}
-      {/*  <Product productName="non-RSC" managerName="Shokirjon" />*/}
-      {/*  <Product productName="SnP" managerName="Shokirjon" />*/}
-      {/*  <Product productName="SnP Lam" managerName="Shokirjon" />*/}
-      {/*  <Product productName="Gofrolist" managerName="Shokirjon" />*/}
-      {/*  <Product productName="Monokarton" managerName="Shokirjon" />*/}
-      {/*</div>*/}
-    </div>
   );
 };
