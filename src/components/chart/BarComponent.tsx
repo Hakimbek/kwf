@@ -18,7 +18,7 @@ export const BarComponent = ({
     <Bar dataKey={dataKey} fill={fill} radius={[10, 10, 10, 10]}>
       {isFact &&
         aggregatedData?.map((entry, index) => {
-          const diff = 100 - (entry.factKun * 100) / entry.planKun;
+          const diff = 100 - (entry.Fact_Kun * 100) / entry.Plan_Kun;
 
           if (diff < -20) {
             return <Cell key={`fact-${index}`} fill="var(--blue)" />;
@@ -33,14 +33,10 @@ export const BarComponent = ({
       <LabelList
         dataKey={dataKey}
         position="right"
-        fill="var(--white)"
-        fontSize={12}
       />
       <LabelList
         dataKey={dataKey}
         position="left"
-        fontSize={12}
-        fill="var(--white)"
         formatter={() => dataKey}
       />
     </Bar>

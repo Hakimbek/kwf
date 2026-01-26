@@ -1,4 +1,4 @@
-import { BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import {BarChart, ResponsiveContainer, XAxis, YAxis} from "recharts";
 import { BarComponent } from "./BarComponent.tsx";
 import useLocalStorage from "use-local-storage";
 import { group } from "../../utils/group.tsx";
@@ -11,6 +11,8 @@ export type BarChartPropsType = {
   regionName?: string;
   type: Filter;
   title?: string;
+  width?: number;
+  height?: number;
 };
 
 export const BarChartComponent = ({
@@ -18,6 +20,8 @@ export const BarChartComponent = ({
   regionName = "All",
   type,
   title,
+  width,
+  height,
 }: BarChartPropsType) => {
   const [storage] = useLocalStorage<StorageType>("storageType", "kwf");
   const [manager] = useLocalStorage("manager", "");
@@ -36,31 +40,31 @@ export const BarChartComponent = ({
   );
 
   return (
-    <ResponsiveContainer className="bar-wrapper" minHeight={100} minWidth={200}>
+    <ResponsiveContainer className="bar-wrapper" width={width} height={height}>
       <BarChart
         data={groupedData}
-        margin={{ right: 50, left: 20, top: 30, bottom: 0 }}
+        margin={{ right: 50, left: 40 }}
         layout="vertical"
       >
-        <text x={20} y={20} fill="white" fontSize={14} textAnchor="start">
+        <text x={20} y={20} textAnchor="start">
           {title}
         </text>
         <XAxis type="number" axisLine={false} tick={false} />
         <YAxis type="category" axisLine={false} tick={false} />
         <BarComponent
-          dataKey="planOy"
+          dataKey="Plan_Oy"
           aggregatedData={groupedData}
           isFact={false}
           fill="var(--orange)"
         />
         <BarComponent
-          dataKey="planKun"
+          dataKey="Plan_Kun"
           aggregatedData={groupedData}
           isFact={false}
           fill="var(--orange)"
         />
         <BarComponent
-          dataKey="factKun"
+          dataKey="Fact_Kun"
           aggregatedData={groupedData}
           isFact={true}
         />

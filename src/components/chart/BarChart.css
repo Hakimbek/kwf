@@ -1,3 +1,5 @@
 .bar-wrapper {
-  border-radius: 20px;
+  border: 2px solid var(--blue);
+  border-radius: 30px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
