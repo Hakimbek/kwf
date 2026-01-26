@@ -25,12 +25,8 @@ export const BarChartComponent = ({
   const [kwfData] = useLocalStorage(data, "");
   const groupedData = useMemo(
     () =>
-      sumData(kwfData ? JSON.parse(kwfData) : [], type, {
-        Manager: managerName,
-        Product: productName,
-        Region: regionName,
-      }),
-    [kwfData, managerName, regionName, managerName],
+      sumData(kwfData ? JSON.parse(kwfData) : [], data, type, productName, regionName, managerName),
+    [kwfData, managerName, regionName, managerName, type, data],
   );
 
   return (

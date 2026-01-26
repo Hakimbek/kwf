@@ -17,7 +17,7 @@ export const BarComponent = ({
   return (
     <Bar dataKey={dataKey} fill={fill} radius={[10, 10, 10, 10]}>
       {isFact &&
-        aggregatedData.map((entry, index) => {
+        aggregatedData?.map((entry, index) => {
           const diff = 100 - (entry.Fact_Kun * 100) / entry.Plan_Kun;
 
           if (diff < -20) {

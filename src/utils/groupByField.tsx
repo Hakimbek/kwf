@@ -1,5 +1,5 @@
 export type RowDataType = {
-  Type: string;
+  Type: "Sum" | "AKB";
   Region: string;
   Product: string;
   Manager: string;
@@ -8,29 +8,26 @@ export type RowDataType = {
   Fact_Kun: number;
 };
 
-export type GroupedDataType = {
-  Group: string;
-  Plan_Oy: number;
-  Plan_Kun: number;
-  Fact_Kun: number;
-};
+export type GroupedDataType = Pick<RowDataType, "Plan_Oy" | "Plan_Kun" | "Fact_Kun">;
 
-type Filters = {
-  Product?: string;
-  Region?: string;
-  Manager?: string;
-};
+const cache = new Map();
 
 const isActiveFilter = (value?: string) =>
   value !== undefined && value !== "All";
 
 export function sumData(
   data: RowDataType[],
-  type: "Sum" | "AKB",
-  filters: Filters = {},
+  storage: "mpData" | "kwfData",
+  type: RowDataType["Type"],
+  product?: string,
+  region?: string,
+  manager?: string,
 ): GroupedDataType[] {
+  if (cache.has(type + product + region + manager + storage)) {
+    return cache.get(type + product + region + manager + storage);
+  }
+
   const total: GroupedDataType = {
-    Group: "Total",
     Plan_Oy: 0,
     Plan_Kun: 0,
     Fact_Kun: 0,
@@ -40,9 +37,9 @@ export function sumData(
     if (item.Type !== type) continue;
 
     if (
-      (isActiveFilter(filters.Product) && item.Product !== filters.Product) ||
-      (isActiveFilter(filters.Region) && item.Region !== filters.Region) ||
-      (isActiveFilter(filters.Manager) && item.Manager !== filters.Manager)
+      (isActiveFilter(product) && item.Product !== product) ||
+      (isActiveFilter(region) && item.Region !== region) ||
+      (isActiveFilter(manager) && item.Manager !== manager)
     ) {
       continue;
     }
@@ -52,5 +49,6 @@ export function sumData(
     total.Fact_Kun += Math.round(+item.Fact_Kun);
   }
 
+  cache.set(type + product + region + manager + storage, [total]);
   return [total];
 }
