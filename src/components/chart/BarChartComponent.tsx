@@ -2,38 +2,37 @@ import { BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import { BarComponent } from "./BarComponent.tsx";
 import useLocalStorage from "use-local-storage";
 import { group } from "../../utils/group.tsx";
+import type { Filter, StorageType } from "../../utils/type.ts";
 import { useMemo } from "react";
 import "./BarChart.css";
 
 export type BarChartPropsType = {
-  managerName?: string;
   productName?: string;
   regionName?: string;
-  type: "Sum" | "AKB";
-  data: "kwfData" | "mpData";
+  type: Filter;
   title?: string;
 };
 
 export const BarChartComponent = ({
-  managerName = "All",
   productName = "All",
   regionName = "All",
   type,
-  data,
   title,
 }: BarChartPropsType) => {
-  const [kwfData] = useLocalStorage(data, "");
+  const [storage] = useLocalStorage<StorageType>("storageType", "kwf");
+  const [manager] = useLocalStorage("manager", "");
+  const [data] = useLocalStorage(storage, "");
   const groupedData = useMemo(
     () =>
       group(
-        kwfData ? JSON.parse(kwfData) : [],
-        data,
+        data ? JSON.parse(data) : [],
+        storage,
         type,
         productName,
         regionName,
-        managerName,
+        manager,
       ),
-    [kwfData, managerName, regionName, managerName, type, data],
+    [data, manager, regionName, productName, type, storage],
   );
 
   return (
@@ -49,19 +48,19 @@ export const BarChartComponent = ({
         <XAxis type="number" axisLine={false} tick={false} />
         <YAxis type="category" axisLine={false} tick={false} />
         <BarComponent
-          dataKey="Plan_Oy"
+          dataKey="planOy"
           aggregatedData={groupedData}
           isFact={false}
           fill="var(--orange)"
         />
         <BarComponent
-          dataKey="Plan_Kun"
+          dataKey="planKun"
           aggregatedData={groupedData}
           isFact={false}
           fill="var(--orange)"
         />
         <BarComponent
-          dataKey="Fact_Kun"
+          dataKey="factKun"
           aggregatedData={groupedData}
           isFact={true}
         />

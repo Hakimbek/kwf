@@ -2,6 +2,7 @@ import useLocalStorage from "use-local-storage";
 import { toast } from "react-toastify";
 import { useRef } from "react";
 import * as XLSX from "xlsx";
+import type { StorageType } from "../../utils/type.ts";
 import cptable from "codepage";
 XLSX.set_cptable(cptable);
 import "./Import.css";
@@ -9,11 +10,11 @@ import "./Import.css";
 type ExcelRow = Record<string, string | number | boolean | null>;
 
 type ImportPropsType = {
-  type: string;
+  storage: StorageType;
 };
 
-export const Import = ({ type }: ImportPropsType) => {
-  const [, setData] = useLocalStorage(type, "");
+export const Import = ({ storage }: ImportPropsType) => {
+  const [, setData] = useLocalStorage(storage, "");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImport = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,7 +68,7 @@ export const Import = ({ type }: ImportPropsType) => {
         hidden
       />
       <label htmlFor="excelFile" className="import-label">
-        Выберите файл
+        Импорт {storage.toUpperCase()} (.xls)
       </label>
     </form>
   );

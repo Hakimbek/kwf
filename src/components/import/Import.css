@@ -5,3 +5,8 @@
   border-radius: 25px;
   cursor: pointer;
 }
+
+.import-label:hover {
+  transition: all 0.3s ease-in-out;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+}
