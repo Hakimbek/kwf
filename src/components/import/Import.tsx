@@ -9,7 +9,7 @@ import "./Import.css";
 type ExcelRow = Record<string, string | number | boolean | null>;
 
 type ImportPropsType = {
-  type: "kwfData" | "mpData";
+  type: string;
 };
 
 export const Import = ({ type }: ImportPropsType) => {
@@ -56,7 +56,7 @@ export const Import = ({ type }: ImportPropsType) => {
   };
 
   return (
-    <form className="import-form">
+    <form>
       <input
         id="excelFile"
         name="file"

@@ -1,5 +1,5 @@
 import { Bar, Cell, LabelList } from "recharts";
-import type { GroupedDataType } from "../../utils/groupByField.tsx";
+import type { GroupedDataType } from "../../utils/group.tsx";
 
 type BarComponentType = {
   dataKey: string;

@@ -1,25 +1,24 @@
 .filter-container {
   display: flex;
-  border-right: 3px solid var(--dark-purple);
-  border-left: 3px solid var(--dark-purple);
-  border-bottom: 3px solid var(--dark-purple);
+  gap: 10px;
+  margin: 5px 25px 25px;
 }
 
 .filter-option {
+  width: 220px;
   display: flex;
+  justify-content: center;
   gap: 20px;
   padding: 5px 10px;
-  background: none;
-  border: none;
-  color: var(--white);
-  font-size: 14px;
+  border: 2px solid var(--blue);
+  border-radius: 30px;
+  color: var(--blue);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.filter-option:hover {
-  background: var(--dark-purple);
-  transition: all 0.3s ease;
-}
-
+.filter-option:hover,
 .active-filter {
-  background: var(--dark-purple);
+  background: var(--blue);
+  color: var(--white);
+  transition: all 0.5s ease-in-out;
 }

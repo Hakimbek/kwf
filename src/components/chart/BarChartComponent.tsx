@@ -1,7 +1,7 @@
 import { BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import { BarComponent } from "./BarComponent.tsx";
 import useLocalStorage from "use-local-storage";
-import { sumData } from "../../utils/groupByField.tsx";
+import { group } from "../../utils/group.tsx";
 import { useMemo } from "react";
 import "./BarChart.css";
 
@@ -25,7 +25,14 @@ export const BarChartComponent = ({
   const [kwfData] = useLocalStorage(data, "");
   const groupedData = useMemo(
     () =>
-      sumData(kwfData ? JSON.parse(kwfData) : [], data, type, productName, regionName, managerName),
+      group(
+        kwfData ? JSON.parse(kwfData) : [],
+        data,
+        type,
+        productName,
+        regionName,
+        managerName,
+      ),
     [kwfData, managerName, regionName, managerName, type, data],
   );
 
