@@ -44,7 +44,7 @@ export const BarChartComponent = ({
           {title}
         </text>
         <XAxis type="number" axisLine={false} tick={false} />
-        <YAxis dataKey="Group" type="category" axisLine={false} tick={false} />
+        <YAxis type="category" axisLine={false} tick={false} />
         <BarComponent
           dataKey="Plan_Oy"
           aggregatedData={groupedData}

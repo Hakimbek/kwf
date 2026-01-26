@@ -5,11 +5,6 @@
 }
 
 .import-label {
-  color: var(--white);
-  cursor: pointer;
-}
-
-.import-label:hover {
   color: var(--blue);
-  transition: all 0.3s ease;
+  cursor: pointer;
 }

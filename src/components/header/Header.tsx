@@ -11,7 +11,7 @@ export const Header = () => {
         <div className="d-flex gap-4">
           <NavLink
             className={({ isActive }) =>
-              isActive ? "nav-button active" : "nav-button"
+              isActive ? "nav-button active-nav" : "nav-button"
             }
             to={"/kwf"}
           >
@@ -19,7 +19,7 @@ export const Header = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              isActive ? "nav-button active" : "nav-button"
+              isActive ? "nav-button active-nav" : "nav-button"
             }
             to={"/mp"}
           >

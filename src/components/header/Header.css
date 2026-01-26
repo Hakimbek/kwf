@@ -1,11 +1,12 @@
 .header {
-  margin-bottom: 25px;
   position: sticky;
   top: 0;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 25px;
   padding: 10px 30px;
-  background: var(--dark-purple);
+  background-color: var(--white);
+  border-bottom: 1px solid var(--blue);
   z-index: 100;
 }
 
@@ -17,12 +18,12 @@
 }
 
 .nav-button {
-  color: var(--white);
+  padding: 5px 10px;
   text-decoration: none;
 }
 
-.active,
-.nav-button:hover {
-  color: var(--blue);
-  transition: all 0.3s ease;
+.active-nav {
+  background-color: var(--blue);
+  color: var(--white);
+  border-radius: 5px;
 }
