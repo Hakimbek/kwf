@@ -1,6 +1,6 @@
 import useLocalStorage from "use-local-storage";
 import { toast } from "react-toastify";
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import * as XLSX from "xlsx";
 import type { StorageType } from "../../utils/type.ts";
 import cptable from "codepage";
@@ -13,7 +13,7 @@ type ImportPropsType = {
   storage: StorageType;
 };
 
-export const Import = ({ storage }: ImportPropsType) => {
+const Import = ({ storage }: ImportPropsType) => {
   const [, setData] = useLocalStorage(storage, "");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -73,3 +73,5 @@ export const Import = ({ storage }: ImportPropsType) => {
     </form>
   );
 };
+
+export default memo(Import);

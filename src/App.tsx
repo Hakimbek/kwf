@@ -7,7 +7,7 @@ import useLocalStorage from "use-local-storage";
 import type {StorageType} from "./utils/type.ts";
 
 function App() {
-    const [, setStorageType] = useLocalStorage<StorageType>("storageType", "kwf");
+  const [, setStorageType] = useLocalStorage<StorageType>("storageType", "kwf");
   const [, setManager] = useLocalStorage("manager", "All");
 
   useEffect(() => {

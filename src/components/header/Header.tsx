@@ -1,4 +1,4 @@
-import { Import } from "../import/Import.tsx";
+import Import from "../import/Import.tsx";
 import { storage } from "../../utils/data.ts";
 import useLocalStorage from "use-local-storage";
 import type { StorageType } from "../../utils/type.ts";
