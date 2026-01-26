@@ -1,6 +1,6 @@
 export const storage = {
-  KWF: "kwf",
-  MP: "mp",
+  KWF: "KWF",
+  MP: "MP",
 } as const;
 
 export const kwfManagers = [

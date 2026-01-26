@@ -30,15 +30,8 @@ export const BarComponent = ({
 
           return <Cell key={`fact-${index}`} fill="var(--green)" />;
         })}
-      <LabelList
-        dataKey={dataKey}
-        position="right"
-      />
-      <LabelList
-        dataKey={dataKey}
-        position="left"
-        formatter={() => dataKey}
-      />
+      <LabelList dataKey={dataKey} position="right" />
+      <LabelList dataKey={dataKey} position="left" formatter={() => dataKey} />
     </Bar>
   );
 };

@@ -1,34 +1,28 @@
 import Import from "../import/Import.tsx";
 import { storage } from "../../utils/data.ts";
-import useLocalStorage from "use-local-storage";
-import type { StorageType } from "../../utils/type.ts";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Header.css";
 
 export const Header = () => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { KWF, MP } = storage;
-  const [storageType, setStorageType] = useLocalStorage<StorageType>("storageType", KWF);
-  const [, setManager] = useLocalStorage("manager", "All");
-
-  const handleClick = (storage: StorageType) => {
-    setStorageType(storage);
-    setManager("All");
-  }
 
   return (
     <header className="header">
       <nav className="nav">
         <div className="d-flex gap-2">
           <button
-            className={`nav-button ${storageType === KWF && "active-nav"}`}
-            onClick={() => handleClick(KWF)}
+            className={`nav-button ${pathname.includes(KWF) && "active-nav"}`}
+            onClick={() => navigate(`/${KWF}/All`)}
           >
-            {KWF.toUpperCase()}
+            {KWF}
           </button>
           <button
-            className={`nav-button ${storageType === MP && "active-nav"}`}
-            onClick={() => handleClick(MP)}
+            className={`nav-button ${pathname.includes(MP) && "active-nav"}`}
+            onClick={() => navigate(`/${MP}/All`)}
           >
-            {MP.toUpperCase()}
+            {MP}
           </button>
         </div>
         <div className="d-flex gap-2">

@@ -1,9 +1,11 @@
-import {BarChart, ResponsiveContainer, XAxis, YAxis} from "recharts";
+import { BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import { BarComponent } from "./BarComponent.tsx";
 import useLocalStorage from "use-local-storage";
 import { group } from "../../utils/group.tsx";
-import type { Filter, StorageType } from "../../utils/type.ts";
+import type { Filter } from "../../utils/type.ts";
 import { useMemo } from "react";
+import { useLocation } from "react-router-dom";
+import type { StorageType } from "../../utils/type.ts";
 import "./BarChart.css";
 
 export type BarChartPropsType = {
@@ -23,20 +25,24 @@ export const BarChartComponent = ({
   width,
   height,
 }: BarChartPropsType) => {
-  const [storage] = useLocalStorage<StorageType>("storageType", "kwf");
-  const [manager] = useLocalStorage("manager", "");
-  const [data] = useLocalStorage(storage, "");
+  const [data] = useLocalStorage<{ MP: []; KWF: [] }>("data", {
+    MP: [],
+    KWF: [],
+  });
+  const { pathname } = useLocation();
+  const [storageType, manager] = decodeURIComponent(pathname)
+    .split("/")
+    .filter(Boolean);
   const groupedData = useMemo(
     () =>
       group(
-        data ? JSON.parse(data) : [],
-        storage,
+        data[storageType as StorageType],
         type,
         productName,
         regionName,
         manager,
       ),
-    [data, manager, regionName, productName, type, storage],
+    [data, manager, regionName, productName, type, storageType],
   );
 
   return (

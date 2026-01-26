@@ -3,7 +3,6 @@ import type {
   GroupDataType,
   MPRowDataType,
   Filter,
-  StorageType,
 } from "./type.ts";
 
 const cache = new Map();
@@ -13,13 +12,12 @@ const isActiveFilter = (value?: string) =>
 
 export function group(
   data: KWFRowDataType[] | MPRowDataType[],
-  storageType: StorageType,
   type: Filter,
   product?: string,
   region?: string,
   manager?: string,
 ): GroupDataType[] {
-  const key = type + product + region + manager + storageType;
+  const key = type + product + region + manager;
 
   if (cache.has(key)) {
     return cache.get(key);

@@ -14,7 +14,7 @@ type ImportPropsType = {
 };
 
 const Import = ({ storage }: ImportPropsType) => {
-  const [, setData] = useLocalStorage(storage, "");
+  const [data, setData] = useLocalStorage("data", {});
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImport = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +49,7 @@ const Import = ({ storage }: ImportPropsType) => {
       });
 
       toast.success("Успешно");
-      setData(JSON.stringify(json));
+      setData({ ...data, [storage]: json });
       if (fileInputRef.current) fileInputRef.current.value = "";
     };
 
@@ -59,7 +59,7 @@ const Import = ({ storage }: ImportPropsType) => {
   return (
     <form>
       <input
-        id="excelFile"
+        id={storage}
         name="file"
         type="file"
         accept=".xls,.xlsx"
@@ -67,8 +67,8 @@ const Import = ({ storage }: ImportPropsType) => {
         onChange={handleImport}
         hidden
       />
-      <label htmlFor="excelFile" className="import-label">
-        Импорт {storage.toUpperCase()} (.xls)
+      <label htmlFor={storage} className="import-label">
+        Импорт {storage} (.xls)
       </label>
     </form>
   );
