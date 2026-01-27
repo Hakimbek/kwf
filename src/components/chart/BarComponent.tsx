@@ -21,7 +21,7 @@ export const BarComponent = ({
       <LabelList
         dataKey={dataKey}
         position="right"
-        fill="var(--blue)"
+        fill="var(--black)"
         letterSpacing={-1}
         fontSize={labelSize}
       />
@@ -29,7 +29,7 @@ export const BarComponent = ({
         dataKey={dataKey}
         position="left"
         formatter={() => dataKey}
-        fill="var(--blue)"
+        fill="var(--dark-gray)"
         letterSpacing={-1}
         fontSize={labelSize}
       />

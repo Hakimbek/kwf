@@ -9,15 +9,13 @@
   justify-content: center;
   gap: 20px;
   padding: 3px 20px;
-  border: 2px solid var(--blue);
+  border: 1px solid var(--dark-gray);
   border-radius: 30px;
-  color: var(--blue);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .filter-option:hover,
 .active-filter {
-  background: var(--blue);
-  color: var(--white);
+  background: var(--dark-gray);
   transition: all 0.5s ease-in-out;
 }
