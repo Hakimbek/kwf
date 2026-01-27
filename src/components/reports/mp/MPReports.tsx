@@ -1,315 +1,466 @@
 import { BarChartComponent } from "../../chart/BarChartComponent.tsx";
+import "../Reports.css";
 
-type ReportsPropsType = {
-  manager?: string;
-};
-
-export const MPReports = ({ manager = "All" }: ReportsPropsType) => {
+export const MPReports = () => {
   return (
-    <div className="report-wrapper">
-      <p className="vertical">{manager}</p>
-      <div className="d-flex flex-column gap-1">
-        <p className="vertical flex-fill">Sotuv</p>
-        <p className="vertical flex-fill">A K B</p>
+      <div className="reports-wrapper pb-5">
+        <div className="separator">Жами</div>
+        <div className="d-flex gap-4">
+          <BarChartComponent
+              type="Sum"
+              height={170}
+              title="Сотув"
+              titleSize={25}
+              labelSize={18}
+              x={380}
+              y={25}
+              top={20}
+              left={30}
+              right={50}
+          />
+          <BarChartComponent
+              type="AKB"
+              height={170}
+              title="АКБ"
+              titleSize={25}
+              labelSize={18}
+              x={380}
+              y={25}
+              top={20}
+              left={30}
+              right={50}
+          />
+        </div>
+        <div className="separator">Продукт</div>
+        <div className="d-flex gap-4">
+          <BarChartComponent
+              productName="Karton CelLayner"
+              type="Sum"
+              height={150}
+              title="CelLa"
+              labelSize={12}
+              x={190}
+              y={20}
+              top={25}
+              right={40}
+          />
+          <BarChartComponent
+              productName="Karton OqLayner"
+              type="Sum"
+              height={150}
+              title="OqLa"
+              labelSize={12}
+              x={190}
+              y={20}
+              top={25}
+              right={40}
+          />
+          <BarChartComponent
+              productName="Karton CelLayner"
+              type="AKB"
+              height={150}
+              title="CelLa"
+              labelSize={12}
+              x={180}
+              y={20}
+              top={25}
+              right={40}
+          />
+          <BarChartComponent
+              productName="Karton OqLayner"
+              type="AKB"
+              height={150}
+              title="OqLa"
+              labelSize={12}
+              x={190}
+              y={20}
+              top={25}
+              right={40}
+          />
+        </div>
+        <div className="d-flex gap-4">
+          <BarChartComponent
+              productName="Karton К0 120гр"
+              type="Sum"
+              height={150}
+              title="К0"
+              labelSize={12}
+              x={200}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              productName="Karton К1 120гр"
+              type="Sum"
+              height={150}
+              title="К1"
+              labelSize={12}
+              x={200}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              productName="Karton К0 120гр"
+              type="AKB"
+              height={150}
+              title="К0"
+              labelSize={12}
+              x={200}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              productName="Karton К1 120гр"
+              type="AKB"
+              height={150}
+              title="К1"
+              labelSize={12}
+              x={200}
+              y={20}
+              top={25}
+              right={30}
+          />
+        </div>
+        <div className="d-flex gap-4">
+          <BarChartComponent
+              productName="Karton B0"
+              type="Sum"
+              height={130}
+              title="B0"
+              titleSize={13}
+              labelSize={12}
+              x={130}
+              y={20}
+              top={25}
+              right={40}
+          />
+          <BarChartComponent
+              productName="Karton B2+ 100gr"
+              type="Sum"
+              height={130}
+              title="B2+ 100gr"
+              titleSize={13}
+              labelSize={12}
+              x={100}
+              y={20}
+              top={25}
+              right={40}
+          />
+          <BarChartComponent
+              productName="Karton B2+ 120gr"
+              type="Sum"
+              height={130}
+              title="B2+ 120gr"
+              titleSize={13}
+              labelSize={12}
+              x={100}
+              y={20}
+              top={25}
+              right={40}
+          />
+          <BarChartComponent
+              productName="Karton B0"
+              type="AKB"
+              height={130}
+              title="B0"
+              titleSize={13}
+              labelSize={12}
+              x={130}
+              y={20}
+              top={25}
+              right={40}
+          />
+          <BarChartComponent
+              productName="Karton B2+ 100gr"
+              type="AKB"
+              height={130}
+              title="B2+ 100gr"
+              titleSize={13}
+              labelSize={12}
+              x={100}
+              y={20}
+              top={25}
+              right={40}
+          />
+          <BarChartComponent
+              productName="Karton B2+ 120gr"
+              type="AKB"
+              height={130}
+              title="B2+ 120gr"
+              titleSize={13}
+              labelSize={12}
+              x={100}
+              y={20}
+              top={25}
+              right={40}
+          />
+        </div>
+        <div className="separator">Регион</div>
+        <div className="d-flex gap-4">
+          <BarChartComponent
+              regionName="Хоразм ва Коракалпогистон"
+              type="Sum"
+              height={150}
+              title="Хоразм ва ККП"
+              labelSize={12}
+              x={150}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Бухоро ва Навоий"
+              type="Sum"
+              height={150}
+              title="Бухоро ва Навоий"
+              labelSize={12}
+              x={130}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Хоразм ва Коракалпогистон"
+              type="AKB"
+              height={150}
+              title="Хоразм ва ККП"
+              labelSize={12}
+              x={140}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Бухоро ва Навоий"
+              type="AKB"
+              height={150}
+              title="Бухоро ва Навоий"
+              labelSize={12}
+              x={140}
+              y={20}
+              top={25}
+              right={30}
+          />
+        </div>
+        <div className="d-flex gap-4">
+          <BarChartComponent
+              regionName="Водий: (ФАН)"
+              type="Sum"
+              height={150}
+              title="Водий: (ФАН)"
+              labelSize={12}
+              x={80}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Сам, Джиз, Сирд"
+              type="Sum"
+              height={150}
+              title="Сам, Джиз, Сирд"
+              labelSize={12}
+              x={60}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Тошкент вилоят ва шахар"
+              type="Sum"
+              height={150}
+              title="Тошкент"
+              labelSize={12}
+              x={90}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Водий: (ФАН)"
+              type="AKB"
+              height={150}
+              title="Водий: (ФАН)"
+              labelSize={12}
+              x={80}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Сам, Джиз, Сирд"
+              type="AKB"
+              height={150}
+              title="Сам, Джиз, Сирд"
+              labelSize={12}
+              x={60}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Тошкент вилоят ва шахар"
+              type="AKB"
+              height={150}
+              title="Тошкент"
+              labelSize={12}
+              x={90}
+              y={20}
+              top={25}
+              right={30}
+          />
+        </div>
+        <div className="d-flex gap-4">
+          <BarChartComponent
+              regionName="Дилер: Union Paper"
+              type="Sum"
+              height={130}
+              title="Дилер: Union Paper"
+              titleSize={12}
+              labelSize={12}
+              x={25}
+              y={20}
+              top={25}
+              right={40}
+          />
+          <BarChartComponent
+              regionName="Кашкадарё ва Сурхондарё"
+              type="Sum"
+              height={130}
+              title="Каш. ва Сурх."
+              titleSize={12}
+              labelSize={12}
+              x={55}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Eksport (кушни)"
+              type="Sum"
+              height={130}
+              title="Экспорт (кушни)"
+              titleSize={12}
+              labelSize={12}
+              x={45}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Eksport (кушни эмас)"
+              type="Sum"
+              height={130}
+              title="Экспорт (кушни эмас)"
+              titleSize={12}
+              labelSize={12}
+              x={25}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Дилер: Union Paper"
+              type="AKB"
+              height={130}
+              title="Дилер: Union Paper"
+              titleSize={12}
+              labelSize={12}
+              x={25}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Кашкадарё ва Сурхондарё"
+              type="AKB"
+              height={130}
+              title="Каш. ва Сурх."
+              titleSize={12}
+              labelSize={12}
+              x={50}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Eksport (кушни)"
+              type="AKB"
+              height={130}
+              title="Экспорт (кушни)"
+              titleSize={12}
+              labelSize={12}
+              x={45}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Eksport (кушни эмас)"
+              type="AKB"
+              height={130}
+              title="Экспорт (кушни эмас)"
+              titleSize={12}
+              labelSize={12}
+              x={25}
+              y={20}
+              top={25}
+              right={30}
+          />
+        </div>
+        <div className="d-flex gap-4">
+          <BarChartComponent
+              regionName="Karton Works"
+              type="Sum"
+              height={130}
+              title="Karton Works"
+              titleSize={12}
+              labelSize={12}
+              x={160}
+              y={20}
+              top={25}
+              right={40}
+          />
+          <BarChartComponent
+              regionName="SnP"
+              type="Sum"
+              height={130}
+              title="SnP"
+              titleSize={12}
+              labelSize={12}
+              x={200}
+              y={20}
+              top={25}
+              right={30}
+          />
+          <BarChartComponent
+              regionName="Karton Works"
+              type="AKB"
+              height={130}
+              title="Karton Works"
+              titleSize={12}
+              labelSize={12}
+              x={160}
+              y={20}
+              top={25}
+              right={40}
+          />
+          <BarChartComponent
+              regionName="SnP"
+              type="AKB"
+              height={130}
+              title="SnP"
+              titleSize={12}
+              labelSize={12}
+              x={200}
+              y={20}
+              top={25}
+              right={30}
+          />
+        </div>
       </div>
-      <div className="report w-25">
-        <div className="flex-fill">
-          <BarChartComponent type="Sum" data="mpData" managerName={manager} />
-        </div>
-        <div className="flex-fill">
-          <BarChartComponent type="AKB" data="mpData" managerName={manager} />
-        </div>
-      </div>
-      <div className="d-flex flex-column gap-1">
-        <div className="d-flex flex-column gap-1">
-          <p className="vertical flex-fill ch-1">Product</p>
-          <p className="vertical flex-fill ch-2">Regions</p>
-        </div>
-        <div className="d-flex flex-column gap-1">
-          <p className="vertical flex-fill ch-1">Product</p>
-          <p className="vertical flex-fill ch-2">Regions</p>
-        </div>
-      </div>
-      <div className="report">
-        <div className="d-flex flex-fill gap-1">
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            productName="Karton B0"
-            title="B0"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            productName="Karton B2+ 100gr"
-            title="B2 100"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            productName="Karton B2+ 120gr"
-            title="B2 120"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            productName="Karton CelLayner"
-            title="CelLa"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            productName="Karton OqLayner"
-            title="OqLa"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            productName="Karton К0 120гр"
-            title="K0"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            productName="Karton К1 120гр"
-            title="K1"
-          />
-        </div>
-        <div className="d-flex flex-fill gap-1">
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            regionName="Бухоро ва Навоий"
-            title="Buxoro va Navoiy"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            regionName="Водий: (ФАН)"
-            title="Vodiy: FAN"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            regionName="Дилер: Union Paper"
-            title="Kash va Surx"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            regionName="Кашкадарё ва Сурхондарё"
-            title="Sam, Jizz, Sir"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            regionName="Сам, Джиз, Сирд"
-            title="Toshkent"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            regionName="Тошкент вилоят ва шахар"
-            title="Xorazm va QQP"
-          />
-        </div>
-        <div className="d-flex flex-fill gap-1">
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            regionName="Тошкент вилоят ва шахар"
-            title="Xorazm va QQP"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            regionName="Хоразм ва Коракалпогистон"
-            title="Xorazm va QQP"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            regionName="SnP"
-            title="Eksport (kushni)"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            regionName="Karton Works"
-            title="Eksport (kushni)"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            regionName="Eksport (кушни)"
-            title="Eksport (kushni)"
-          />
-          <BarChartComponent
-            type="Sum"
-            data="mpData"
-            managerName={manager}
-            regionName="Eksport (кушни эмас)"
-            title="Eksport (kushni emas)"
-          />
-        </div>
-        <div className="d-flex flex-fill gap-1">
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            productName="Karton B0"
-            title="B0"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            productName="Karton B2+ 100gr"
-            title="B2 100"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            productName="Karton B2+ 120gr"
-            title="B2 120"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            productName="Karton CelLayner"
-            title="CelLa"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            productName="Karton OqLayner"
-            title="OqLa"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            productName="Karton К0 120гр"
-            title="K0"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            productName="Karton К1 120гр"
-            title="K1"
-          />
-        </div>
-        <div className="d-flex flex-fill gap-1">
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            regionName="Бухоро ва Навоий"
-            title="Buxoro va Navoiy"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            regionName="Водий: (ФАН)"
-            title="Vodiy: FAN"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            regionName="Дилер: Union Paper"
-            title="Kash va Surx"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            regionName="Кашкадарё ва Сурхондарё"
-            title="Sam, Jizz, Sir"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            regionName="Сам, Джиз, Сирд"
-            title="Toshkent"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            regionName="Тошкент вилоят ва шахар"
-            title="Xorazm va QQP"
-          />
-        </div>
-        <div className="d-flex flex-fill gap-1">
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            regionName="Тошкент вилоят ва шахар"
-            title="Xorazm va QQP"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            regionName="Хоразм ва Коракалпогистон"
-            title="Xorazm va QQP"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            regionName="SnP"
-            title="Eksport (kushni)"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            regionName="Karton Works"
-            title="Eksport (kushni)"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            regionName="Eksport (кушни)"
-            title="Eksport (kushni)"
-          />
-          <BarChartComponent
-            type="AKB"
-            data="mpData"
-            managerName={manager}
-            regionName="Eksport (кушни эмас)"
-            title="Eksport (kushni emas)"
-          />
-        </div>
-      </div>
-    </div>
   );
 };

@@ -1,30 +1,35 @@
 import { mpManagers, kwfManagers } from "../../utils/data.ts";
 import { storage } from "../../utils/data.ts";
-import { useLocation, useNavigate } from "react-router-dom";
+import useLocalStorage from "use-local-storage";
+import type { StorageType } from "../../utils/type.ts";
 import "./Filter.css";
 
 export const Filter = () => {
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
   const { KWF, MP } = storage;
+  const [manager, setManager] = useLocalStorage("manager", "All");
+  const [key] = useLocalStorage<StorageType>("key", KWF);
+
+  const handleClick = (manager: string) => {
+    setManager(manager);
+  };
 
   return (
     <div className="filter-container">
-      {pathname.includes(KWF) &&
+      {key === KWF &&
         kwfManagers.map((item) => (
           <button
-            className={`filter-option ${decodeURIComponent(pathname).includes(item) && "active-filter"}`}
-            onClick={() => navigate(`/${KWF}/${item}`)}
+            className={`filter-option ${manager === item && "active-filter"}`}
+            onClick={() => handleClick(item)}
             key={item}
           >
             {item}
           </button>
         ))}
-      {pathname.includes(MP) &&
+      {key === MP &&
         mpManagers.map((item) => (
           <button
-            className={`filter-option ${decodeURIComponent(pathname).includes(item) && "active-filter"}`}
-            onClick={() => navigate(`/${MP}/${item}`)}
+            className={`filter-option ${manager === item && "active-filter"}`}
+            onClick={() => handleClick(item)}
             key={item}
           >
             {item}

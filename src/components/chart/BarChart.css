@@ -3,3 +3,19 @@
   border-radius: 30px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
+
+.bar-title {
+  font-weight: bold;
+}
+
+.bar-title.red {
+  fill: var(--red);
+}
+
+.bar-title.blue {
+  fill: var(--blue);
+}
+
+.bar-title.green {
+  fill: var(--green);
+}

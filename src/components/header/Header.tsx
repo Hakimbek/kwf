@@ -1,26 +1,32 @@
 import Import from "../import/Import.tsx";
 import { storage } from "../../utils/data.ts";
-import { useLocation, useNavigate } from "react-router-dom";
+import useLocalStorage from "use-local-storage";
+import type { StorageType } from "../../utils/type.ts";
 import "./Header.css";
 
 export const Header = () => {
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
   const { KWF, MP } = storage;
+  const [key, setKey] = useLocalStorage<StorageType>("key", KWF);
+  const [, setManager] = useLocalStorage("manager", "All");
+
+  const handleClick = (key: StorageType) => {
+    setKey(key);
+    setManager("All");
+  };
 
   return (
     <header className="header">
       <nav className="nav">
         <div className="d-flex gap-2">
           <button
-            className={`nav-button ${pathname.includes(KWF) && "active-nav"}`}
-            onClick={() => navigate(`/${KWF}/All`)}
+            className={`nav-button ${key === KWF && "active-nav"}`}
+            onClick={() => handleClick(KWF)}
           >
             {KWF}
           </button>
           <button
-            className={`nav-button ${pathname.includes(MP) && "active-nav"}`}
-            onClick={() => navigate(`/${MP}/All`)}
+            className={`nav-button ${key === MP && "active-nav"}`}
+            onClick={() => handleClick(MP)}
           >
             {MP}
           </button>
