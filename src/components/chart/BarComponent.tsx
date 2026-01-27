@@ -1,4 +1,4 @@
-import { Bar, Cell, LabelList } from "recharts";
+import { Bar, Cell, LabelList, type RenderableText } from "recharts";
 
 type BarComponentType = {
   dataKey: string;
@@ -7,6 +7,9 @@ type BarComponentType = {
   fill?: string;
   labelSize?: number;
 };
+
+const formatWithUnderscore = (value: RenderableText) =>
+    value?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 export const BarComponent = ({
   dataKey,
@@ -24,6 +27,7 @@ export const BarComponent = ({
         fill="var(--black)"
         letterSpacing={-1}
         fontSize={labelSize}
+        formatter={formatWithUnderscore}
       />
       <LabelList
         dataKey={dataKey}
