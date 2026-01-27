@@ -66,7 +66,7 @@ export const BarChartComponent = ({
   }
 
   if (percent > 120) {
-    color = "blue";
+    color = "orange";
   }
 
   return (
@@ -80,23 +80,24 @@ export const BarChartComponent = ({
           x={x}
           y={y}
           textAnchor="start"
-          className={`bar-title ${color}`}
+          className="bar-title"
           fontSize={titleSize}
         >
-          {title} {percent}%
+          <tspan fill="var(--blue)">{title}</tspan>
+          <tspan dx={20} className={color}>{percent}%</tspan>
         </text>
         <XAxis type="number" axisLine={false} tick={false} />
         <YAxis type="category" axisLine={false} tick={false} />
         <BarComponent
           dataKey="Plan_Oy"
           isFact={false}
-          fill="var(--orange)"
+          fill="var(--dark-gray)"
           labelSize={labelSize}
         />
         <BarComponent
           dataKey="Plan_Kun"
           isFact={false}
-          fill="var(--orange)"
+          fill="var(--dark-gray)"
           labelSize={labelSize}
         />
         <BarComponent

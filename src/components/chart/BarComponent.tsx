@@ -21,19 +21,17 @@ export const BarComponent = ({
       <LabelList
         dataKey={dataKey}
         position="right"
-        fill={fill}
+        fill="var(--blue)"
         letterSpacing={-1}
         fontSize={labelSize}
-        fontWeight="bold"
       />
       <LabelList
         dataKey={dataKey}
         position="left"
         formatter={() => dataKey}
-        fill={fill}
+        fill="var(--blue)"
         letterSpacing={-1}
         fontSize={labelSize}
-        fontWeight="bold"
       />
     </Bar>
   );

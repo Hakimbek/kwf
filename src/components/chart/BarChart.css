@@ -1,21 +1,24 @@
 .bar-wrapper {
-  border: 2px solid var(--blue);
   border-radius: 30px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .bar-title {
-  font-weight: bold;
+  display: flex;
 }
 
-.bar-title.red {
+.bar-title .red {
   fill: var(--red);
 }
 
-.bar-title.blue {
+.bar-title .blue {
   fill: var(--blue);
 }
 
-.bar-title.green {
+.bar-title .orange {
+  fill: var(--orange);
+}
+
+.bar-title .green {
   fill: var(--green);
 }
