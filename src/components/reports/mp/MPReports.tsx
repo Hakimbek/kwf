@@ -137,7 +137,7 @@ export const MPReports = () => {
                   <div className="d-flex gap-4">
                       <BarChartComponent
                           regionName="Водий: (ФАН)"
-                          type="AKB"
+                          type="Sum"
                           height={150}
                           title="Водий: (ФАН)"
                           labelSize={12}
@@ -148,7 +148,7 @@ export const MPReports = () => {
                       />
                       <BarChartComponent
                           regionName="Сам, Джиз, Сирд"
-                          type="AKB"
+                          type="Sum"
                           height={150}
                           title="Сам, Джиз, Сирд"
                           labelSize={12}
@@ -159,7 +159,7 @@ export const MPReports = () => {
                       />
                       <BarChartComponent
                           regionName="Тошкент вилоят ва шахар"
-                          type="AKB"
+                          type="Sum"
                           height={150}
                           title="Тошкент"
                           labelSize={12}
@@ -311,7 +311,7 @@ export const MPReports = () => {
                   <div className="d-flex gap-4">
                       <BarChartComponent
                           productName="Karton B0"
-                          type="Sum"
+                          type="AKB"
                           height={130}
                           title="B0"
                           titleSize={15}
@@ -323,7 +323,7 @@ export const MPReports = () => {
                       />
                       <BarChartComponent
                           productName="Karton B2+ 100gr"
-                          type="Sum"
+                          type="AKB"
                           height={130}
                           title="B2+ 100gr"
                           titleSize={15}
@@ -335,7 +335,7 @@ export const MPReports = () => {
                       />
                       <BarChartComponent
                           productName="Karton B2+ 120gr"
-                          type="Sum"
+                          type="AKB"
                           height={130}
                           title="B2+ 120gr"
                           titleSize={15}
@@ -407,18 +407,18 @@ export const MPReports = () => {
                     />
                   </div>
                   <div className="d-flex gap-4">
-                    <BarChartComponent
-                        regionName="Дилер: Union Paper"
-                        type="AKB"
-                        height={130}
-                        title="Дилер"
-                        titleSize={14}
-                        labelSize={12}
-                        x={50}
-                        y={20}
-                        top={25}
-                        right={30}
-                    />
+                    {/*<BarChartComponent*/}
+                    {/*    regionName="Дилер: Union Paper"*/}
+                    {/*    type="AKB"*/}
+                    {/*    height={130}*/}
+                    {/*    title="Дилер"*/}
+                    {/*    titleSize={14}*/}
+                    {/*    labelSize={12}*/}
+                    {/*    x={50}*/}
+                    {/*    y={20}*/}
+                    {/*    top={25}*/}
+                    {/*    right={30}*/}
+                    {/*/>*/}
                     <BarChartComponent
                         regionName="Кашкадарё ва Сурхондарё"
                         type="AKB"
@@ -457,18 +457,18 @@ export const MPReports = () => {
                     />
                   </div>
                   <div className="d-flex gap-4">
-                      <BarChartComponent
-                          regionName="Karton Works"
-                          type="AKB"
-                          height={130}
-                          title="Karton Works"
-                          titleSize={14}
-                          labelSize={12}
-                          x={145}
-                          y={20}
-                          top={25}
-                          right={40}
-                      />
+                      {/*<BarChartComponent*/}
+                      {/*    regionName="Karton Works"*/}
+                      {/*    type="AKB"*/}
+                      {/*    height={130}*/}
+                      {/*    title="Karton Works"*/}
+                      {/*    titleSize={14}*/}
+                      {/*    labelSize={12}*/}
+                      {/*    x={145}*/}
+                      {/*    y={20}*/}
+                      {/*    top={25}*/}
+                      {/*    right={40}*/}
+                      {/*/>*/}
                       <BarChartComponent
                           regionName="SnP"
                           type="AKB"
