@@ -59,6 +59,10 @@ export const BarChartComponent = ({
     percent = 0;
   }
 
+  if (!Number.isFinite(percent)) {
+    percent = groupedData[0]?.Fact_Kun + 100;
+  }
+
   let color = "green";
 
   if (percent < 80) {
