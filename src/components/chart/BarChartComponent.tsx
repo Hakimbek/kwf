@@ -70,7 +70,7 @@ export const BarChartComponent = ({
   }
 
   return (
-    <ResponsiveContainer className="bar-wrapper" width={width} height={height}>
+    <ResponsiveContainer className={`bar-wrapper ${color === 'red' && groupedData[0]?.Plan_Kun !== 0 ? "blinking" : ""}`} width={width} height={height}>
       <BarChart
         data={groupedData}
         margin={{ right, left, top, bottom }}
