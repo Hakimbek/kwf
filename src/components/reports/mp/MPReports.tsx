@@ -79,11 +79,23 @@ export const MPReports = () => {
                         title="B0"
                         titleSize={15}
                         labelSize={12}
-                        x={110}
+                        x={70}
                         y={20}
                         top={25}
                         right={40}
                     />
+                      <BarChartComponent
+                          productName="Karton B1"
+                          type="Sum"
+                          height={130}
+                          title="B1"
+                          titleSize={15}
+                          labelSize={12}
+                          x={70}
+                          y={20}
+                          top={25}
+                          right={40}
+                      />
                     <BarChartComponent
                         productName="Karton B2+ 100gr"
                         type="Sum"
@@ -91,7 +103,7 @@ export const MPReports = () => {
                         title="B2+ 100gr"
                         titleSize={15}
                         labelSize={12}
-                        x={80}
+                        x={40}
                         y={20}
                         top={25}
                         right={40}
@@ -103,7 +115,7 @@ export const MPReports = () => {
                         title="B2+ 120gr"
                         titleSize={15}
                         labelSize={12}
-                        x={80}
+                        x={40}
                         y={20}
                         top={25}
                         right={40}
@@ -316,7 +328,19 @@ export const MPReports = () => {
                           title="B0"
                           titleSize={15}
                           labelSize={12}
-                          x={110}
+                          x={70}
+                          y={20}
+                          top={25}
+                          right={40}
+                      />
+                      <BarChartComponent
+                          productName="Karton B1"
+                          type="AKB"
+                          height={130}
+                          title="B1"
+                          titleSize={15}
+                          labelSize={12}
+                          x={70}
                           y={20}
                           top={25}
                           right={40}
@@ -328,7 +352,7 @@ export const MPReports = () => {
                           title="B2+ 100gr"
                           titleSize={15}
                           labelSize={12}
-                          x={80}
+                          x={40}
                           y={20}
                           top={25}
                           right={40}
@@ -340,7 +364,7 @@ export const MPReports = () => {
                           title="B2+ 120gr"
                           titleSize={15}
                           labelSize={12}
-                          x={80}
+                          x={40}
                           y={20}
                           top={25}
                           right={40}
@@ -455,20 +479,6 @@ export const MPReports = () => {
                         top={25}
                         right={30}
                     />
-                  </div>
-                  <div className="d-flex gap-4">
-                      {/*<BarChartComponent*/}
-                      {/*    regionName="Karton Works"*/}
-                      {/*    type="AKB"*/}
-                      {/*    height={130}*/}
-                      {/*    title="Karton Works"*/}
-                      {/*    titleSize={14}*/}
-                      {/*    labelSize={12}*/}
-                      {/*    x={145}*/}
-                      {/*    y={20}*/}
-                      {/*    top={25}*/}
-                      {/*    right={40}*/}
-                      {/*/>*/}
                       <BarChartComponent
                           regionName="SnP"
                           type="AKB"
@@ -476,7 +486,7 @@ export const MPReports = () => {
                           title="SnP"
                           titleSize={14}
                           labelSize={12}
-                          x={180}
+                          x={60}
                           y={20}
                           top={25}
                           right={30}

@@ -24,6 +24,7 @@ export const kwfProducts = [
 
 export const mpProducts = [
   "Karton B0",
+  "Karton B1",
   "Karton B2+ 100gr",
   "Karton B2+ 120gr",
   "Karton CelLayner",
