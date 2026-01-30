@@ -11,25 +11,10 @@
   color: var(--blue);
 }
 
-.orange {
-  color: var(--orange);
-}
-
 .green {
   color: var(--green);
 }
 
 .blinking {
   border: 1px solid var(--red);
-  animation: blinker 2s ease-in-out infinite;
-}
-
-@keyframes blinker {
-  0%,
-  100% {
-    border-color: var(--dark-gray);
-  }
-  50% {
-    border-color: var(--red);
-  }
 }
