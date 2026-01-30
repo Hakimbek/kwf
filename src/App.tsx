@@ -7,13 +7,13 @@ import { KWFReports } from "./components/reports/kwf/KWFReports.tsx";
 import { MPReports } from "./components/reports/mp/MPReports.tsx";
 
 function App() {
-  const [key] = useLocalStorage("key", storage.KWF)
+  const [key] = useLocalStorage("key", storage.KWF);
 
   return (
     <div>
       <Header />
       <Filter />
-      { key === storage.KWF ? <KWFReports /> : <MPReports /> }
+      {key === storage.KWF ? <KWFReports /> : <MPReports />}
       <ToastContainer />
     </div>
   );

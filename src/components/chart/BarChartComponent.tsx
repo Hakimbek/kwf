@@ -13,10 +13,8 @@ export type BarChartPropsType = {
   regionName?: string;
   type: Filter;
   title?: string;
-  titleSize?: number;
   labelSize?: number;
   width?: number;
-  height?: number;
   right?: number;
   left?: number;
   top?: number;
@@ -28,10 +26,8 @@ export const BarChartComponent = ({
   regionName = "All",
   type,
   title,
-  titleSize,
   labelSize,
   width,
-  height,
   right,
   left,
   top,
@@ -70,44 +66,44 @@ export const BarChartComponent = ({
   }
 
   return (
-    <ResponsiveContainer className={`bar-wrapper ${color === 'red' && groupedData[0]?.Plan_Kun !== 0 ? "blinking" : ""}`} width={width} height={height}>
-      <BarChart
-        data={groupedData}
-        margin={{ right, left, top, bottom }}
-        layout="vertical"
+    <div className="w-100">
+      <p className="bar-title">
+        <span>{title}</span>
+        <span>-</span>
+        <span className={color}>{percent}%</span>
+      </p>
+      <ResponsiveContainer
+        className={`bar-wrapper ${color === "red" && groupedData[0]?.Plan_Kun !== 0 ? "blinking" : ""}`}
+        width={width}
+        height={150}
       >
-        <text
-          x="50%"
-          y="12%"
-          textAnchor="middle"
-          className="bar-title"
-          fontSize={titleSize}
+        <BarChart
+          data={groupedData}
+          margin={{ right, left, top, bottom }}
+          layout="vertical"
         >
-          <tspan fontWeight="bold">{title}</tspan>
-          <tspan fontWeight="bold" dx={5}>-</tspan>
-          <tspan fontWeight="bold" dx={5} className={color}>{percent}%</tspan>
-        </text>
-        <XAxis type="number" axisLine={false} tick={false} />
-        <YAxis type="category" axisLine={false} tick={false} />
-        <BarComponent
-          dataKey="Plan_Oy"
-          isFact={false}
-          fill="var(--dark-gray)"
-          labelSize={labelSize}
-        />
-        <BarComponent
-          dataKey="Plan_Kun"
-          isFact={false}
-          fill="var(--dark-gray)"
-          labelSize={labelSize}
-        />
-        <BarComponent
-          dataKey="Fact_Kun"
-          isFact={true}
-          color={color}
-          labelSize={labelSize}
-        />
-      </BarChart>
-    </ResponsiveContainer>
+          <XAxis type="number" axisLine={false} tick={false} />
+          <YAxis type="category" axisLine={false} tick={false} />
+          <BarComponent
+            dataKey="Plan_Oy"
+            isFact={false}
+            fill="var(--dark-gray)"
+            labelSize={labelSize}
+          />
+          <BarComponent
+            dataKey="Plan_Kun"
+            isFact={false}
+            fill="var(--dark-gray)"
+            labelSize={labelSize}
+          />
+          <BarComponent
+            dataKey="Fact_Kun"
+            isFact={true}
+            color={color}
+            labelSize={labelSize}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };

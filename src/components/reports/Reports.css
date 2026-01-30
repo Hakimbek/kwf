@@ -13,9 +13,21 @@
   flex-direction: column;
   gap: 25px;
   padding: 20px;
-  border: 1px solid var(--dark-gray);
-  border-radius: 30px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  border-top: 1px solid var(--dark-gray);
+  border-bottom: 1px solid var(--dark-gray);
+}
+
+.sales {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-left: 1px solid var(--dark-gray);
+  border-right: 1px solid var(--dark-gray);
+}
+
+.akb {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-right: 1px solid var(--dark-gray);
 }
 
 .separator {

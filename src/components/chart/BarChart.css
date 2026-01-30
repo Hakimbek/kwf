@@ -1,41 +1,41 @@
 .bar-wrapper {
-  border-radius: 30px;
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
   border: 1px solid var(--dark-gray);
 }
 
 .bar-title {
   display: flex;
+  justify-content: center;
+  font-weight: bold;
 }
 
 .bar-title .red {
-  fill: var(--red);
+  color: var(--red);
 }
 
 .bar-title .blue {
-  fill: var(--blue);
+  color: var(--blue);
 }
 
 .bar-title .orange {
-  fill: var(--orange);
+  color: var(--orange);
 }
 
 .bar-title .green {
-  fill: var(--green);
+  color: var(--green);
 }
 
 .blinking {
-  border: 2px solid var(--red);
+  border: 1px solid var(--red);
   animation: blinker 2s ease-in-out infinite;
 }
 
 @keyframes blinker {
-  0%, 100% {
+  0%,
+  100% {
     border-color: var(--dark-gray);
-    /*background-color: white;*/
   }
   50% {
-    /*background-color: #ffe5e5;*/
     border-color: var(--red);
   }
 }

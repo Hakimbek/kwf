@@ -8,191 +8,163 @@ export const KWFReports = () => {
         <div className="separator">Сотув</div>
         <div className="separator">АКБ</div>
       </div>
-      <div className="d-flex gap-3">
+      <div className="d-flex">
         <div className="sales">
           <BarChartComponent
-              type="Sum"
-              height={170}
-              title="Жами"
-              titleSize={20}
-              labelSize={18}
-              top={30}
-              left={30}
-              right={50}
+            type="Sum"
+            title="ЖАМИ"
+            labelSize={18}
+            top={30}
+            left={30}
+            right={50}
           />
           <div className="separator top-border">Продукт</div>
           <div className="d-flex gap-4">
             <BarChartComponent
-                productName="non-RSC"
-                type="Sum"
-                height={150}
-                title="non-RSC"
-                labelSize={12}
-                top={25}
-                right={30}
+              productName="non-RSC"
+              type="Sum"
+              title="non-RSC"
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                productName="wRSC"
-                type="Sum"
-                height={150}
-                title="wRSC"
-                labelSize={12}
-                top={25}
-                right={30}
+              productName="wRSC"
+              type="Sum"
+              title="wRSC"
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                productName="RSC"
-                type="Sum"
-                height={150}
-                title="RSC"
-                labelSize={12}
-                top={25}
-                right={30}
+              productName="RSC"
+              type="Sum"
+              title="RSC"
+              labelSize={12}
+              top={25}
+              right={30}
             />
           </div>
           <div className="d-flex gap-4">
             <BarChartComponent
-                productName="SnP"
-                type="Sum"
-                height={130}
-                title="SnP"
-                titleSize={14}
-                labelSize={12}
-                top={25}
-                right={30}
+              productName="SnP"
+              type="Sum"
+              title="SnP"
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                productName="SnP Lam"
-                type="Sum"
-                height={130}
-                title="SnP Lam"
-                titleSize={14}
-                labelSize={12}
-                top={25}
-                right={30}
+              productName="SnP Lam"
+              type="Sum"
+              title="SnP Lam"
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                productName="Гофролист"
-                type="Sum"
-                height={130}
-                title="Гофролист"
-                titleSize={14}
-                labelSize={12}
-                top={25}
-                right={30}
+              productName="Гофролист"
+              type="Sum"
+              title="Гофролист"
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                productName="Монокартон"
-                type="Sum"
-                height={130}
-                title="Монокартон"
-                titleSize={13}
-                labelSize={12}
-                top={25}
-                right={30}
+              productName="Монокартон"
+              type="Sum"
+              title="Монокартон"
+              labelSize={12}
+              top={25}
+              right={30}
             />
           </div>
           <div className="separator top-border">Регион</div>
           <div className="d-flex gap-4">
             <BarChartComponent
-                regionName="Хоразм вилояти ва Коракалпогистон"
-                type="Sum"
-                height={150}
-                title="Хоразм ва ККП"
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Хоразм вилояти ва Коракалпогистон"
+              type="Sum"
+              title="Хоразм ва ККП"
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                regionName="Бухоро ва Навоий вилояти"
-                type="Sum"
-                height={150}
-                title="Бухоро ва Навоий"
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Бухоро ва Навоий вилояти"
+              type="Sum"
+              title="Бухоро ва Навоий"
+              labelSize={12}
+              top={25}
+              right={30}
             />
           </div>
           <div className="d-flex gap-4">
             <BarChartComponent
-                regionName="Самарканд, Жиззах ва Сирдайрё вилояти"
-                type="Sum"
-                height={150}
-                title="Сам. Жиз. Сир."
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Самарканд, Жиззах ва Сирдайрё вилояти"
+              type="Sum"
+              title="Сам. Жиз. Сир."
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                regionName="Тошкент вилояти ва шахри"
-                type="Sum"
-                height={150}
-                title="Тошкент"
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Тошкент вилояти ва шахри"
+              type="Sum"
+              title="Тошкент"
+              labelSize={12}
+              top={25}
+              right={30}
             />
           </div>
           <div className="d-flex gap-4">
             <BarChartComponent
-                regionName="Водий: ФАН"
-                type="Sum"
-                height={130}
-                title="Водий: ФАН"
-                titleSize={14}
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Водий: ФАН"
+              type="Sum"
+              title="Водий: ФАН"
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                regionName="Кашкадарё ва Сурхондарё вилояти"
-                type="Sum"
-                height={130}
-                title="Каш. ва Сурх."
-                titleSize={14}
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Кашкадарё ва Сурхондарё вилояти"
+              type="Sum"
+              title="Каш. ва Сурх."
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                regionName="Экспорт (кушни)"
-                type="Sum"
-                height={130}
-                title="Экспорт к."
-                titleSize={14}
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Экспорт (кушни)"
+              type="Sum"
+              title="Экспорт к."
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                regionName="Экспорт (кушни эмас)"
-                type="Sum"
-                height={130}
-                title="Экспорт к. э."
-                titleSize={14}
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Экспорт (кушни эмас)"
+              type="Sum"
+              title="Экспорт к. э."
+              labelSize={12}
+              top={25}
+              right={30}
             />
           </div>
         </div>
         <div className="akb">
           <BarChartComponent
-              type="AKB"
-              height={170}
-              title="Жами"
-              titleSize={20}
-              labelSize={18}
-              top={30}
-              left={30}
-              right={50}
+            type="AKB"
+            title="ЖАМИ"
+            labelSize={18}
+            top={30}
+            left={30}
+            right={50}
           />
           <div className="separator top-border">Продукт</div>
           <div className="d-flex gap-4">
             <BarChartComponent
               productName="wRSC"
               type="AKB"
-              height={150}
               title="wRSC"
               labelSize={12}
               top={25}
@@ -201,7 +173,6 @@ export const KWFReports = () => {
             <BarChartComponent
               productName="non-RSC"
               type="AKB"
-              height={150}
               title="non-RSC"
               labelSize={12}
               top={25}
@@ -210,7 +181,6 @@ export const KWFReports = () => {
             <BarChartComponent
               productName="RSC"
               type="AKB"
-              height={150}
               title="RSC"
               labelSize={12}
               top={25}
@@ -221,9 +191,7 @@ export const KWFReports = () => {
             <BarChartComponent
               productName="SnP"
               type="AKB"
-              height={130}
               title="SnP"
-              titleSize={13}
               labelSize={12}
               top={25}
               right={30}
@@ -231,9 +199,7 @@ export const KWFReports = () => {
             <BarChartComponent
               productName="SnP Lam"
               type="AKB"
-              height={130}
               title="SnP Lam"
-              titleSize={13}
               labelSize={12}
               top={25}
               right={30}
@@ -241,9 +207,7 @@ export const KWFReports = () => {
             <BarChartComponent
               productName="Гофролист"
               type="AKB"
-              height={130}
               title="Гофролист"
-              titleSize={13}
               labelSize={12}
               top={25}
               right={30}
@@ -251,9 +215,7 @@ export const KWFReports = () => {
             <BarChartComponent
               productName="Монокартон"
               type="AKB"
-              height={130}
               title="Монокартон"
-              titleSize={13}
               labelSize={12}
               top={25}
               right={30}
@@ -264,7 +226,6 @@ export const KWFReports = () => {
             <BarChartComponent
               regionName="Хоразм вилояти ва Коракалпогистон"
               type="AKB"
-              height={150}
               title="Хоразм ва ККП"
               labelSize={12}
               top={25}
@@ -273,7 +234,6 @@ export const KWFReports = () => {
             <BarChartComponent
               regionName="Бухоро ва Навоий вилояти"
               type="AKB"
-              height={150}
               title="Бухоро ва Навоий"
               labelSize={12}
               top={25}
@@ -282,64 +242,54 @@ export const KWFReports = () => {
           </div>
           <div className="d-flex gap-4">
             <BarChartComponent
-                regionName="Самарканд, Жиззах ва Сирдайрё вилояти"
-                type="AKB"
-                height={150}
-                title="Сам. Жиз. Сир."
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Самарканд, Жиззах ва Сирдайрё вилояти"
+              type="AKB"
+              title="Сам. Жиз. Сир."
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                regionName="Тошкент вилояти ва шахри"
-                type="AKB"
-                height={150}
-                title="Тошкент"
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Тошкент вилояти ва шахри"
+              type="AKB"
+              title="Тошкент"
+              labelSize={12}
+              top={25}
+              right={30}
             />
           </div>
           <div className="d-flex gap-4">
             <BarChartComponent
-                regionName="Водий: ФАН"
-                type="AKB"
-                height={130}
-                title="Водий: ФАН"
-                titleSize={14}
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Водий: ФАН"
+              type="AKB"
+              title="Водий: ФАН"
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                regionName="Кашкадарё ва Сурхондарё вилояти"
-                type="AKB"
-                height={130}
-                title="Каш. ва Сурх."
-                titleSize={14}
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Кашкадарё ва Сурхондарё вилояти"
+              type="AKB"
+              title="Каш. ва Сурх."
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                regionName="Экспорт (кушни)"
-                type="AKB"
-                height={130}
-                title="Экспорт к."
-                titleSize={14}
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Экспорт (кушни)"
+              type="AKB"
+              title="Экспорт к."
+              labelSize={12}
+              top={25}
+              right={30}
             />
             <BarChartComponent
-                regionName="Экспорт (кушни эмас)"
-                type="AKB"
-                height={130}
-                title="Экспорт к. э."
-                titleSize={14}
-                labelSize={12}
-                top={25}
-                right={30}
+              regionName="Экспорт (кушни эмас)"
+              type="AKB"
+              title="Экспорт к. э."
+              labelSize={12}
+              top={25}
+              right={30}
             />
           </div>
         </div>
