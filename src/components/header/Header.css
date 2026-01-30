@@ -33,7 +33,3 @@
   background-color: var(--dark-gray);
   color: var(--black);
 }
-
-.nav-button:hover {
-  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
-}
