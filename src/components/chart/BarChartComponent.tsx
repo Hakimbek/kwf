@@ -57,7 +57,7 @@ export const BarChartComponent = ({
 
   return (
     <div className="w-100">
-      <p className="bar-title">
+      <p className="d-flex justify-content-center m-0 fw-medium">
         <span>{title}</span>
         <span>-</span>
         <span className={color}>{percent}%</span>
@@ -67,7 +67,7 @@ export const BarChartComponent = ({
         width={width}
         height={150}
       >
-        <BarChart data={groupedData} margin={{ right: 40 }} layout="vertical">
+        <BarChart data={groupedData} margin={{ left: -30, right: 40 }} layout="vertical">
           <XAxis type="number" axisLine={false} tick={false} />
           <YAxis type="category" axisLine={false} tick={false} />
           <BarComponent

@@ -16,6 +16,8 @@ export const BarComponent = ({
   color,
   fill,
 }: BarComponentType) => {
+  const [a, b] = dataKey.split("_");
+
   return (
     <Bar dataKey={dataKey} fill={fill} radius={[10, 10, 10, 10]}>
       {isFact && <Cell fill={`var(--${color})`} />}
@@ -29,9 +31,8 @@ export const BarComponent = ({
       <LabelList
         dataKey={dataKey}
         position="left"
-        formatter={() => dataKey}
-        fill="var(--dark-gray)"
-        letterSpacing={-1}
+        formatter={() => a.slice(0, 1) + "/" + b.slice(0, 1)}
+        fill="var(--dark)"
         fontSize={12}
       />
     </Bar>

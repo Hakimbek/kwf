@@ -3,26 +3,19 @@
   border: 1px solid var(--dark-gray);
 }
 
-.bar-title {
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
-  margin: 0;
-}
-
-.bar-title .red {
+.red {
   color: var(--red);
 }
 
-.bar-title .blue {
+.blue {
   color: var(--blue);
 }
 
-.bar-title .orange {
+.orange {
   color: var(--orange);
 }
 
-.bar-title .green {
+.green {
   color: var(--green);
 }
 

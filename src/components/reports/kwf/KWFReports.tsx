@@ -41,11 +41,6 @@ export const KWFReports = () => {
               type="Sum"
               title="Гофролист"
             />
-            <BarChartComponent
-              productName="Монокартон"
-              type="Sum"
-              title="Монокартон"
-            />
           </div>
           <div className="d-flex align-items-center gap-2">
             <div className="separator"></div>
@@ -91,11 +86,6 @@ export const KWFReports = () => {
               regionName="Экспорт (кушни)"
               type="Sum"
               title="Экспорт к."
-            />
-            <BarChartComponent
-              regionName="Экспорт (кушни эмас)"
-              type="Sum"
-              title="Экспорт к. э."
             />
           </div>
         </div>
@@ -127,11 +117,6 @@ export const KWFReports = () => {
               type="AKB"
               title="Гофролист"
             />
-            <BarChartComponent
-              productName="Монокартон"
-              type="AKB"
-              title="Монокартон"
-            />
           </div>
           <div className="d-flex align-items-center gap-2">
             <div className="separator"></div>
@@ -177,11 +162,6 @@ export const KWFReports = () => {
               regionName="Экспорт (кушни)"
               type="AKB"
               title="Экспорт к."
-            />
-            <BarChartComponent
-              regionName="Экспорт (кушни эмас)"
-              type="AKB"
-              title="Экспорт к. э."
             />
           </div>
         </div>
