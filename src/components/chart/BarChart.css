@@ -1,5 +1,5 @@
 .bar-wrapper {
-  border-radius: 20px;
+  border-radius: 15px;
   border: 1px solid var(--dark-gray);
 }
 
@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   font-weight: bold;
+  margin: 0;
 }
 
 .bar-title .red {

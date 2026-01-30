@@ -5,7 +5,6 @@ type BarComponentType = {
   isFact: boolean;
   color?: string;
   fill?: string;
-  labelSize?: number;
 };
 
 const formatWithUnderscore = (value: RenderableText) =>
@@ -16,7 +15,6 @@ export const BarComponent = ({
   isFact,
   color,
   fill,
-  labelSize,
 }: BarComponentType) => {
   return (
     <Bar dataKey={dataKey} fill={fill} radius={[10, 10, 10, 10]}>
@@ -25,8 +23,7 @@ export const BarComponent = ({
         dataKey={dataKey}
         position="right"
         fill="var(--black)"
-        letterSpacing={-1}
-        fontSize={labelSize}
+        fontSize={13}
         formatter={formatWithUnderscore}
       />
       <LabelList
@@ -35,7 +32,7 @@ export const BarComponent = ({
         formatter={() => dataKey}
         fill="var(--dark-gray)"
         letterSpacing={-1}
-        fontSize={labelSize}
+        fontSize={12}
       />
     </Bar>
   );

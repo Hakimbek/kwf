@@ -13,12 +13,7 @@ export type BarChartPropsType = {
   regionName?: string;
   type: Filter;
   title?: string;
-  labelSize?: number;
   width?: number;
-  right?: number;
-  left?: number;
-  top?: number;
-  bottom?: number;
 };
 
 export const BarChartComponent = ({
@@ -26,12 +21,7 @@ export const BarChartComponent = ({
   regionName = "All",
   type,
   title,
-  labelSize,
   width,
-  right,
-  left,
-  top,
-  bottom,
 }: BarChartPropsType) => {
   const [data] = useLocalStorage<{ MP: []; KWF: [] }>("data", {
     MP: [],
@@ -77,31 +67,20 @@ export const BarChartComponent = ({
         width={width}
         height={150}
       >
-        <BarChart
-          data={groupedData}
-          margin={{ right, left, top, bottom }}
-          layout="vertical"
-        >
+        <BarChart data={groupedData} margin={{ right: 40 }} layout="vertical">
           <XAxis type="number" axisLine={false} tick={false} />
           <YAxis type="category" axisLine={false} tick={false} />
           <BarComponent
             dataKey="Plan_Oy"
             isFact={false}
             fill="var(--dark-gray)"
-            labelSize={labelSize}
           />
           <BarComponent
             dataKey="Plan_Kun"
             isFact={false}
             fill="var(--dark-gray)"
-            labelSize={labelSize}
           />
-          <BarComponent
-            dataKey="Fact_Kun"
-            isFact={true}
-            color={color}
-            labelSize={labelSize}
-          />
+          <BarComponent dataKey="Fact_Kun" isFact={true} color={color} />
         </BarChart>
       </ResponsiveContainer>
     </div>
