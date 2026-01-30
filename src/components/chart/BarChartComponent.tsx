@@ -17,8 +17,6 @@ export type BarChartPropsType = {
   labelSize?: number;
   width?: number;
   height?: number;
-  x?: number;
-  y?: number;
   right?: number;
   left?: number;
   top?: number;
@@ -34,8 +32,6 @@ export const BarChartComponent = ({
   labelSize,
   width,
   height,
-  x,
-  y,
   right,
   left,
   top,
@@ -81,9 +77,9 @@ export const BarChartComponent = ({
         layout="vertical"
       >
         <text
-          x={x}
-          y={y}
-          textAnchor="start"
+          x="50%"
+          y="12%"
+          textAnchor="middle"
           className="bar-title"
           fontSize={titleSize}
         >

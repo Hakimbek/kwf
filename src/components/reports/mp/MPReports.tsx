@@ -16,8 +16,6 @@ export const MPReports = () => {
                       title="Жами"
                       titleSize={20}
                       labelSize={18}
-                      x={360}
-                      y={25}
                       top={30}
                       left={30}
                       right={50}
@@ -30,8 +28,6 @@ export const MPReports = () => {
                         height={150}
                         title="CelLa"
                         labelSize={12}
-                        x={175}
-                        y={20}
                         top={25}
                         right={40}
                     />
@@ -41,8 +37,6 @@ export const MPReports = () => {
                         height={150}
                         title="OqLa"
                         labelSize={12}
-                        x={175}
-                        y={20}
                         top={25}
                         right={40}
                     />
@@ -54,8 +48,6 @@ export const MPReports = () => {
                         height={150}
                         title="К0"
                         labelSize={12}
-                        x={180}
-                        y={20}
                         top={25}
                         right={30}
                     />
@@ -65,8 +57,6 @@ export const MPReports = () => {
                         height={150}
                         title="К1"
                         labelSize={12}
-                        x={180}
-                        y={20}
                         top={25}
                         right={30}
                     />
@@ -79,8 +69,6 @@ export const MPReports = () => {
                         title="B0"
                         titleSize={15}
                         labelSize={12}
-                        x={70}
-                        y={20}
                         top={25}
                         right={40}
                     />
@@ -91,8 +79,6 @@ export const MPReports = () => {
                           title="B1"
                           titleSize={15}
                           labelSize={12}
-                          x={70}
-                          y={20}
                           top={25}
                           right={40}
                       />
@@ -103,8 +89,6 @@ export const MPReports = () => {
                         title="B2+ 100gr"
                         titleSize={15}
                         labelSize={12}
-                        x={40}
-                        y={20}
                         top={25}
                         right={40}
                     />
@@ -115,8 +99,6 @@ export const MPReports = () => {
                         title="B2+ 120gr"
                         titleSize={15}
                         labelSize={12}
-                        x={40}
-                        y={20}
                         top={25}
                         right={40}
                     />
@@ -129,8 +111,6 @@ export const MPReports = () => {
                           height={150}
                           title="Хоразм ва ККП"
                           labelSize={12}
-                          x={120}
-                          y={20}
                           top={25}
                           right={30}
                       />
@@ -140,8 +120,6 @@ export const MPReports = () => {
                           height={150}
                           title="Бухоро ва Навоий"
                           labelSize={12}
-                          x={120}
-                          y={20}
                           top={25}
                           right={30}
                       />
@@ -153,8 +131,6 @@ export const MPReports = () => {
                           height={150}
                           title="Водий: (ФАН)"
                           labelSize={12}
-                          x={60}
-                          y={20}
                           top={25}
                           right={30}
                       />
@@ -164,8 +140,6 @@ export const MPReports = () => {
                           height={150}
                           title="Сам, Джиз, Сирд"
                           labelSize={12}
-                          x={40}
-                          y={20}
                           top={25}
                           right={30}
                       />
@@ -175,8 +149,6 @@ export const MPReports = () => {
                           height={150}
                           title="Тошкент"
                           labelSize={12}
-                          x={75}
-                          y={20}
                           top={25}
                           right={30}
                       />
@@ -189,8 +161,6 @@ export const MPReports = () => {
                           title="Дилер"
                           titleSize={14}
                           labelSize={12}
-                          x={50}
-                          y={20}
                           top={25}
                           right={40}
                       />
@@ -201,8 +171,6 @@ export const MPReports = () => {
                           title="Каш. ва Сурх."
                           titleSize={14}
                           labelSize={12}
-                          x={35}
-                          y={20}
                           top={25}
                           right={30}
                       />
@@ -213,8 +181,6 @@ export const MPReports = () => {
                           title="Экспорт к."
                           titleSize={14}
                           labelSize={12}
-                          x={45}
-                          y={20}
                           top={25}
                           right={30}
                       />
@@ -225,8 +191,6 @@ export const MPReports = () => {
                           title="Экспорт к. э."
                           titleSize={14}
                           labelSize={12}
-                          x={35}
-                          y={20}
                           top={25}
                           right={30}
                       />
@@ -239,8 +203,6 @@ export const MPReports = () => {
                           title="Karton Works"
                           titleSize={14}
                           labelSize={12}
-                          x={145}
-                          y={20}
                           top={25}
                           right={40}
                       />
@@ -251,8 +213,6 @@ export const MPReports = () => {
                           title="SnP"
                           titleSize={14}
                           labelSize={12}
-                          x={180}
-                          y={20}
                           top={25}
                           right={30}
                       />
@@ -265,8 +225,6 @@ export const MPReports = () => {
                       title="Жами"
                       titleSize={20}
                       labelSize={18}
-                      x={380}
-                      y={25}
                       top={30}
                       left={30}
                       right={50}
@@ -279,8 +237,6 @@ export const MPReports = () => {
                           height={150}
                           title="CelLa"
                           labelSize={12}
-                          x={175}
-                          y={20}
                           top={25}
                           right={40}
                       />
@@ -290,8 +246,6 @@ export const MPReports = () => {
                           height={150}
                           title="OqLa"
                           labelSize={12}
-                          x={175}
-                          y={20}
                           top={25}
                           right={40}
                       />
@@ -303,8 +257,6 @@ export const MPReports = () => {
                           height={150}
                           title="К0"
                           labelSize={12}
-                          x={180}
-                          y={20}
                           top={25}
                           right={30}
                       />
@@ -314,8 +266,6 @@ export const MPReports = () => {
                           height={150}
                           title="К1"
                           labelSize={12}
-                          x={180}
-                          y={20}
                           top={25}
                           right={30}
                       />
@@ -328,8 +278,6 @@ export const MPReports = () => {
                           title="B0"
                           titleSize={15}
                           labelSize={12}
-                          x={70}
-                          y={20}
                           top={25}
                           right={40}
                       />
@@ -340,8 +288,6 @@ export const MPReports = () => {
                           title="B1"
                           titleSize={15}
                           labelSize={12}
-                          x={70}
-                          y={20}
                           top={25}
                           right={40}
                       />
@@ -352,8 +298,6 @@ export const MPReports = () => {
                           title="B2+ 100gr"
                           titleSize={15}
                           labelSize={12}
-                          x={40}
-                          y={20}
                           top={25}
                           right={40}
                       />
@@ -364,8 +308,6 @@ export const MPReports = () => {
                           title="B2+ 120gr"
                           titleSize={15}
                           labelSize={12}
-                          x={40}
-                          y={20}
                           top={25}
                           right={40}
                       />
@@ -378,8 +320,6 @@ export const MPReports = () => {
                         height={150}
                         title="Хоразм ва ККП"
                         labelSize={12}
-                        x={120}
-                        y={20}
                         top={25}
                         right={30}
                     />
@@ -389,8 +329,6 @@ export const MPReports = () => {
                         height={150}
                         title="Бухоро ва Навоий"
                         labelSize={12}
-                        x={120}
-                        y={20}
                         top={25}
                         right={30}
                     />
@@ -402,8 +340,6 @@ export const MPReports = () => {
                         height={150}
                         title="Водий: (ФАН)"
                         labelSize={12}
-                        x={60}
-                        y={20}
                         top={25}
                         right={30}
                     />
@@ -413,8 +349,6 @@ export const MPReports = () => {
                         height={150}
                         title="Сам, Джиз, Сирд"
                         labelSize={12}
-                        x={40}
-                        y={20}
                         top={25}
                         right={30}
                     />
@@ -424,8 +358,6 @@ export const MPReports = () => {
                         height={150}
                         title="Тошкент"
                         labelSize={12}
-                        x={75}
-                        y={20}
                         top={25}
                         right={30}
                     />
@@ -438,8 +370,6 @@ export const MPReports = () => {
                     {/*    title="Дилер"*/}
                     {/*    titleSize={14}*/}
                     {/*    labelSize={12}*/}
-                    {/*    x={50}*/}
-                    {/*    y={20}*/}
                     {/*    top={25}*/}
                     {/*    right={30}*/}
                     {/*/>*/}
@@ -450,8 +380,6 @@ export const MPReports = () => {
                         title="Каш. ва Сурх."
                         titleSize={14}
                         labelSize={12}
-                        x={35}
-                        y={20}
                         top={25}
                         right={30}
                     />
@@ -462,8 +390,6 @@ export const MPReports = () => {
                         title="Экспорт к."
                         titleSize={14}
                         labelSize={12}
-                        x={45}
-                        y={20}
                         top={25}
                         right={30}
                     />
@@ -474,8 +400,6 @@ export const MPReports = () => {
                         title="Экспорт к. э."
                         titleSize={14}
                         labelSize={12}
-                        x={35}
-                        y={20}
                         top={25}
                         right={30}
                     />
@@ -486,8 +410,6 @@ export const MPReports = () => {
                           title="SnP"
                           titleSize={14}
                           labelSize={12}
-                          x={60}
-                          y={20}
                           top={25}
                           right={30}
                       />

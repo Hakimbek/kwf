@@ -16,8 +16,6 @@ export const KWFReports = () => {
               title="Жами"
               titleSize={20}
               labelSize={18}
-              x={380}
-              y={25}
               top={30}
               left={30}
               right={50}
@@ -25,24 +23,20 @@ export const KWFReports = () => {
           <div className="separator top-border">Продукт</div>
           <div className="d-flex gap-4">
             <BarChartComponent
-                productName="wRSC"
-                type="Sum"
-                height={150}
-                title="wRSC"
-                labelSize={12}
-                x={90}
-                y={20}
-                top={25}
-                right={30}
-            />
-            <BarChartComponent
                 productName="non-RSC"
                 type="Sum"
                 height={150}
                 title="non-RSC"
                 labelSize={12}
-                x={90}
-                y={20}
+                top={25}
+                right={30}
+            />
+            <BarChartComponent
+                productName="wRSC"
+                type="Sum"
+                height={150}
+                title="wRSC"
+                labelSize={12}
                 top={25}
                 right={30}
             />
@@ -52,8 +46,6 @@ export const KWFReports = () => {
                 height={150}
                 title="RSC"
                 labelSize={12}
-                x={90}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -66,8 +58,6 @@ export const KWFReports = () => {
                 title="SnP"
                 titleSize={14}
                 labelSize={12}
-                x={60}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -78,8 +68,6 @@ export const KWFReports = () => {
                 title="SnP Lam"
                 titleSize={14}
                 labelSize={12}
-                x={60}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -90,8 +78,6 @@ export const KWFReports = () => {
                 title="Гофролист"
                 titleSize={14}
                 labelSize={12}
-                x={40}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -102,8 +88,6 @@ export const KWFReports = () => {
                 title="Монокартон"
                 titleSize={13}
                 labelSize={12}
-                x={40}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -116,8 +100,6 @@ export const KWFReports = () => {
                 height={150}
                 title="Хоразм ва ККП"
                 labelSize={12}
-                x={100}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -127,8 +109,6 @@ export const KWFReports = () => {
                 height={150}
                 title="Бухоро ва Навоий"
                 labelSize={12}
-                x={100}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -140,8 +120,6 @@ export const KWFReports = () => {
                 height={150}
                 title="Сам. Жиз. Сир."
                 labelSize={12}
-                x={100}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -151,8 +129,6 @@ export const KWFReports = () => {
                 height={150}
                 title="Тошкент"
                 labelSize={12}
-                x={130}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -165,8 +141,6 @@ export const KWFReports = () => {
                 title="Водий: ФАН"
                 titleSize={14}
                 labelSize={12}
-                x={40}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -177,8 +151,6 @@ export const KWFReports = () => {
                 title="Каш. ва Сурх."
                 titleSize={14}
                 labelSize={12}
-                x={30}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -189,8 +161,6 @@ export const KWFReports = () => {
                 title="Экспорт к."
                 titleSize={14}
                 labelSize={12}
-                x={35}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -201,8 +171,6 @@ export const KWFReports = () => {
                 title="Экспорт к. э."
                 titleSize={14}
                 labelSize={12}
-                x={35}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -215,8 +183,6 @@ export const KWFReports = () => {
               title="Жами"
               titleSize={20}
               labelSize={18}
-              x={380}
-              y={25}
               top={30}
               left={30}
               right={50}
@@ -229,8 +195,6 @@ export const KWFReports = () => {
               height={150}
               title="wRSC"
               labelSize={12}
-              x={90}
-              y={20}
               top={25}
               right={30}
             />
@@ -240,8 +204,6 @@ export const KWFReports = () => {
               height={150}
               title="non-RSC"
               labelSize={12}
-              x={90}
-              y={20}
               top={25}
               right={30}
             />
@@ -251,8 +213,6 @@ export const KWFReports = () => {
               height={150}
               title="RSC"
               labelSize={12}
-              x={90}
-              y={20}
               top={25}
               right={30}
             />
@@ -265,8 +225,6 @@ export const KWFReports = () => {
               title="SnP"
               titleSize={13}
               labelSize={12}
-              x={60}
-              y={20}
               top={25}
               right={30}
             />
@@ -277,8 +235,6 @@ export const KWFReports = () => {
               title="SnP Lam"
               titleSize={13}
               labelSize={12}
-              x={60}
-              y={20}
               top={25}
               right={30}
             />
@@ -289,8 +245,6 @@ export const KWFReports = () => {
               title="Гофролист"
               titleSize={13}
               labelSize={12}
-              x={40}
-              y={20}
               top={25}
               right={30}
             />
@@ -301,8 +255,6 @@ export const KWFReports = () => {
               title="Монокартон"
               titleSize={13}
               labelSize={12}
-              x={40}
-              y={20}
               top={25}
               right={30}
             />
@@ -315,8 +267,6 @@ export const KWFReports = () => {
               height={150}
               title="Хоразм ва ККП"
               labelSize={12}
-              x={100}
-              y={20}
               top={25}
               right={30}
             />
@@ -326,8 +276,6 @@ export const KWFReports = () => {
               height={150}
               title="Бухоро ва Навоий"
               labelSize={12}
-              x={100}
-              y={20}
               top={25}
               right={30}
             />
@@ -339,8 +287,6 @@ export const KWFReports = () => {
                 height={150}
                 title="Сам. Жиз. Сир."
                 labelSize={12}
-                x={100}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -350,8 +296,6 @@ export const KWFReports = () => {
                 height={150}
                 title="Тошкент"
                 labelSize={12}
-                x={130}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -364,8 +308,6 @@ export const KWFReports = () => {
                 title="Водий: ФАН"
                 titleSize={14}
                 labelSize={12}
-                x={40}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -376,8 +318,6 @@ export const KWFReports = () => {
                 title="Каш. ва Сурх."
                 titleSize={14}
                 labelSize={12}
-                x={30}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -388,8 +328,6 @@ export const KWFReports = () => {
                 title="Экспорт к."
                 titleSize={14}
                 labelSize={12}
-                x={35}
-                y={20}
                 top={25}
                 right={30}
             />
@@ -400,8 +338,6 @@ export const KWFReports = () => {
                 title="Экспорт к. э."
                 titleSize={14}
                 labelSize={12}
-                x={35}
-                y={20}
                 top={25}
                 right={30}
             />
