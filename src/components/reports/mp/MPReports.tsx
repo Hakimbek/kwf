@@ -94,7 +94,6 @@ export const MPReports = () => {
             type="Sum"
             title="Karton Works"
           />
-          <BarChartComponent regionName="SnP" type="Sum" title="SnP" />
           <BarChartComponent
             regionName="Дилер: Union Paper"
             type="Sum"

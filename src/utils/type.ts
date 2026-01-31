@@ -28,6 +28,7 @@ export type GroupDataType = {
   Plan_Oy: number;
   Plan_Kun: number;
   Fact_Kun: number;
+  Fact_SnP: number;
 };
 
 export type KWFRowDataType = GroupDataType & KWFDataType & { Type: Filter };

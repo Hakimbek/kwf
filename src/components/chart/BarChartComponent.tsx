@@ -36,6 +36,7 @@ export const BarChartComponent = ({
   let percent = Math.round(
     (groupedData[0]?.Fact_Kun * 100) / groupedData[0]?.Plan_Kun,
   );
+  let spn = 0;
 
   if (Number.isNaN(percent)) {
     percent = 0;
@@ -55,6 +56,13 @@ export const BarChartComponent = ({
     color = "blue";
   }
 
+  if (regionName === "Karton Works" && key === "MP") {
+    spn = data.KWF.filter(
+        ({ Product, Manager }) => (Product === "SnP" || Product === "SnP Lam") && Manager === "Одилбеков Фаррухбек",
+    ).reduce(( sum, { Fact_Kun } ) => sum + Number(Fact_Kun), 0);
+    groupedData[0].Fact_SnP = Math.round(spn);
+  }
+
   return (
     <div className="w-100">
       <p className="d-flex justify-content-center align-items-center m-0 fw-medium gap-1">
@@ -62,7 +70,9 @@ export const BarChartComponent = ({
         <span>/</span>
         <span className={color}>{percent}%</span>
         <span>/</span>
-        <span className={`diff ${groupedData[0]?.Fact_Kun - groupedData[0]?.Plan_Kun > 0 ? "green" : "red"}`}>
+        <span
+          className={`diff ${groupedData[0]?.Fact_Kun - groupedData[0]?.Plan_Kun > 0 ? "green" : "red"}`}
+        >
           {groupedData[0]?.Fact_Kun - groupedData[0]?.Plan_Kun}
         </span>
       </p>
@@ -89,6 +99,9 @@ export const BarChartComponent = ({
             fill="var(--dark-gray)"
           />
           <BarComponent dataKey="Fact_Kun" isFact={true} color={color} />
+          {regionName === "Karton Works" && key === "MP" && (
+            <BarComponent dataKey="Fact_SnP" isFact={false} />
+          )}
         </BarChart>
       </ResponsiveContainer>
     </div>
