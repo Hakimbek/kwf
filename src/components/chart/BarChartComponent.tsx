@@ -59,8 +59,9 @@ export const BarChartComponent = ({
 
   if (regionName === "Karton Works" && key === "MP") {
     spn = data.KWF.filter(
-      ({ Product, Manager }) =>
+      ({ Product, Manager, Type }) =>
         (Product === "SnP" || Product === "SnP Lam") &&
+        Type === "Sum" &&
         Manager === "Одилбеков Фаррухбек",
     ).reduce((sum, { Fact_Kun }) => sum + Number(Fact_Kun), 0);
     groupedData[0].Fact_SnP = Math.round(spn);
@@ -84,12 +85,13 @@ export const BarChartComponent = ({
         width={width}
         height={150}
       >
-        <BarChart
-          data={groupedData}
-          margin={{ left: -30, right: 50 }}
-          layout="vertical"
-        >
-          <XAxis type="number" axisLine={false} tick={false} />
+        <BarChart data={groupedData} margin={{ left: -30 }} layout="vertical">
+          <XAxis
+            type="number"
+            axisLine={false}
+            tick={false}
+            domain={[0, (dataMax) => dataMax / 0.8]}
+          />
           <YAxis type="category" axisLine={false} tick={false} />
           <BarComponent
             dataKey="Plan_Oy"
