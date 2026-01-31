@@ -97,9 +97,9 @@ export const MPReports = () => {
           />
           <BarChartComponent regionName="SnP" type="Sum" title="SnP" />
           <BarChartComponent
-              regionName="Дилер: Union Paper"
-              type="Sum"
-              title="Диллер"
+            regionName="Дилер: Union Paper"
+            type="Sum"
+            title="Диллер"
           />
         </div>
       </div>
