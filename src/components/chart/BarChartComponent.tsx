@@ -57,12 +57,12 @@ export const BarChartComponent = ({
 
   return (
     <div className="w-100">
-      <p className="d-flex justify-content-center m-0 fw-medium gap-1">
+      <p className="d-flex justify-content-center align-items-center m-0 fw-medium gap-1">
         <span>{title}</span>
         <span>/</span>
         <span className={color}>{percent}%</span>
         <span>/</span>
-        <span>{groupedData[0]?.Fact_Kun - groupedData[0]?.Plan_Kun}</span>
+        <span className="diff">{groupedData[0]?.Fact_Kun - groupedData[0]?.Plan_Kun}</span>
       </p>
       <ResponsiveContainer
         className={`bar-wrapper ${color === "red" && groupedData[0]?.Plan_Kun !== 0 ? "blinking" : ""}`}

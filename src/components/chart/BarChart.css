@@ -3,6 +3,11 @@
   border: 1px solid var(--dark-gray);
 }
 
+.diff {
+  font-size: 12px;
+  font-weight: normal;
+}
+
 .red {
   color: var(--red);
 }
