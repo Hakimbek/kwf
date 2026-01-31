@@ -34,7 +34,6 @@ export const MPReports = () => {
           />
         </div>
         <div className="d-flex gap-3">
-          <BarChartComponent productName="Karton B0" type="Sum" title="B0" />
           <BarChartComponent productName="Karton B1" type="Sum" title="B1" />
           <BarChartComponent
             productName="Karton B2+ 100gr"
@@ -132,7 +131,6 @@ export const MPReports = () => {
           />
         </div>
         <div className="d-flex gap-3">
-          <BarChartComponent productName="Karton B0" type="AKB" title="B0" />
           <BarChartComponent productName="Karton B1" type="AKB" title="B1" />
           <BarChartComponent
             productName="Karton B2+ 100gr"
