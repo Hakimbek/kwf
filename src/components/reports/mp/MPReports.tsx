@@ -6,15 +6,15 @@ export const MPReports = () => {
   return (
     <>
       <div className="d-flex align-items-center gap-3 px-3">
-        <div className="w-100">
+        <div className="w-100 d-flex flex-column gap-3">
           <Title name="Сотув" />
           <BarChartComponent type="Sum" title="ЖАМИ" />
         </div>
-        <div className="w-100">
+        <div className="w-100 d-flex flex-column gap-3">
           <Title name="KPI" />
           <BarChartComponent type="Sum" title="KPI" />
         </div>
-        <div className="w-100">
+        <div className="w-100 d-flex flex-column gap-3">
           <Title name="АКБ" />
           <BarChartComponent type="AKB" title="ЖАМИ" />
         </div>
