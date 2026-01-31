@@ -79,11 +79,6 @@ export const MPReports = () => {
         </div>
         <div className="d-flex gap-3">
           <BarChartComponent
-            regionName="Дилер: Union Paper"
-            type="Sum"
-            title="Дилер"
-          />
-          <BarChartComponent
             regionName="Кашкадарё ва Сурхондарё"
             type="Sum"
             title="Каш. ва Сурх."
@@ -101,6 +96,11 @@ export const MPReports = () => {
             title="Karton Works"
           />
           <BarChartComponent regionName="SnP" type="Sum" title="SnP" />
+          <BarChartComponent
+              regionName="Дилер: Union Paper"
+              type="Sum"
+              title="Диллер"
+          />
         </div>
       </div>
       <div className="akb">

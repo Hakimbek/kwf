@@ -71,7 +71,7 @@ export const BarChartComponent = ({
       >
         <BarChart
           data={groupedData}
-          margin={{ left: -30, right: 40 }}
+          margin={{ left: -30, right: 50 }}
           layout="vertical"
         >
           <XAxis type="number" axisLine={false} tick={false} />
