@@ -62,7 +62,9 @@ export const BarChartComponent = ({
         <span>/</span>
         <span className={color}>{percent}%</span>
         <span>/</span>
-        <span className="diff">{groupedData[0]?.Fact_Kun - groupedData[0]?.Plan_Kun}</span>
+        <span className={`diff ${groupedData[0]?.Fact_Kun - groupedData[0]?.Plan_Kun > 0 ? "green" : "red"}`}>
+          {groupedData[0]?.Fact_Kun - groupedData[0]?.Plan_Kun}
+        </span>
       </p>
       <ResponsiveContainer
         className={`bar-wrapper ${color === "red" && groupedData[0]?.Plan_Kun !== 0 ? "blinking" : ""}`}
