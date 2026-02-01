@@ -1,8 +1,8 @@
 import { memo } from "react";
 import * as XLSX from "xlsx";
-import type { CollectionType } from "../../type/collection.ts";
-import { importFile } from "./utils/import.ts";
 import cptable from "codepage";
+import { importFile } from "./utils/import.ts";
+import type { CollectionType } from "../../type/collection.ts";
 import "./Import.css";
 
 XLSX.set_cptable(cptable);

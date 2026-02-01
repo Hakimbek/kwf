@@ -1,4 +1,4 @@
 export const StorageName = {
-  KEY: "key",
+  COLLECTION: "collection",
   MANAGER: "manager",
 } as const;

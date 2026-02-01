@@ -1,7 +1,6 @@
-import { useMemo, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { group } from "../../utils/group.tsx";
 import useLocalStorage from "use-local-storage";
-import type { Filter } from "../../utils/type.ts";
 import { BarComponent } from "./BarComponent.tsx";
 import { BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import {
@@ -16,7 +15,7 @@ import "./BarChart.css";
 export type BarChartPropsType = {
   product?: string;
   region?: string;
-  type: Filter;
+  type: "Sum" | "AKB";
   title?: string;
   width?: number;
 };
@@ -28,16 +27,13 @@ export const BarChartComponent = ({
   title,
   width,
 }: BarChartPropsType) => {
-  const { MANAGER, KEY } = StorageName;
+  const { MANAGER, COLLECTION } = StorageName;
   const { ALL } = ManagerName;
   const { KWF } = CollectionName;
   const [data, setData] = useState<any[]>([]);
   const [manager] = useLocalStorage(MANAGER, ALL);
-  const [key] = useLocalStorage<CollectionType>(KEY, KWF);
-  const groupedData = useMemo(
-    () => group(data, type, product, region, manager),
-    [data, manager, region, product, type, key],
-  );
+  const [collection] = useLocalStorage<CollectionType>(COLLECTION, KWF);
+  const groupedData = group(data);
   let percent = Math.round(
     (groupedData[0]?.Fact_Kun * 100) / groupedData[0]?.Plan_Kun,
   );
@@ -63,13 +59,13 @@ export const BarChartComponent = ({
 
   useEffect(() => {
     const unsubscribe = getFilteredData(
-      key,
-      { region, manager, product },
+      collection,
+      { type, region, manager, product },
       (results) => setData(results),
     );
 
     return () => unsubscribe();
-  }, [region, manager, product, key]);
+  }, [region, manager, product, collection]);
 
   return (
     <div className="w-100">

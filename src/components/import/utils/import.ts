@@ -1,9 +1,8 @@
-import { toast } from "react-toastify";
 import * as XLSX from "xlsx";
+import { toast } from "react-toastify";
+import type { DataType } from "../../../type/import.ts";
 import { clearCollection } from "../../../firebase/clear.ts";
 import { uploadLargeArray } from "../../../firebase/upload.ts";
-
-export type ExcelRow = Record<string, string | number | boolean | null>;
 
 export const importFile = (file: File | undefined, storage: string) => {
   if (!file) {
@@ -30,7 +29,7 @@ export const importFile = (file: File | undefined, storage: string) => {
     const sheetName = workbook.SheetNames[0];
     const worksheet = workbook.Sheets[sheetName];
 
-    const json: ExcelRow[] = XLSX.utils.sheet_to_json(worksheet, {
+    const json: DataType[] = XLSX.utils.sheet_to_json(worksheet, {
       defval: null,
     });
 

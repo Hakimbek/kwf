@@ -10,9 +10,9 @@ import "./Filter.css";
 
 export const Filter = () => {
   const { KWF, MP } = CollectionName;
-  const { KEY, MANAGER } = StorageName;
+  const { COLLECTION, MANAGER } = StorageName;
   const { ALL, MUROD, ULUGBEK, UMID, FARRUX, SHOKIRJON } = ManagerName;
-  const [key] = useLocalStorage<CollectionType>(KEY, KWF);
+  const [collection] = useLocalStorage<CollectionType>(COLLECTION, KWF);
   const [manager, setManager] = useLocalStorage<ManagerType>(MANAGER, ALL);
 
   const handleClick = (manager: ManagerType) => {
@@ -21,7 +21,7 @@ export const Filter = () => {
 
   return (
     <div className="filter-container">
-      {key === KWF && (
+      {collection === KWF && (
         <>
           <button
             className={`filter-option ${manager === ALL && "active-filter"}`}
@@ -49,7 +49,7 @@ export const Filter = () => {
           </button>
         </>
       )}
-      {key === MP && (
+      {collection === MP && (
         <>
           <button
             className={`filter-option ${manager === ALL && "active-filter"}`}

@@ -9,8 +9,8 @@ import { KWFReports } from "./components/reports/kwf/KWFReports.tsx";
 
 function App() {
   const { KWF, MP } = CollectionName;
-  const { KEY } = StorageName;
-  const [key] = useLocalStorage(KEY, KWF);
+  const { COLLECTION } = StorageName;
+  const [key] = useLocalStorage(COLLECTION, KWF);
 
   return (
     <div>

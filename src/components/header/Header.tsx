@@ -11,13 +11,16 @@ import "./Header.css";
 
 export const Header = () => {
   const { KWF, MP } = CollectionName;
-  const { KEY, MANAGER } = StorageName;
+  const { COLLECTION, MANAGER } = StorageName;
   const { ALL } = ManagerName;
-  const [key, setKey] = useLocalStorage<CollectionType>(KEY, KWF);
+  const [collection, setCollection] = useLocalStorage<CollectionType>(
+    COLLECTION,
+    KWF,
+  );
   const [, setManager] = useLocalStorage<ManagerType>(MANAGER, ALL);
 
   const handleClick = (key: CollectionType) => {
-    setKey(key);
+    setCollection(key);
     setManager(ALL);
   };
 
@@ -26,13 +29,13 @@ export const Header = () => {
       <nav className="nav">
         <div className="d-flex gap-2">
           <button
-            className={`nav-button ${key === KWF && "active-nav"}`}
+            className={`nav-button ${collection === KWF && "active-nav"}`}
             onClick={() => handleClick(KWF)}
           >
             {KWF.toUpperCase()}
           </button>
           <button
-            className={`nav-button ${key === MP && "active-nav"}`}
+            className={`nav-button ${collection === MP && "active-nav"}`}
             onClick={() => handleClick(MP)}
           >
             {MP.toUpperCase()}

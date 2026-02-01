@@ -1,5 +1,5 @@
-import { collection, doc, getDocs, writeBatch } from "firebase/firestore";
 import { db } from "./firebaseConfig.ts";
+import { collection, doc, getDocs, writeBatch } from "firebase/firestore";
 
 export const clearCollection = async (collectionName: string) => {
   const collectionRef = collection(db, collectionName);

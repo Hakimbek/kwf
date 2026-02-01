@@ -1,6 +1,10 @@
 import "./Title.css";
 
-export const Title = ({ name }: { name: string }) => {
+type TitlePropsType = {
+  name: string;
+};
+
+export const Title = ({ name }: TitlePropsType) => {
   return (
     <div className="title-wrapper">
       <div className="title-separator"></div>

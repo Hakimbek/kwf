@@ -1,9 +1,9 @@
-import { collection, doc, writeBatch } from "firebase/firestore";
-import type { ExcelRow } from "../components/import/utils/import.ts";
 import { db } from "./firebaseConfig.ts";
+import type { DataType } from "../type/import.ts";
+import { collection, doc, writeBatch } from "firebase/firestore";
 
 export const uploadLargeArray = async (
-  dataArray: ExcelRow[],
+  dataArray: DataType[],
   collectionName: string,
 ) => {
   const chunkSize = 500;
