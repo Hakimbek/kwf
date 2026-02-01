@@ -1,42 +1,47 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { group } from "../../utils/group.tsx";
 import useLocalStorage from "use-local-storage";
 import type { Filter } from "../../utils/type.ts";
 import { BarComponent } from "./BarComponent.tsx";
 import { BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
-import { CollectionName, type CollectionType } from "../../type/import.ts";
+import {
+  CollectionName,
+  ManagerName,
+  StorageName,
+  type CollectionType,
+} from "../../type/import.ts";
+import { getFilteredData } from "../../firebase/getFilteredData.ts";
 import "./BarChart.css";
 
 export type BarChartPropsType = {
-  productName?: string;
-  regionName?: string;
+  product?: string;
+  region?: string;
   type: Filter;
   title?: string;
   width?: number;
 };
 
 export const BarChartComponent = ({
-  productName = "All",
-  regionName = "All",
+  product = "All",
+  region = "All",
   type,
   title,
   width,
 }: BarChartPropsType) => {
-  const [data] = useLocalStorage<{ MP: []; KWF: [] }>("data", {
-    MP: [],
-    KWF: [],
-  });
-  const [manager] = useLocalStorage("manager", "All");
-  const [key] = useLocalStorage<CollectionType>("key", CollectionName.KWF);
+  const { MANAGER, KEY } = StorageName;
+  const { ALL } = ManagerName;
+  const { KWF } = CollectionName;
+  const [data, setData] = useState<any[]>([]);
+  const [manager] = useLocalStorage(MANAGER, ALL);
+  const [key] = useLocalStorage<CollectionType>(KEY, KWF);
   const groupedData = useMemo(
-    () => group(data[key], type, productName, regionName, manager),
-    [data, manager, regionName, productName, type, key],
+    () => group(data, type, product, region, manager),
+    [data, manager, region, product, type, key],
   );
   let percent = Math.round(
     (groupedData[0]?.Fact_Kun * 100) / groupedData[0]?.Plan_Kun,
   );
   const diff = groupedData[0]?.Fact_Kun - groupedData[0]?.Plan_Kun;
-  let spn = 0;
 
   if (Number.isNaN(percent)) {
     percent = 0;
@@ -56,15 +61,15 @@ export const BarChartComponent = ({
     color = "blue";
   }
 
-  if (regionName === "Karton Works" && key === "MP") {
-    spn = data.KWF.filter(
-      ({ Product, Manager, Type }) =>
-        (Product === "SnP" || Product === "SnP Lam") &&
-        Type === "Sum" &&
-        Manager === "Одилбеков Фаррухбек",
-    ).reduce((sum, { Fact_Kun }) => sum + Number(Fact_Kun), 0);
-    groupedData[0].Fact_SnP = Math.round(spn);
-  }
+  useEffect(() => {
+    const unsubscribe = getFilteredData(
+      key,
+      { region, manager, product },
+      (results) => setData(results),
+    );
+
+    return () => unsubscribe();
+  }, [region, manager, product, key]);
 
   return (
     <div className="w-100">
@@ -103,9 +108,6 @@ export const BarChartComponent = ({
             fill="var(--dark-gray)"
           />
           <BarComponent dataKey="Fact_Kun" isFact={true} color={color} />
-          {regionName === "Karton Works" && key === "MP" && (
-            <BarComponent dataKey="Fact_SnP" isFact={false} />
-          )}
         </BarChart>
       </ResponsiveContainer>
     </div>

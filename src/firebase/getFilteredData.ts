@@ -7,7 +7,7 @@ import {
   QueryConstraint,
 } from "firebase/firestore";
 
-export const getFilteredSales = (
+export const getFilteredData = (
   collectionName: string,
   filters: {
     type?: string;
@@ -36,6 +36,7 @@ export const getFilteredSales = (
 
   return onSnapshot(q, (snapshot) => {
     const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
     callback(data);
   });
 };
