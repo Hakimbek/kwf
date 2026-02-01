@@ -52,8 +52,8 @@ const Import = ({ storage }: ImportPropsType) => {
 
       toast.success("Успешно");
       setData({ ...data, [storage]: json });
-      await clearCollection(storage)
-      await uploadLargeArray(json, storage)
+      await clearCollection(storage);
+      await uploadLargeArray(json, storage);
       if (fileInputRef.current) fileInputRef.current.value = "";
     };
 

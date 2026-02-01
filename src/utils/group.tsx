@@ -15,7 +15,12 @@ export function group(
   region?: string,
   manager?: string,
 ): GroupDataType[] {
-  const total: GroupDataType = { Plan_Oy: 0, Plan_Kun: 0, Fact_Kun: 0, Fact_SnP: 0 };
+  const total: GroupDataType = {
+    Plan_Oy: 0,
+    Plan_Kun: 0,
+    Fact_Kun: 0,
+    Fact_SnP: 0,
+  };
 
   for (const item of data) {
     if (item.Type !== type) continue;

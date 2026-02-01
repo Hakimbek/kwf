@@ -2,16 +2,16 @@ import { collection, doc, getDocs, writeBatch } from "firebase/firestore";
 import { db } from "./firebaseConfig.ts";
 
 export const clearCollection = async (collectionName: string) => {
-    const collectionRef = collection(db, collectionName);
-    const snapshot = await getDocs(collectionRef);
+  const collectionRef = collection(db, collectionName);
+  const snapshot = await getDocs(collectionRef);
 
-    if (snapshot.size === 0) return;
+  if (snapshot.size === 0) return;
 
-    const batch = writeBatch(db);
+  const batch = writeBatch(db);
 
-    snapshot.docs.forEach((document) => {
-        batch.delete(doc(db, collectionName, document.id));
-    });
+  snapshot.docs.forEach((document) => {
+    batch.delete(doc(db, collectionName, document.id));
+  });
 
-    await batch.commit();
+  await batch.commit();
 };
