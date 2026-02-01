@@ -33,6 +33,7 @@ export const BarChartComponent = ({
   const [data, setData] = useState<any[]>([]);
   const [manager] = useLocalStorage(MANAGER, ALL);
   const [collection] = useLocalStorage<CollectionType>(COLLECTION, KWF);
+  const [kpi] = useLocalStorage("kpi", {});
   const groupedData = group(data);
   let percent = Math.round(
     (groupedData[0]?.Fact_Kun * 100) / groupedData[0]?.Plan_Kun,
@@ -74,7 +75,7 @@ export const BarChartComponent = ({
     } else {
       setData([
         {
-          Fact_Kun: 0,
+          Fact_Kun: Number(manager === ALL ? 0 : kpi[manager]),
           Plan_Kun:
             (25000 * new Date().getDate()) /
             new Date(

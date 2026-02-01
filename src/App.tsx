@@ -6,6 +6,7 @@ import { Header } from "./components/header/Header.tsx";
 import { CollectionName, StorageName } from "./type/import.ts";
 import { MPReports } from "./components/reports/mp/MPReports.tsx";
 import { KWFReports } from "./components/reports/kwf/KWFReports.tsx";
+import { InputKPI } from "./components/input/Input.tsx";
 
 function App() {
   const { KWF, MP } = CollectionName;
@@ -23,10 +24,13 @@ function App() {
         <Route
           path="/import"
           element={
-            <div className="d-flex justify-content-center gap-3">
-              <Import collection={KWF} />
-              <Import collection={MP} />
-            </div>
+            <>
+              <div className="d-flex justify-content-center gap-3">
+                <Import collection={KWF} />
+                <Import collection={MP} />
+              </div>
+              <InputKPI />
+            </>
           }
         />
       </Routes>
