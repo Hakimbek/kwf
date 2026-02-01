@@ -12,7 +12,7 @@ export const MPReports = () => {
         </div>
         <div className="w-100 d-flex flex-column gap-3">
           <Title name="KPI" />
-          <BarChartComponent type="Sum" title="KPI" />
+          <BarChartComponent type="KPI" title="KPI" />
         </div>
         <div className="w-100 d-flex flex-column gap-3">
           <Title name="АКБ" />

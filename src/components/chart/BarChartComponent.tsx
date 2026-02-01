@@ -15,7 +15,7 @@ import "./BarChart.css";
 export type BarChartPropsType = {
   product?: string;
   region?: string;
-  type: "Sum" | "AKB";
+  type: "Sum" | "AKB" | "KPI";
   title?: string;
   width?: number;
 };
@@ -63,13 +63,29 @@ export const BarChartComponent = ({
         ? "kwf"
         : collection;
 
-    const unsubscribe = getFilteredData(
-      key,
-      { type, region, manager, product },
-      (results) => setData(results),
-    );
+    if (type !== "KPI") {
+      const unsubscribe = getFilteredData(
+        key,
+        { type, region, manager, product },
+        (results) => setData(results),
+      );
 
-    return () => unsubscribe();
+      return () => unsubscribe();
+    } else {
+      setData([
+        {
+          Fact_Kun: 0,
+          Plan_Kun:
+            (25000 * new Date().getDate()) /
+            new Date(
+              new Date().getFullYear(),
+              new Date().getMonth() + 1,
+              0,
+            ).getDate(),
+          Plan_Oy: 25000,
+        },
+      ]);
+    }
   }, [region, manager, product, collection]);
 
   return (
