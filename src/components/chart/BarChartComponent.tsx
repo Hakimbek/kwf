@@ -9,7 +9,7 @@ import {
   StorageName,
   type CollectionType,
 } from "../../type/import.ts";
-import { getFilteredData } from "../../firebase/getFilteredData.ts";
+import { getFilteredData, getManagerKPI } from "../../firebase/import.ts";
 import "./BarChart.css";
 
 export type BarChartPropsType = {
@@ -31,9 +31,9 @@ export const BarChartComponent = ({
   const { ALL } = ManagerName;
   const { KWF } = CollectionName;
   const [data, setData] = useState<any[]>([]);
+  const [KPI, setKPI] = useState(0);
   const [manager] = useLocalStorage(MANAGER, ALL);
   const [collection] = useLocalStorage<CollectionType>(COLLECTION, KWF);
-  const [kpi] = useLocalStorage("kpi", {});
   const groupedData = group(data);
   let percent = Math.round(
     (groupedData[0]?.Fact_Kun * 100) / groupedData[0]?.Plan_Kun,
@@ -59,35 +59,38 @@ export const BarChartComponent = ({
   }
 
   useEffect(() => {
+    if (type === "KPI") {
+      getManagerKPI(
+        manager,
+        (amount) => setKPI(amount),
+      );
+    }
+  }, [manager, type]);
+
+  useEffect(() => {
     const key =
       collection === "mp" && (product === "SnP" || product === "SnP Lam")
         ? "kwf"
         : collection;
 
-    if (type !== "KPI") {
-      const unsubscribe = getFilteredData(
+    const unsubscribe = getFilteredData(
         key,
         { type, region, manager, product },
-        (results) => setData(results),
-      );
-
-      return () => unsubscribe();
-    } else {
-      setData([
-        {
-          Fact_Kun: Number(manager === ALL ? 0 : kpi[manager]),
+        (results) => setData(type !== "KPI" ? results : [{
+          Fact_Kun: KPI,
           Plan_Kun:
-            (25000 * new Date().getDate()) /
-            new Date(
-              new Date().getFullYear(),
-              new Date().getMonth() + 1,
-              0,
-            ).getDate(),
+              (25000 * new Date().getDate()) /
+              new Date(
+                  new Date().getFullYear(),
+                  new Date().getMonth() + 1,
+                  0,
+              ).getDate(),
           Plan_Oy: 25000,
-        },
-      ]);
-    }
-  }, [region, manager, product, collection]);
+        }]),
+    );
+
+    return () => unsubscribe();
+  }, [region, manager, product, collection, KPI]);
 
   return (
     <div className="w-100">
