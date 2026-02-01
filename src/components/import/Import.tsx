@@ -3,13 +3,13 @@ import { toast } from "react-toastify";
 import { useRef, memo } from "react";
 import * as XLSX from "xlsx";
 import type { StorageType } from "../../utils/type.ts";
+import { uploadLargeArray } from "../../firebase/upload.ts";
+import { clearCollection } from "../../firebase/clear.ts";
 import cptable from "codepage";
 XLSX.set_cptable(cptable);
-import { db } from "../../firebaseConfig.ts";
-import { collection, writeBatch, doc, getDocs } from "firebase/firestore";
 import "./Import.css";
 
-type ExcelRow = Record<string, string | number | boolean | null>;
+export type ExcelRow = Record<string, string | number | boolean | null>;
 
 type ImportPropsType = {
   storage: StorageType;
@@ -18,45 +18,6 @@ type ImportPropsType = {
 const Import = ({ storage }: ImportPropsType) => {
   const [data, setData] = useLocalStorage("data", {});
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const uploadLargeArray = async (dataArray: ExcelRow[], collectionName: string) => {
-    const chunkSize = 500;
-
-    for (let i = 0; i < dataArray.length; i += chunkSize) {
-      const chunk = dataArray.slice(i, i + chunkSize);
-      const batch = writeBatch(db);
-
-      chunk.forEach((row) => {
-        const docRef = doc(collection(db, collectionName));
-
-        const formattedRow = {
-          ...row,
-          Fact_Kun: Number(row.Fact_Kun || 0),
-          Plan_Oy: Number(row.Plan_Oy || 0),
-          Plan_Kun: Number(row.Plan_Kun || 0),
-        };
-
-        batch.set(docRef, formattedRow);
-      });
-
-      await batch.commit();
-    }
-  };
-
-  const clearCollection = async (collectionName: string) => {
-    const collectionRef = collection(db, collectionName);
-    const snapshot = await getDocs(collectionRef);
-
-    if (snapshot.size === 0) return;
-
-    const batch = writeBatch(db);
-
-    snapshot.docs.forEach((document) => {
-      batch.delete(doc(db, collectionName, document.id));
-    });
-
-    await batch.commit();
-  };
 
   const handleImport = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0] || null;
