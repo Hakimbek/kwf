@@ -1,17 +1,24 @@
-import Import from "../import/Import.tsx";
-import { storage } from "../../utils/data.ts";
+import {
+  ManagerName,
+  StorageName,
+  CollectionName,
+  type ManagerType,
+  type CollectionType,
+} from "../../type/import.ts";
+import { Filter } from "../filter/Filter.tsx";
 import useLocalStorage from "use-local-storage";
-import type { StorageType } from "../../utils/type.ts";
 import "./Header.css";
 
 export const Header = () => {
-  const { KWF, MP } = storage;
-  const [key, setKey] = useLocalStorage<StorageType>("key", KWF);
-  const [, setManager] = useLocalStorage("manager", "All");
+  const { KWF, MP } = CollectionName;
+  const { KEY, MANAGER } = StorageName;
+  const { ALL } = ManagerName;
+  const [key, setKey] = useLocalStorage<CollectionType>(KEY, KWF);
+  const [, setManager] = useLocalStorage<ManagerType>(MANAGER, ALL);
 
-  const handleClick = (key: StorageType) => {
+  const handleClick = (key: CollectionType) => {
     setKey(key);
-    setManager("All");
+    setManager(ALL);
   };
 
   return (
@@ -22,18 +29,17 @@ export const Header = () => {
             className={`nav-button ${key === KWF && "active-nav"}`}
             onClick={() => handleClick(KWF)}
           >
-            {KWF}
+            {KWF.toUpperCase()}
           </button>
           <button
             className={`nav-button ${key === MP && "active-nav"}`}
             onClick={() => handleClick(MP)}
           >
-            {MP}
+            {MP.toUpperCase()}
           </button>
         </div>
         <div className="d-flex gap-2">
-          <Import storage={KWF} />
-          <Import storage={MP} />
+          <Filter />
         </div>
       </nav>
     </header>

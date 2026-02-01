@@ -1,5 +1,5 @@
 import { collection, doc, writeBatch } from "firebase/firestore";
-import type { ExcelRow } from "../components/import/Import.tsx";
+import type { ExcelRow } from "../components/import/utils/import.ts";
 import { db } from "./firebaseConfig.ts";
 
 export const uploadLargeArray = async (

@@ -1,11 +1,10 @@
-import { BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
-import { BarComponent } from "./BarComponent.tsx";
-import useLocalStorage from "use-local-storage";
-import { group } from "../../utils/group.tsx";
-import type { Filter } from "../../utils/type.ts";
 import { useMemo } from "react";
-import { storage } from "../../utils/data.ts";
-import type { StorageType } from "../../utils/type.ts";
+import { group } from "../../utils/group.tsx";
+import useLocalStorage from "use-local-storage";
+import type { Filter } from "../../utils/type.ts";
+import { BarComponent } from "./BarComponent.tsx";
+import { BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { CollectionName, type CollectionType } from "../../type/import.ts";
 import "./BarChart.css";
 
 export type BarChartPropsType = {
@@ -28,7 +27,7 @@ export const BarChartComponent = ({
     KWF: [],
   });
   const [manager] = useLocalStorage("manager", "All");
-  const [key] = useLocalStorage<StorageType>("key", storage.KWF);
+  const [key] = useLocalStorage<CollectionType>("key", CollectionName.KWF);
   const groupedData = useMemo(
     () => group(data[key], type, productName, regionName, manager),
     [data, manager, regionName, productName, type, key],

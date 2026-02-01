@@ -5,10 +5,7 @@ import {
   mpManagers,
   mpProducts,
   mpRegions,
-  storage,
 } from "./data.ts";
-
-export type StorageType = (typeof storage)[keyof typeof storage];
 
 type KWFDataType = {
   Product: (typeof kwfProducts)[number];

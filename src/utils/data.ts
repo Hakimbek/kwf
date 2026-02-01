@@ -1,8 +1,3 @@
-export const storage = {
-  KWF: "KWF",
-  MP: "MP",
-} as const;
-
 export const kwfManagers = [
   "All",
   "Шарипов Мурод",
