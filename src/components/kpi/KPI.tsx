@@ -5,12 +5,12 @@ export const KPI = () => {
   return (
     <div className="kpi-wrapper">
       <div className="ideal">
-          <Title name="Ideal" />
-          <div className="salary">15000</div>
+        <Title name="Ideal" />
+        <div className="salary">15000</div>
       </div>
       <div className="fact">
-          <Title name="Fact" />
-          <div className="salary">25000</div>
+        <Title name="Fact" />
+        <div className="salary">25000</div>
       </div>
     </div>
   );
