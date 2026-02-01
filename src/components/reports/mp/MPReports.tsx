@@ -25,70 +25,54 @@ export const MPReports = () => {
       <div className="w-100 mb-3 px-3 gap-3 d-flex flex-column">
         <div className="d-flex gap-3">
           <BarChartComponent
-              product="Karton CelLayner"
-              type="Sum"
-              title="CelLa"
+            product="Karton CelLayner"
+            type="Sum"
+            title="CelLa"
           />
           <BarChartComponent
-              product="Karton OqLayner"
-              type="Sum"
-              title="OqLa"
+            product="Karton OqLayner"
+            type="Sum"
+            title="OqLa"
           />
           <BarChartComponent
-              product="Karton CelLayner"
-              type="AKB"
-              title="CelLa"
+            product="Karton CelLayner"
+            type="AKB"
+            title="CelLa"
           />
           <BarChartComponent
-              product="Karton OqLayner"
-              type="AKB"
-              title="OqLa"
+            product="Karton OqLayner"
+            type="AKB"
+            title="OqLa"
           />
         </div>
         <div className="d-flex gap-3">
-          <BarChartComponent
-              product="Karton К0 120гр"
-              type="Sum"
-              title="К0"
-          />
-          <BarChartComponent
-              product="Karton К1 120гр"
-              type="Sum"
-              title="К1"
-          />
-          <BarChartComponent
-              product="Karton К0 120гр"
-              type="AKB"
-              title="К0"
-          />
-          <BarChartComponent
-              product="Karton К1 120гр"
-              type="AKB"
-              title="К1"
-          />
+          <BarChartComponent product="Karton К0 120гр" type="Sum" title="К0" />
+          <BarChartComponent product="Karton К1 120гр" type="Sum" title="К1" />
+          <BarChartComponent product="Karton К0 120гр" type="AKB" title="К0" />
+          <BarChartComponent product="Karton К1 120гр" type="AKB" title="К1" />
         </div>
         <div className="d-flex gap-3">
           <BarChartComponent product="Karton B1" type="Sum" title="B1" />
           <BarChartComponent
-              product="Karton B2+ 100gr"
-              type="Sum"
-              title="B2+ 100gr"
+            product="Karton B2+ 100gr"
+            type="Sum"
+            title="B2+ 100gr"
           />
           <BarChartComponent
-              product="Karton B2+ 120gr"
-              type="Sum"
-              title="B2+ 120gr"
+            product="Karton B2+ 120gr"
+            type="Sum"
+            title="B2+ 120gr"
           />
           <BarChartComponent product="Karton B1" type="AKB" title="B1" />
           <BarChartComponent
-              product="Karton B2+ 100gr"
-              type="AKB"
-              title="B2+ 100gr"
+            product="Karton B2+ 100gr"
+            type="AKB"
+            title="B2+ 100gr"
           />
           <BarChartComponent
-              product="Karton B2+ 120gr"
-              type="AKB"
-              title="B2+ 120gr"
+            product="Karton B2+ 120gr"
+            type="AKB"
+            title="B2+ 120gr"
           />
         </div>
       </div>
@@ -98,100 +82,92 @@ export const MPReports = () => {
       <div className="w-100 mb-3 px-3 gap-3 d-flex flex-column">
         <div className="d-flex gap-3">
           <BarChartComponent
-              region="Хоразм ва Коракалпогистон"
-              type="Sum"
-              title="Хоразм ва ККП"
+            region="Хоразм ва Коракалпогистон"
+            type="Sum"
+            title="Хоразм ва ККП"
           />
           <BarChartComponent
-              region="Бухоро ва Навоий"
-              type="Sum"
-              title="Бухоро ва Навоий"
+            region="Бухоро ва Навоий"
+            type="Sum"
+            title="Бухоро ва Навоий"
           />
           <BarChartComponent
-              region="Хоразм ва Коракалпогистон"
-              type="AKB"
-              title="Хоразм ва ККП"
+            region="Хоразм ва Коракалпогистон"
+            type="AKB"
+            title="Хоразм ва ККП"
           />
           <BarChartComponent
-              region="Бухоро ва Навоий"
-              type="AKB"
-              title="Бухоро ва Навоий"
-          />
-        </div>
-        <div className="d-flex gap-3">
-          <BarChartComponent
-              region="Водий: (ФАН)"
-              type="Sum"
-              title="Водий: (ФАН)"
-          />
-          <BarChartComponent
-              region="Сам, Джиз, Сирд"
-              type="Sum"
-              title="Сам, Джиз, Сирд"
-          />
-          <BarChartComponent
-              region="Тошкент вилоят ва шахар"
-              type="Sum"
-              title="Тошкент"
-          />
-          <BarChartComponent
-              region="Водий: (ФАН)"
-              type="AKB"
-              title="Водий: (ФАН)"
-          />
-          <BarChartComponent
-              region="Сам, Джиз, Сирд"
-              type="AKB"
-              title="Сам, Джиз, Сирд"
-          />
-          <BarChartComponent
-              region="Тошкент вилоят ва шахар"
-              type="AKB"
-              title="Тошкент"
+            region="Бухоро ва Навоий"
+            type="AKB"
+            title="Бухоро ва Навоий"
           />
         </div>
         <div className="d-flex gap-3">
           <BarChartComponent
-              region="Кашкадарё ва Сурхондарё"
-              type="Sum"
-              title="Каш. ва Сурх."
+            region="Водий: (ФАН)"
+            type="Sum"
+            title="Водий: (ФАН)"
           />
           <BarChartComponent
-              region="Eksport (кушни)"
-              type="Sum"
-              title="Экспорт к."
+            region="Сам, Джиз, Сирд"
+            type="Sum"
+            title="Сам, Джиз, Сирд"
           />
           <BarChartComponent
-              region="Кашкадарё ва Сурхондарё"
-              type="AKB"
-              title="Каш. ва Сурх."
+            region="Тошкент вилоят ва шахар"
+            type="Sum"
+            title="Тошкент"
           />
           <BarChartComponent
-              region="Eksport (кушни)"
-              type="AKB"
-              title="Экспорт к."
+            region="Водий: (ФАН)"
+            type="AKB"
+            title="Водий: (ФАН)"
+          />
+          <BarChartComponent
+            region="Сам, Джиз, Сирд"
+            type="AKB"
+            title="Сам, Джиз, Сирд"
+          />
+          <BarChartComponent
+            region="Тошкент вилоят ва шахар"
+            type="AKB"
+            title="Тошкент"
           />
         </div>
         <div className="d-flex gap-3">
           <BarChartComponent
-              region="Karton Works"
-              type="Sum"
-              title="Karton Works"
+            region="Кашкадарё ва Сурхондарё"
+            type="Sum"
+            title="Каш. ва Сурх."
           />
           <BarChartComponent
-              product="SnP"
-              type="Sum"
-              title="SnP"
+            region="Eksport (кушни)"
+            type="Sum"
+            title="Экспорт к."
           />
           <BarChartComponent
-              product="SnP Lam"
-              type="Sum"
-              title="SnP"
+            region="Кашкадарё ва Сурхондарё"
+            type="AKB"
+            title="Каш. ва Сурх."
           />
           <BarChartComponent
-              region="Дилер: Union Paper"
-              type="Sum"
-              title="Диллер"
+            region="Eksport (кушни)"
+            type="AKB"
+            title="Экспорт к."
+          />
+        </div>
+        <div className="d-flex gap-3">
+          <BarChartComponent
+            region="Karton Works"
+            type="Sum"
+            title="Karton Works"
+          />
+          <BarChartComponent product="SnP" type="Sum" title="SnP" />
+          <BarChartComponent product="SnP Lam" type="Sum" title="SnP" />
+          <BarChartComponent
+            region="Дилер: Union Paper"
+            type="Sum"
+            title="Диллер"
           />
         </div>
       </div>

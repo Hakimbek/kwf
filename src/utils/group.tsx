@@ -1,10 +1,10 @@
 import type { DataType } from "../type/import.ts";
 
 type GroupDataType = {
-  Plan_Oy: 0,
-  Plan_Kun: 0,
-  Fact_Kun: 0,
-}
+  Plan_Oy: 0;
+  Plan_Kun: 0;
+  Fact_Kun: 0;
+};
 
 export function group(data: DataType[] = []): GroupDataType[] {
   const total: GroupDataType = {

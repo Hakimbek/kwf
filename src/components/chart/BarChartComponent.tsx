@@ -58,7 +58,10 @@ export const BarChartComponent = ({
   }
 
   useEffect(() => {
-    const key = collection === "mp" && (product === "SnP" || product === "SnP Lam") ? "kwf" : collection;
+    const key =
+      collection === "mp" && (product === "SnP" || product === "SnP Lam")
+        ? "kwf"
+        : collection;
 
     const unsubscribe = getFilteredData(
       key,

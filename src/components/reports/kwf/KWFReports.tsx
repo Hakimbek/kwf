@@ -34,18 +34,10 @@ export const KWFReports = () => {
         <div className="d-flex gap-3">
           <BarChartComponent product="SnP" type="Sum" title="SnP" />
           <BarChartComponent product="SnP Lam" type="Sum" title="SnP Lam" />
-          <BarChartComponent
-              product="Гофролист"
-              type="Sum"
-              title="Гофролист"
-          />
+          <BarChartComponent product="Гофролист" type="Sum" title="Гофролист" />
           <BarChartComponent product="SnP" type="AKB" title="SnP" />
           <BarChartComponent product="SnP Lam" type="AKB" title="SnP Lam" />
-          <BarChartComponent
-              product="Гофролист"
-              type="AKB"
-              title="Гофролист"
-          />
+          <BarChartComponent product="Гофролист" type="AKB" title="Гофролист" />
         </div>
       </div>
       <div className="px-3 my-3">
@@ -54,78 +46,78 @@ export const KWFReports = () => {
       <div className="w-100 mb-3 px-3 gap-3 d-flex flex-column">
         <div className="d-flex gap-3">
           <BarChartComponent
-              region="Хоразм вилояти ва Коракалпогистон"
-              type="Sum"
-              title="Хоразм ва ККП"
+            region="Хоразм вилояти ва Коракалпогистон"
+            type="Sum"
+            title="Хоразм ва ККП"
           />
           <BarChartComponent
-              region="Бухоро ва Навоий вилояти"
-              type="Sum"
-              title="Бухоро ва Навоий"
+            region="Бухоро ва Навоий вилояти"
+            type="Sum"
+            title="Бухоро ва Навоий"
           />
           <BarChartComponent
-              region="Хоразм вилояти ва Коракалпогистон"
-              type="AKB"
-              title="Хоразм ва ККП"
+            region="Хоразм вилояти ва Коракалпогистон"
+            type="AKB"
+            title="Хоразм ва ККП"
           />
           <BarChartComponent
-              region="Бухоро ва Навоий вилояти"
-              type="AKB"
-              title="Бухоро ва Навоий"
-          />
-        </div>
-        <div className="d-flex gap-3">
-          <BarChartComponent
-              region="Самарканд, Жиззах ва Сирдайрё вилояти"
-              type="Sum"
-              title="Сам. Жиз. Сир."
-          />
-          <BarChartComponent
-              region="Тошкент вилояти ва шахри"
-              type="Sum"
-              title="Тошкент"
-          />
-          <BarChartComponent
-              region="Самарканд, Жиззах ва Сирдайрё вилояти"
-              type="AKB"
-              title="Сам. Жиз. Сир."
-          />
-          <BarChartComponent
-              region="Тошкент вилояти ва шахри"
-              type="AKB"
-              title="Тошкент"
+            region="Бухоро ва Навоий вилояти"
+            type="AKB"
+            title="Бухоро ва Навоий"
           />
         </div>
         <div className="d-flex gap-3">
           <BarChartComponent
-              region="Водий: ФАН"
-              type="Sum"
-              title="Водий: ФАН"
+            region="Самарканд, Жиззах ва Сирдайрё вилояти"
+            type="Sum"
+            title="Сам. Жиз. Сир."
           />
           <BarChartComponent
-              region="Кашкадарё ва Сурхондарё вилояти"
-              type="Sum"
-              title="Каш. ва Сурх."
+            region="Тошкент вилояти ва шахри"
+            type="Sum"
+            title="Тошкент"
           />
           <BarChartComponent
-              region="Экспорт (кушни)"
-              type="Sum"
-              title="Экспорт к."
+            region="Самарканд, Жиззах ва Сирдайрё вилояти"
+            type="AKB"
+            title="Сам. Жиз. Сир."
           />
           <BarChartComponent
-              region="Водий: ФАН"
-              type="AKB"
-              title="Водий: ФАН"
+            region="Тошкент вилояти ва шахри"
+            type="AKB"
+            title="Тошкент"
+          />
+        </div>
+        <div className="d-flex gap-3">
+          <BarChartComponent
+            region="Водий: ФАН"
+            type="Sum"
+            title="Водий: ФАН"
           />
           <BarChartComponent
-              region="Кашкадарё ва Сурхондарё вилояти"
-              type="AKB"
-              title="Каш. ва Сурх."
+            region="Кашкадарё ва Сурхондарё вилояти"
+            type="Sum"
+            title="Каш. ва Сурх."
           />
           <BarChartComponent
-              region="Экспорт (кушни)"
-              type="AKB"
-              title="Экспорт к."
+            region="Экспорт (кушни)"
+            type="Sum"
+            title="Экспорт к."
+          />
+          <BarChartComponent
+            region="Водий: ФАН"
+            type="AKB"
+            title="Водий: ФАН"
+          />
+          <BarChartComponent
+            region="Кашкадарё ва Сурхондарё вилояти"
+            type="AKB"
+            title="Каш. ва Сурх."
+          />
+          <BarChartComponent
+            region="Экспорт (кушни)"
+            type="AKB"
+            title="Экспорт к."
           />
         </div>
       </div>
