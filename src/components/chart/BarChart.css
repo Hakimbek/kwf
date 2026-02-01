@@ -1,6 +1,7 @@
 .bar-wrapper {
   border-radius: 15px;
   border: 1px solid var(--dark-gray);
+  background-color: aliceblue;
 }
 
 .diff {
@@ -22,4 +23,12 @@
 
 .blinking {
   border: 1px solid var(--red);
+}
+
+.Sum {
+  background-color: #E8F9FF;
+}
+
+.AKB {
+  background-color: #E7FBE6;
 }

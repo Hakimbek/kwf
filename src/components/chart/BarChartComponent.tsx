@@ -71,9 +71,7 @@ export const BarChartComponent = ({
     <div className="w-100">
       <p className="d-flex justify-content-center m-0 fw-medium gap-1">
         <span>{title}</span>
-        <span>/</span>
         <span className={color}>{percent}%</span>
-        <span>/</span>
         <span className={`diff ${diff > 0 ? "green" : "red"}`}>
           {diff > 0
             ? "+" + diff.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
@@ -81,7 +79,7 @@ export const BarChartComponent = ({
         </span>
       </p>
       <ResponsiveContainer
-        className={`bar-wrapper ${color === "red" && groupedData[0]?.Plan_Kun !== 0 ? "blinking" : ""}`}
+        className={`bar-wrapper ${color === "red" && groupedData[0]?.Plan_Kun !== 0 ? "blinking" : ""} ${type}`}
         width={width}
         height={150}
       >

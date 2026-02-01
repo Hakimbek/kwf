@@ -6,12 +6,15 @@
 .sales,
 .akb {
   width: 100%;
-  padding: 15px;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
 .sales {
-  border-right: 2px solid var(--dark-gray);
+  padding: 15px;
+}
+
+.akb {
+  padding: 15px 15px 15px 0;
 }
