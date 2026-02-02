@@ -6,10 +6,10 @@ export const getManagerKPI = async (
   callback: (amount: number) => void,
 ) => {
   try {
-      const docRef = doc(db, "kpi", managerName.trim());
-      const docSnap = await getDoc(docRef);
-      callback(docSnap.exists() ? docSnap.data().amount : 0);
+    const docRef = doc(db, "kpi", managerName.trim());
+    const docSnap = await getDoc(docRef);
+    callback(docSnap.exists() ? docSnap.data().amount : 0);
   } catch (error) {
-      console.log(error);
+    console.log(error);
   }
 };

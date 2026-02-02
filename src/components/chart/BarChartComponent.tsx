@@ -60,10 +60,7 @@ export const BarChartComponent = ({
 
   useEffect(() => {
     if (type === "KPI") {
-      getManagerKPI(
-        manager,
-        (amount) => setKPI(amount),
-      );
+      getManagerKPI(manager, (amount) => setKPI(amount));
     }
   }, [manager, type]);
 
@@ -74,19 +71,26 @@ export const BarChartComponent = ({
         : collection;
 
     const unsubscribe = getFilteredData(
-        key,
-        { type, region, manager, product },
-        (results) => setData(type !== "KPI" ? results : [{
-          Fact_Kun: KPI,
-          Plan_Kun:
-              (25000 * new Date().getDate()) /
-              new Date(
-                  new Date().getFullYear(),
-                  new Date().getMonth() + 1,
-                  0,
-              ).getDate(),
-          Plan_Oy: 25000,
-        }]),
+      key,
+      { type, region, manager, product },
+      (results) =>
+        setData(
+          type !== "KPI"
+            ? results
+            : [
+                {
+                  Fact_Kun: KPI,
+                  Plan_Kun:
+                    (25000 * new Date().getDate()) /
+                    new Date(
+                      new Date().getFullYear(),
+                      new Date().getMonth() + 1,
+                      0,
+                    ).getDate(),
+                  Plan_Oy: 25000,
+                },
+              ],
+        ),
     );
 
     return () => unsubscribe();

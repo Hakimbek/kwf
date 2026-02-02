@@ -5,7 +5,7 @@ import { db } from "../../firebase/firebaseConfig.ts";
 import { doc, setDoc } from "firebase/firestore";
 
 export const InputKPI = () => {
-  const { FARRUX, MUROD, UMID, ULUGBEK, SHOKIRJON } = ManagerName;
+  const { FARRUX, MUROD, XURSAND, ULUGBEK, SHOKIRJON } = ManagerName;
   const [manager, setManager] = useState<string>(FARRUX);
   const [amount, setAmount] = useState<string>("");
 
@@ -26,7 +26,7 @@ export const InputKPI = () => {
         <option>{MUROD}</option>
         <option>{SHOKIRJON}</option>
         <option>{ULUGBEK}</option>
-        <option>{UMID}</option>
+        <option>{XURSAND}</option>
       </Input>
       <Input
         value={amount}

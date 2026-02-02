@@ -5,6 +5,7 @@ export const ManagerName = {
   MUROD: "Шарипов Мурод",
   FARRUX: "Одилбеков Фаррухбек",
   SHOKIRJON: "Искандаров Шокиржон",
+  XURSAND: "Бозорбоев Хурсандбек",
   ULUGBEK: "Шомуратов Улугбек",
   UMID: "Хаджиов Умид",
 } as const;
