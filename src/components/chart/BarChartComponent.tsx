@@ -65,6 +65,7 @@ export const BarChartComponent = ({
   }, [manager, type]);
 
   useEffect(() => {
+    let salary = collection === "mp" ? 30000 : 10000;
     const key =
       collection === "mp" && (product === "SnP" || product === "SnP Lam")
         ? "kwf"
@@ -81,13 +82,13 @@ export const BarChartComponent = ({
                 {
                   Fact_Kun: KPI,
                   Plan_Kun:
-                    (30000 * new Date().getDate()) /
+                    (salary * new Date().getDate()) /
                     new Date(
                       new Date().getFullYear(),
                       new Date().getMonth() + 1,
                       0,
                     ).getDate(),
-                  Plan_Oy: 30000,
+                  Plan_Oy: salary,
                 },
               ],
         ),
