@@ -81,13 +81,13 @@ export const BarChartComponent = ({
                 {
                   Fact_Kun: KPI,
                   Plan_Kun:
-                    (25000 * new Date().getDate()) /
+                    (30000 * new Date().getDate()) /
                     new Date(
                       new Date().getFullYear(),
                       new Date().getMonth() + 1,
                       0,
                     ).getDate(),
-                  Plan_Oy: 25000,
+                  Plan_Oy: 30000,
                 },
               ],
         ),
