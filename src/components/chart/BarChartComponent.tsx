@@ -74,24 +74,40 @@ export const BarChartComponent = ({
     const unsubscribe = getFilteredData(
       key,
       { type, region, manager, product },
-      (results) =>
+      (results) => {
+        let percent = 1;
+
+        if (type === "KPI") {
+          let num = Number(document.querySelector('.percent')?.textContent.slice(0, -1));
+
+          if (num < 70) {
+            percent = 0;
+          } else if (num >= 70 && num < 80) {
+            percent = 0.7;
+          } else if (num >= 80 && num < 86) {
+            percent = 0.8;
+          } else if (num >= 86 && num < 95) {
+            percent = 0.9;
+          }
+        }
         setData(
-          type !== "KPI"
-            ? results
-            : [
-                {
-                  Fact_Kun: KPI,
-                  Plan_Kun:
-                    (salary * new Date().getDate()) /
-                    new Date(
-                      new Date().getFullYear(),
-                      new Date().getMonth() + 1,
-                      0,
-                    ).getDate(),
-                  Plan_Oy: salary,
-                },
-              ],
-        ),
+            type !== "KPI"
+                ? results
+                : [
+                  {
+                    Fact_Kun: KPI * percent,
+                    Plan_Kun:
+                        (salary * new Date().getDate()) /
+                        new Date(
+                            new Date().getFullYear(),
+                            new Date().getMonth() + 1,
+                            0,
+                        ).getDate(),
+                    Plan_Oy: salary,
+                  },
+                ],
+        )
+      }
     );
 
     return () => unsubscribe();
@@ -101,7 +117,7 @@ export const BarChartComponent = ({
     <div className="w-100">
       <p className="d-flex justify-content-center m-0 fw-medium gap-1">
         <span>{title}</span>
-        <span className={color}>{percent}%</span>
+        <span className={`percent ${color}`}>{percent}%</span>
         <span className={`diff ${diff > 0 ? "green" : "red"}`}>
           {diff > 0
             ? "+" + diff.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
