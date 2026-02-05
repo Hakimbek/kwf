@@ -1,6 +1,6 @@
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
 import { Manager } from "./manager/Manager.tsx";
-// import { ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 // import useLocalStorage from "use-local-storage";
 // import { Routes, Route } from "react-router-dom";
 // import Import from "./components/import/Import.tsx";
@@ -18,29 +18,29 @@ function App() {
   // const [key] = useLocalStorage(COLLECTION, KWF);
 
   return (
-    <Manager />
-    // <div>
-    //   <Header />
-    //   <Routes>
-    //     <Route
-    //       path="/"
-    //       element={key === KWF ? <KWFReports /> : <MPReports />}
-    //     />
-    //     <Route
-    //       path="/import"
-    //       element={
-    //         <>
-    //           <div className="d-flex justify-content-center gap-3">
-    //             <Import collection={KWF} />
-    //             <Import collection={MP} />
-    //           </div>
-    //           <InputKPI />
-    //         </>
-    //       }
-    //     />
-    //   </Routes>
-    //   <ToastContainer />
-    // </div>
+    <div>
+      {/*<Header />*/}
+      <Manager />
+      {/*<Routes>*/}
+      {/*  <Route*/}
+      {/*    path="/"*/}
+      {/*    element={key === KWF ? <KWFReports /> : <MPReports />}*/}
+      {/*  />*/}
+      {/*  <Route*/}
+      {/*    path="/import"*/}
+      {/*    element={*/}
+      {/*      <>*/}
+      {/*        <div className="d-flex justify-content-center gap-3">*/}
+      {/*          <Import collection={KWF} />*/}
+      {/*          <Import collection={MP} />*/}
+      {/*        </div>*/}
+      {/*        <InputKPI />*/}
+      {/*      </>*/}
+      {/*    }*/}
+      {/*  />*/}
+      {/*</Routes>*/}
+      <ToastContainer />
+    </div>
   );
 }
 

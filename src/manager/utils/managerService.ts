@@ -61,7 +61,7 @@ export const deleteManager = async (id: string) => {
     restrictedCollections,
   );
 
-  if (blockingCollection) throw new Error(blockingCollection);
+  if (blockingCollection) throw new Error();
 
   return await deleteDoc(doc(db, MANAGERS_COLLECTION_NAME, id));
 };
