@@ -20,8 +20,8 @@ export const managersRef = collection(db, MANAGERS_COLLECTION_NAME);
  * Creates a new manager document with default empty values.
  * @returns A promise that resolves to the newly created Firestore document reference.
  */
-export const addManager = async () =>
-  await addDoc(managersRef, { name: "", isActive: true });
+export const addManager = async (name: string) =>
+  await addDoc(managersRef, { name });
 
 /**
  * Internal helper to check if a specific document ID is referenced as 'managerId'

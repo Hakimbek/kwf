@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { Input } from "reactstrap";
+import { Button, Input } from "reactstrap";
 import type { ColDef } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
 import {
@@ -15,18 +15,22 @@ import "./Manager.css";
 export interface IManager {
   id: string;
   name: string;
-  isActive: boolean;
-  isAddButton?: boolean;
 }
 
 export const Manager = () => {
   const [rowData, setRowData] = useState<IManager[]>([]);
   const [searchText, setSearchText] = useState("");
+  const [name, setName] = useState("");
 
   useEffect(() => {
     const unsubscribe = subscribeToManagers(setRowData);
     return () => unsubscribe();
   }, []);
+
+  const handleAdd = async () => {
+    await addManager(name)
+    setName("");
+  }
 
   const handleDelete = async (data: IManager) => {
     try {
@@ -38,24 +42,22 @@ export const Manager = () => {
 
   const onCellValueChanged = async (event: CellValueChangedEvent) => {
     const { data, oldValue, newValue, node } = event;
-    if (oldValue === newValue || data.isAddButton) return;
+    if (oldValue === newValue) return;
 
     const trimmedValue = newValue?.trim() || "";
 
-    if (trimmedValue !== "") {
-      const isDup = rowData.some(
-        (m) =>
-          m.id !== data.id &&
-          m.name.toLowerCase() === trimmedValue.toLowerCase(),
-      );
-      if (isDup) {
-        toast.error(`The name "${trimmedValue}" is already taken!`);
-        node.setDataValue("name", oldValue);
-        return;
-      }
+    if (trimmedValue === "") {
+      toast.error("Name cannot be empty!");
+      node.setDataValue("name", oldValue);
+      return;
     }
 
-    await updateManager(data.id, { name: trimmedValue });
+    try {
+      await updateManager(data.id, { name: trimmedValue });
+    } catch {
+      toast.error("Failed to update name");
+      node.setDataValue("name", oldValue);
+    }
   };
 
   const columnDefs = useMemo<ColDef<IManager>[]>(
@@ -64,55 +66,56 @@ export const Manager = () => {
         field: "name",
         headerName: "Name",
         flex: 1,
-        editable: (p) => !p.data?.isAddButton,
+        editable: true,
         sortable: true,
         unSortIcon: true,
         resizable: false,
-        cellRenderer: (p: any) => p.data.isAddButton ?
-            <div onClick={() => addManager()} style={{ color: '#16a34a', fontWeight: 'bold', cursor: 'pointer' }}>+ Add Manager</div> :
-            p.value || <span style={{ color: '#aaa' }}>Enter Name...</span>
-      },
-      {
-        field: "isActive",
-        headerName: "Active",
-        editable: (p) => !p.data?.isAddButton,
-        sortable: true,
-        unSortIcon: true,
-        resizable: false,
-        cellRenderer: "agCheckboxCellRenderer",
-        cellEditor: "agCheckboxCellEditor",
-        width: 120,
       },
       {
         headerName: "Actions",
-        width: 80,
+        width: 100,
         resizable: false,
-        headerClass: 'right-header',
-        cellClass: 'vertical-border right-cell',
-        cellRenderer: (p: any) => p.data.isAddButton ? null :
-            <button onClick={() => handleDelete(p.data)} style={{ border: 'none', background: 'none', cursor: 'pointer' }}>🗑️</button>
-      }
+        cellRenderer: (p: any) => (
+          <button
+            onClick={() => handleDelete(p.data)}
+            style={{ border: "none", background: "none", cursor: "pointer" }}
+          >
+            <i className="bi bi-trash" style={{ color: "red" }}></i>
+          </button>
+        ),
+      },
     ],
     [],
   );
 
   return (
     <div className="managers-wrapper">
+      <h2 className="managers-title">Managers</h2>
       <div className="managers-header">
-        <h2 className="managers-title">Managers</h2>
-        <Input
-          className="managers-search"
-          type="search"
-          placeholder="Search by name..."
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
+        <div>
+          <Input
+              type="search"
+              placeholder="Search by name..."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+          />
+        </div>
+        <div className="managers-add">
+          <Input
+              type="text"
+              placeholder="Type name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+          />
+          <Button color="primary" onClick={handleAdd}>
+            Add
+          </Button>
+        </div>
       </div>
       <AgGridReact<IManager>
         rowData={rowData}
         columnDefs={columnDefs}
         quickFilterText={searchText}
-        pinnedBottomRowData={[{ isAddButton: true } as any]}
         onCellValueChanged={onCellValueChanged}
         stopEditingWhenCellsLoseFocus={true}
       />

@@ -7,19 +7,18 @@
   padding: 20px;
 }
 
-.managers-header {
-  display: flex;
-  justify-content: space-between;
-}
-
 .managers-title {
-  flex: 2;
   margin: 0;
   font-size: 30px;
   font-weight: 350;
 }
 
-.managers-search {
-  flex: 1;
-  width: 400px;
+.managers-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.managers-add {
+  display: flex;
+  gap: 10px;
 }
