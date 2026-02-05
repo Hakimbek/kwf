@@ -12,6 +12,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ag-grid-community": "^35.0.1",
+    "ag-grid-react": "^35.0.1",
     "bootstrap": "^5.3.8",
     "codepage": "^1.15.0",
     "firebase": "^12.8.0",
