@@ -73,13 +73,12 @@ export const Manager = () => {
       },
       {
         headerName: "Actions",
-        width: 100,
+        width: 80,
         resizable: false,
+        headerClass: "managers-header-cell",
+        cellClass: "managers-cell",
         cellRenderer: (p: any) => (
-          <button
-            onClick={() => handleDelete(p.data)}
-            style={{ border: "none", background: "none", cursor: "pointer" }}
-          >
+          <button onClick={() => handleDelete(p.data)} className="managers-button">
             <i className="bi bi-trash" style={{ color: "red" }}></i>
           </button>
         ),

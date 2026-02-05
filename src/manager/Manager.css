@@ -22,3 +22,14 @@
   display: flex;
   gap: 10px;
 }
+
+.managers-button {
+  background: none;
+  border: none;
+}
+
+.managers-header-cell,
+.managers-cell {
+  display: flex;
+  justify-content: center;
+}
