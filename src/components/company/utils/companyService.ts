@@ -1,4 +1,4 @@
-import { db } from "../../firebase/firebaseConfig.ts";
+import { db } from "../../../firebase/firebaseConfig.ts";
 import {
   addDoc,
   collection,
@@ -12,21 +12,21 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
-export const MANAGERS_COLLECTION_NAME = "managers";
+export const COMPANY_COLLECTION_NAME = "company";
 
-export const managersRef = collection(db, MANAGERS_COLLECTION_NAME);
+export const companyRef = collection(db, COMPANY_COLLECTION_NAME);
 
 /**
- * Creates a new manager document with default empty values.
+ * Creates a new company document.
  * @returns A promise that resolves to the newly created Firestore document reference.
  */
-export const addManager = async (name: string) =>
-  await addDoc(managersRef, { name });
+export const addCompany = async (name: string) =>
+  await addDoc(companyRef, { name });
 
 /**
- * Internal helper to check if a specific document ID is referenced as 'managerId'
+ * Internal helper to check if a specific document ID is referenced as 'companyId'
  * across a set of other Firestore collections.
- * @param id - The Firestore document ID of the manager.
+ * @param id - The Firestore document ID of the company.
  * @param collectionsToCheck - An array of collection names to search through.
  * @returns The name of the first collection where a reference is found, or null if clear.
  */
@@ -37,7 +37,7 @@ const checkUsageInCollections = async (
   for (const name of collectionsToCheck) {
     const q = query(
       collection(db, name),
-      where("managerId", "==", id),
+      where("companyId", "==", id),
       limit(1),
     );
     const snap = await getDocs(q);
@@ -47,12 +47,12 @@ const checkUsageInCollections = async (
 };
 
 /**
- * Deletes a manager document only if they are not referenced in other collections.
- * @param id - The ID of the manager to delete.
+ * Deletes a company document only if they are not referenced in other collections.
+ * @param id - The ID of the company to delete.
  * @throws {Error} Throws an error containing the name of the collection that blocks deletion.
  * @returns A promise that resolves when the deletion is successful.
  */
-export const deleteManager = async (id: string) => {
+export const deleteCompany = async (id: string) => {
   // TODO: make dynamic
   const restrictedCollections: string[] = [];
 
@@ -63,27 +63,27 @@ export const deleteManager = async (id: string) => {
 
   if (blockingCollection) throw new Error();
 
-  return await deleteDoc(doc(db, MANAGERS_COLLECTION_NAME, id));
+  return await deleteDoc(doc(db, COMPANY_COLLECTION_NAME, id));
 };
 
 /**
- * Updates specific fields of an existing manager document.
- * @param id - The ID of the manager to update.
+ * Updates specific fields of an existing company document.
+ * @param id - The ID of the company to update.
  * @param data - An object containing the fields to be updated (e.g., { name: "New Name" }).
  * @returns A promise that resolves when the update is complete.
  */
-export const updateManager = async (id: string, data: object) => {
-  const docRef = doc(db, MANAGERS_COLLECTION_NAME, id);
+export const updateCompany = async (id: string, data: object) => {
+  const docRef = doc(db, COMPANY_COLLECTION_NAME, id);
   return await updateDoc(docRef, data);
 };
 
 /**
- * Subscribes to the managers collection in real-time.
- * @param callback - Function to handle the updated array of manager documents.
+ * Subscribes to the company collection in real-time.
+ * @param callback - Function to handle the updated array of company documents.
  * @returns Unsubscribe function to stop listening to changes.
  */
-export const subscribeToManagers = (callback: (data: any[]) => void) => {
-  return onSnapshot(managersRef, (snapshot) => {
+export const subscribeToCompany = (callback: (data: any[]) => void) => {
+  return onSnapshot(companyRef, (snapshot) => {
     const data = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),

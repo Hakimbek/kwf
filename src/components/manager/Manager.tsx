@@ -109,7 +109,7 @@ export const Manager = () => {
         <form className="managers-add">
           <Input
             type="text"
-            placeholder="Type name"
+            placeholder="Type manager name..."
             value={name}
             onChange={(e) => setName(e.target.value)}
           />

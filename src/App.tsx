@@ -1,5 +1,6 @@
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
-import { Manager } from "./manager/Manager.tsx";
+import { Manager } from "./components/manager/Manager.tsx";
+import { Company } from "./components/company/Company.tsx";
 import { ToastContainer } from "react-toastify";
 // import useLocalStorage from "use-local-storage";
 import { Routes, Route } from "react-router-dom";
@@ -23,22 +24,23 @@ function App() {
       <Header />
       <Routes>
         <Route path="/managers" element={<Manager />} />
-      {/*  <Route*/}
-      {/*    path="/"*/}
-      {/*    element={key === KWF ? <KWFReports /> : <MPReports />}*/}
-      {/*  />*/}
-      {/*  <Route*/}
-      {/*    path="/import"*/}
-      {/*    element={*/}
-      {/*      <>*/}
-      {/*        <div className="d-flex justify-content-center gap-3">*/}
-      {/*          <Import collection={KWF} />*/}
-      {/*          <Import collection={MP} />*/}
-      {/*        </div>*/}
-      {/*        <InputKPI />*/}
-      {/*      </>*/}
-      {/*    }*/}
-      {/*  />*/}
+        <Route path="/company" element={<Company />} />
+        {/*  <Route*/}
+        {/*    path="/"*/}
+        {/*    element={key === KWF ? <KWFReports /> : <MPReports />}*/}
+        {/*  />*/}
+        {/*  <Route*/}
+        {/*    path="/import"*/}
+        {/*    element={*/}
+        {/*      <>*/}
+        {/*        <div className="d-flex justify-content-center gap-3">*/}
+        {/*          <Import collection={KWF} />*/}
+        {/*          <Import collection={MP} />*/}
+        {/*        </div>*/}
+        {/*        <InputKPI />*/}
+        {/*      </>*/}
+        {/*    }*/}
+        {/*  />*/}
       </Routes>
       <ToastContainer />
     </div>
