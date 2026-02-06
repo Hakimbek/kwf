@@ -1,4 +1,3 @@
-import { Filter } from "../filter/Filter.tsx";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
 
@@ -38,9 +37,6 @@ export const Header = () => {
         >
           Products
         </NavLink>
-      </div>
-      <div className="d-flex gap-2">
-        <Filter />
       </div>
     </header>
   );
