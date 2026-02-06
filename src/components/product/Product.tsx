@@ -118,7 +118,7 @@ export const Product = () => {
             onClick={() => handleDelete(p.data)}
             className="products-button"
           >
-            <i className="bi bi-trash" style={{ color: "red" }}></i>
+            <i className="bi bi-x-circle" style={{ color: "red" }}></i>
           </button>
         ),
       },

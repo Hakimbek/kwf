@@ -86,7 +86,7 @@ export const Company = () => {
             onClick={() => handleDelete(p.data)}
             className="company-button"
           >
-            <i className="bi bi-trash" style={{ color: "red" }}></i>
+            <i className="bi bi-x-circle" style={{ color: "red" }}></i>
           </button>
         ),
       },
