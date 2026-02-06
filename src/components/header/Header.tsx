@@ -18,6 +18,14 @@ export const Header = () => {
           className={({ isActive }) =>
             `header-link ${isActive && "header-link_active"}`
           }
+          to="/regions"
+        >
+          Regions
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `header-link ${isActive && "header-link_active"}`
+          }
           to="/managers"
         >
           Managers
