@@ -14,23 +14,22 @@
 }
 
 .products-header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .products-add {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .products-button {
-    background: none;
-    border: none;
+  background: none;
+  border: none;
 }
 
 .products-header-cell,
 .products-cell {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
-

@@ -29,6 +29,7 @@ export const Company = () => {
 
   const handleAdd = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    if (!name) return;
     setIsLoading(true);
     await addCompany(name);
     setIsLoading(false);

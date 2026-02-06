@@ -11,6 +11,7 @@ import {
   limit,
   updateDoc,
 } from "firebase/firestore";
+import type { IManager } from "../Manager.tsx";
 
 export const MANAGERS_COLLECTION_NAME = "managers";
 
@@ -20,8 +21,8 @@ export const managersRef = collection(db, MANAGERS_COLLECTION_NAME);
  * Creates a new manager document.
  * @returns A promise that resolves to the newly created Firestore document reference.
  */
-export const addManager = async (name: string) =>
-  await addDoc(managersRef, { name });
+export const addManager = async (name: string, companyId: string) =>
+  await addDoc(managersRef, { name, companyId });
 
 /**
  * Internal helper to check if a specific document ID is referenced as 'managerId'
@@ -72,7 +73,7 @@ export const deleteManager = async (id: string) => {
  * @param data - An object containing the fields to be updated (e.g., { name: "New Name" }).
  * @returns A promise that resolves when the update is complete.
  */
-export const updateManager = async (id: string, data: object) => {
+export const updateManager = async (id: string, data: Partial<IManager>) => {
   const docRef = doc(db, MANAGERS_COLLECTION_NAME, id);
   return await updateDoc(docRef, data);
 };

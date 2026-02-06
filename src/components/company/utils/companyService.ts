@@ -11,6 +11,7 @@ import {
   limit,
   updateDoc,
 } from "firebase/firestore";
+import { MANAGERS_COLLECTION_NAME } from "../../manager/utils/managerService.ts";
 
 export const COMPANY_COLLECTION_NAME = "company";
 
@@ -53,8 +54,7 @@ const checkUsageInCollections = async (
  * @returns A promise that resolves when the deletion is successful.
  */
 export const deleteCompany = async (id: string) => {
-  // TODO: make dynamic
-  const restrictedCollections: string[] = [];
+  const restrictedCollections: string[] = [MANAGERS_COLLECTION_NAME];
 
   const blockingCollection = await checkUsageInCollections(
     id,
