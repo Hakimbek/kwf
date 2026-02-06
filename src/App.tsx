@@ -2,13 +2,14 @@ import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
 import { Manager } from "./manager/Manager.tsx";
 import { ToastContainer } from "react-toastify";
 // import useLocalStorage from "use-local-storage";
-// import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 // import Import from "./components/import/Import.tsx";
-// import { Header } from "./components/header/Header.tsx";
+import { Header } from "./components/header/Header.tsx";
 // import { CollectionName, StorageName } from "./type/import.ts";
 // import { MPReports } from "./components/reports/mp/MPReports.tsx";
 // import { KWFReports } from "./components/reports/kwf/KWFReports.tsx";
 // import { InputKPI } from "./components/input/Input.tsx";
+import "./App.css";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -18,10 +19,10 @@ function App() {
   // const [key] = useLocalStorage(COLLECTION, KWF);
 
   return (
-    <div>
-      {/*<Header />*/}
-      <Manager />
-      {/*<Routes>*/}
+    <div className="app">
+      <Header />
+      <Routes>
+        <Route path="/managers" element={<Manager />} />
       {/*  <Route*/}
       {/*    path="/"*/}
       {/*    element={key === KWF ? <KWFReports /> : <MPReports />}*/}
@@ -38,7 +39,7 @@ function App() {
       {/*      </>*/}
       {/*    }*/}
       {/*  />*/}
-      {/*</Routes>*/}
+      </Routes>
       <ToastContainer />
     </div>
   );

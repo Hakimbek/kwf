@@ -21,16 +21,20 @@ export const Manager = () => {
   const [rowData, setRowData] = useState<IManager[]>([]);
   const [searchText, setSearchText] = useState("");
   const [name, setName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const unsubscribe = subscribeToManagers(setRowData);
     return () => unsubscribe();
   }, []);
 
-  const handleAdd = async () => {
-    await addManager(name)
+  const handleAdd = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    await addManager(name);
+    setIsLoading(false);
     setName("");
-  }
+  };
 
   const handleDelete = async (data: IManager) => {
     try {
@@ -78,7 +82,10 @@ export const Manager = () => {
         headerClass: "managers-header-cell",
         cellClass: "managers-cell",
         cellRenderer: (p: any) => (
-          <button onClick={() => handleDelete(p.data)} className="managers-button">
+          <button
+            onClick={() => handleDelete(p.data)}
+            className="managers-button"
+          >
             <i className="bi bi-trash" style={{ color: "red" }}></i>
           </button>
         ),
@@ -93,23 +100,28 @@ export const Manager = () => {
       <div className="managers-header">
         <div>
           <Input
-              type="search"
-              placeholder="Search by name..."
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
+            type="search"
+            placeholder="Search by name..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
           />
         </div>
-        <div className="managers-add">
+        <form className="managers-add">
           <Input
-              type="text"
-              placeholder="Type name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+            type="text"
+            placeholder="Type name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
-          <Button color="primary" onClick={handleAdd}>
+          <Button
+            disabled={isLoading}
+            type="submit"
+            color="primary"
+            onClick={(e) => handleAdd(e)}
+          >
             Add
           </Button>
-        </div>
+        </form>
       </div>
       <AgGridReact<IManager>
         rowData={rowData}

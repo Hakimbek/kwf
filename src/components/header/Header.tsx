@@ -7,6 +7,7 @@ import {
 } from "../../type/import.ts";
 import { Filter } from "../filter/Filter.tsx";
 import useLocalStorage from "use-local-storage";
+import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 export const Header = () => {
@@ -25,26 +26,14 @@ export const Header = () => {
   };
 
   return (
-    <header className="header">
-      <nav className="nav">
-        <div className="d-flex gap-2">
-          <button
-            className={`nav-button ${collection === KWF && "active-nav"}`}
-            onClick={() => handleClick(KWF)}
-          >
-            {KWF.toUpperCase()}
-          </button>
-          <button
-            className={`nav-button ${collection === MP && "active-nav"}`}
-            onClick={() => handleClick(MP)}
-          >
-            {MP.toUpperCase()}
-          </button>
-        </div>
-        <div className="d-flex gap-2">
-          <Filter />
-        </div>
-      </nav>
+    <header className="header-wrapper">
+      <div className="d-flex gap-3">
+        <NavLink className={({ isActive }) => `header-link ${isActive && 'header-link_active'}`} to="/managers">Managers</NavLink>
+        <NavLink className={({ isActive }) => `header-link ${isActive && 'header-link_active'}`} to="/company">Company</NavLink>
+      </div>
+      <div className="d-flex gap-2">
+        <Filter />
+      </div>
     </header>
   );
 };

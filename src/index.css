@@ -19,4 +19,5 @@
 body {
   font-family: var(--font-rubik), serif;
   background-color: var(--light-gray);
+  box-sizing: border-box;
 }
