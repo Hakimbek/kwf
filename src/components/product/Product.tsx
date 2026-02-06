@@ -1,38 +1,47 @@
+import { useEffect, useMemo } from "react";
 import { Button, Input } from "reactstrap";
-import { useEffect, useMemo, useState } from "react";
-import { AgGridReact } from "ag-grid-react";
-import {
-  addCompany,
-  subscribeToCompany,
-  updateCompany,
-  deleteCompany,
-} from "./utils/companyService.ts";
+import { useState } from "react";
 import type { CellValueChangedEvent, ColDef } from "ag-grid-community";
+import { AgGridReact } from "ag-grid-react";
 import { toast } from "react-toastify";
-import "./Company.css";
+import {
+  updateProduct,
+  addProduct,
+  subscribeToProducts,
+  deleteProduct,
+} from "./utils/productService.ts";
+import "./Product.css";
 
-export interface ICompany {
+export interface IProduct {
   id: string;
   name: string;
 }
 
-export const Company = () => {
-  const [rowData, setRowData] = useState<ICompany[]>([]);
+export const Product = () => {
+  const [rowData, setRowData] = useState<IProduct[]>([]);
   const [searchText, setSearchText] = useState("");
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = subscribeToCompany(setRowData);
+    const unsubscribe = subscribeToProducts(setRowData);
     return () => unsubscribe();
   }, []);
 
   const handleAdd = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    await addCompany(name);
+    await addProduct(name);
     setIsLoading(false);
     setName("");
+  };
+
+  const handleDelete = async (data: IProduct) => {
+    try {
+      await deleteProduct(data.id);
+    } catch {
+      toast.error("Product is used in other collections!");
+    }
   };
 
   const onCellValueChanged = async (event: CellValueChangedEvent) => {
@@ -48,22 +57,14 @@ export const Company = () => {
     }
 
     try {
-      await updateCompany(data.id, { name: trimmedValue });
+      await updateProduct(data.id, { name: trimmedValue });
     } catch {
       toast.error("Failed to update name");
       node.setDataValue("name", oldValue);
     }
   };
 
-  const handleDelete = async (data: ICompany) => {
-    try {
-      await deleteCompany(data.id);
-    } catch {
-      toast.error("Company is used in other collections!");
-    }
-  };
-
-  const columnDefs = useMemo<ColDef<ICompany>[]>(
+  const columnDefs = useMemo<ColDef<IProduct>[]>(
     () => [
       {
         field: "name",
@@ -78,12 +79,12 @@ export const Company = () => {
         headerName: "Actions",
         width: 80,
         resizable: false,
-        headerClass: "company-header-cell",
-        cellClass: "company-cell",
+        headerClass: "products-header-cell",
+        cellClass: "products-cell",
         cellRenderer: (p: any) => (
           <button
             onClick={() => handleDelete(p.data)}
-            className="company-button"
+            className="products-button"
           >
             <i className="bi bi-trash" style={{ color: "red" }}></i>
           </button>
@@ -94,9 +95,9 @@ export const Company = () => {
   );
 
   return (
-    <div className="company-wrapper">
-      <h2 className="company-title">Company</h2>
-      <div className="company-header">
+    <div className="products-wrapper">
+      <h2 className="products-title">Products</h2>
+      <div className="products-header">
         <div>
           <Input
             type="search"
@@ -105,10 +106,10 @@ export const Company = () => {
             onChange={(e) => setSearchText(e.target.value)}
           />
         </div>
-        <form className="company-add">
+        <form className="products-add">
           <Input
             type="text"
-            placeholder="Type company name..."
+            placeholder="Type product name..."
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -122,7 +123,7 @@ export const Company = () => {
           </Button>
         </form>
       </div>
-      <AgGridReact<ICompany>
+      <AgGridReact<IProduct>
         rowData={rowData}
         columnDefs={columnDefs}
         quickFilterText={searchText}

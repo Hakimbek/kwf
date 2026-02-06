@@ -114,7 +114,7 @@ export const Manager = () => {
             onChange={(e) => setName(e.target.value)}
           />
           <Button
-            disabled={isLoading}
+            disabled={isLoading || !name}
             type="submit"
             color="primary"
             onClick={(e) => handleAdd(e)}

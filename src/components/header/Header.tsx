@@ -10,6 +10,14 @@ export const Header = () => {
           className={({ isActive }) =>
             `header-link ${isActive && "header-link_active"}`
           }
+          to="/company"
+        >
+          Company
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `header-link ${isActive && "header-link_active"}`
+          }
           to="/managers"
         >
           Managers
@@ -18,9 +26,9 @@ export const Header = () => {
           className={({ isActive }) =>
             `header-link ${isActive && "header-link_active"}`
           }
-          to="/company"
+          to="/products"
         >
-          Company
+          Products
         </NavLink>
       </div>
       <div className="d-flex gap-2">
