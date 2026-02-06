@@ -56,8 +56,16 @@ export const Manager = () => {
   };
 
   const onCellValueChanged = async (event: CellValueChangedEvent) => {
-    const { data, colDef, newValue, oldValue } = event;
+    const { data, colDef, newValue, oldValue, node } = event;
     if (oldValue === newValue) return;
+
+    const trimmedValue = newValue?.trim() || "";
+
+    if (trimmedValue === "" && colDef.field === "name") {
+      toast.error("Name cannot be empty!");
+      node.setDataValue("name", oldValue);
+      return;
+    }
 
     try {
       await updateManager(data.id, {

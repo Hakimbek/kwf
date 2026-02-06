@@ -20,8 +20,8 @@ export const productsRef = collection(db, PRODUCTS_COLLECTION_NAME);
  * Creates a new product document.
  * @returns A promise that resolves to the newly created Firestore document reference.
  */
-export const addProduct = async (name: string) =>
-  await addDoc(productsRef, { name });
+export const addProduct = async (name: string, companyId: string) =>
+  await addDoc(productsRef, { name, companyId });
 
 /**
  * Internal helper to check if a specific document ID is referenced as 'productId'

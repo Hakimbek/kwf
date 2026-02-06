@@ -12,6 +12,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { MANAGERS_COLLECTION_NAME } from "../../manager/utils/managerService.ts";
+import { PRODUCTS_COLLECTION_NAME } from "../../product/utils/productService.ts";
 
 export const COMPANY_COLLECTION_NAME = "company";
 
@@ -54,7 +55,10 @@ const checkUsageInCollections = async (
  * @returns A promise that resolves when the deletion is successful.
  */
 export const deleteCompany = async (id: string) => {
-  const restrictedCollections: string[] = [MANAGERS_COLLECTION_NAME];
+  const restrictedCollections: string[] = [
+    MANAGERS_COLLECTION_NAME,
+    PRODUCTS_COLLECTION_NAME,
+  ];
 
   const blockingCollection = await checkUsageInCollections(
     id,
