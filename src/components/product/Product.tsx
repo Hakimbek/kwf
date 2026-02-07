@@ -167,7 +167,9 @@ export const Product = () => {
             value={selectedCompanyId}
             onChange={(e) => setSelectedCompanyId(e.target.value)}
           >
-            <option value="" hidden>Select company name...</option>
+            <option value="" hidden>
+              Select company name...
+            </option>
             {companies.map(({ id, name }) => (
               <option key={id} value={id}>
                 {name}

@@ -60,7 +60,9 @@ export const ProductAddModal = ({ isModalOpen, toggle }: IModal) => {
               value={selectedCompanyId}
               onChange={(e) => setSelectedCompanyId(e.target.value)}
             >
-              <option value="" hidden>Select company name...</option>
+              <option value="" hidden>
+                Select company name...
+              </option>
               {companies.map(({ id, name }) => (
                 <option key={id} value={id}>
                   {name}
@@ -76,7 +78,9 @@ export const ProductAddModal = ({ isModalOpen, toggle }: IModal) => {
               value={selectedManagerId}
               onChange={(e) => setSelectedManagerId(e.target.value)}
             >
-              <option value="" hidden>Select manager name...</option>
+              <option value="" hidden>
+                Select manager name...
+              </option>
               {managers
                 .filter(({ companyId }) => companyId === selectedCompanyId)
                 .map(({ id, name }) => (
@@ -94,7 +98,9 @@ export const ProductAddModal = ({ isModalOpen, toggle }: IModal) => {
               value={selectedProductId}
               onChange={(e) => setSelectedProductId(e.target.value)}
             >
-              <option value="" hidden>Select product name...</option>
+              <option value="" hidden>
+                Select product name...
+              </option>
               {products
                 .filter(({ companyId }) => companyId === selectedCompanyId)
                 .map(({ id, name }) => (
@@ -112,7 +118,9 @@ export const ProductAddModal = ({ isModalOpen, toggle }: IModal) => {
               value={selectedRegionId}
               onChange={(e) => setSelectedRegionId(e.target.value)}
             >
-              <option value="" hidden>Select region name...</option>
+              <option value="" hidden>
+                Select region name...
+              </option>
               {regions.map(({ id, name }) => (
                 <option key={id} value={id}>
                   {name}
