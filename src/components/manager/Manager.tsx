@@ -148,6 +148,7 @@ export const Manager = () => {
           <Input
             type="select"
             value={selectedCompanyId}
+            className={`${selectedCompanyId === "" && 'text-secondary'}`}
             onChange={(e) => setSelectedCompanyId(e.target.value)}
           >
             <option value="">Select company name...</option>
