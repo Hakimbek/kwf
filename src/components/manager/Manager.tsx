@@ -165,7 +165,6 @@ export const Manager = () => {
           <Input
             type="select"
             value={selectedCompanyId}
-            className={`${selectedCompanyId === "" && "text-secondary"}`}
             onChange={(e) => setSelectedCompanyId(e.target.value)}
           >
             <option value="">Select company name...</option>
@@ -199,7 +198,7 @@ export const Manager = () => {
           <Button color="danger" onClick={() => handleDelete(selectedData)}>
             Delete
           </Button>{" "}
-          <Button color="primary" onClick={toggle}>
+          <Button color="secondary" onClick={toggle}>
             Cancel
           </Button>
         </ModalFooter>

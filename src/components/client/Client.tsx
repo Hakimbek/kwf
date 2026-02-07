@@ -154,7 +154,7 @@ export const Client = () => {
           <Button color="danger" onClick={() => handleDelete(selectedData)}>
             Delete
           </Button>{" "}
-          <Button color="primary" onClick={toggle}>
+          <Button color="secondary" onClick={toggle}>
             Cancel
           </Button>
         </ModalFooter>

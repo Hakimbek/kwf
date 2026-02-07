@@ -4,6 +4,7 @@ import { Company } from "./components/company/Company.tsx";
 import { Product } from "./components/product/Product.tsx";
 import { Region } from "./components/region/Region.tsx";
 import { Client } from "./components/client/Client.tsx";
+import { Plan } from "./components/Plan/Plan.tsx";
 import { ToastContainer } from "react-toastify";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/header/Header.tsx";
@@ -21,6 +22,7 @@ function App() {
         <Route path="/products" element={<Product />} />
         <Route path="/clients" element={<Client />} />
         <Route path="/regions" element={<Region />} />
+        <Route path="/plan" element={<Plan />} />
       </Routes>
       <ToastContainer />
     </div>
