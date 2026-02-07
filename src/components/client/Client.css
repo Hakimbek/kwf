@@ -1,0 +1,35 @@
+.client-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.client-title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 350;
+}
+
+.client-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.client-add {
+  display: flex;
+  gap: 10px;
+}
+
+.client-button {
+  background: none;
+  border: none;
+}
+
+.client-header-cell,
+.client-cell {
+  display: flex;
+  justify-content: center;
+}
