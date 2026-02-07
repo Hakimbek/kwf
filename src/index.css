@@ -21,3 +21,7 @@ body {
   background-color: var(--light-gray);
   box-sizing: border-box;
 }
+
+.modal-title {
+  font-weight: 400;
+}

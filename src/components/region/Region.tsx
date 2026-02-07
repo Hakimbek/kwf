@@ -1,4 +1,11 @@
-import { Button, Input } from "reactstrap";
+import {
+  Button,
+  Input,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+} from "reactstrap";
 import { useEffect, useMemo, useState } from "react";
 import { AgGridReact } from "ag-grid-react";
 import type { CellValueChangedEvent, ColDef } from "ag-grid-community";
@@ -21,11 +28,15 @@ export const Region = () => {
   const [searchText, setSearchText] = useState("");
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedData, setSelectedData] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const unsubscribe = subscribeToRegion(setRowData);
     return () => unsubscribe();
   }, []);
+
+  const toggle = () => setIsModalOpen(!isModalOpen);
 
   const handleAdd = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -56,9 +67,15 @@ export const Region = () => {
     }
   };
 
+  const openDeleteModal = (data: any) => {
+    setSelectedData(data);
+    toggle();
+  };
+
   const handleDelete = async (data: IRegion) => {
     try {
       await deleteRegion(data.id);
+      toggle();
     } catch {
       toast.error("Region is used in other collections!");
     }
@@ -83,7 +100,7 @@ export const Region = () => {
         cellClass: "region-cell",
         cellRenderer: (p: any) => (
           <button
-            onClick={() => handleDelete(p.data)}
+            onClick={() => openDeleteModal(p.data)}
             className="region-button"
           >
             <i className="bi bi-x-circle" style={{ color: "red" }}></i>
@@ -130,6 +147,18 @@ export const Region = () => {
         onCellValueChanged={onCellValueChanged}
         stopEditingWhenCellsLoseFocus={true}
       />
+      <Modal isOpen={isModalOpen} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Delete {selectedData?.name}</ModalHeader>
+        <ModalBody>Are you sure you want to delete this record?</ModalBody>
+        <ModalFooter>
+          <Button color="danger" onClick={() => handleDelete(selectedData)}>
+            Delete
+          </Button>{" "}
+          <Button color="primary" onClick={toggle}>
+            Cancel
+          </Button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 };

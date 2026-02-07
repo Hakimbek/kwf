@@ -69,12 +69,13 @@ export const Company = () => {
 
   const openDeleteModal = (data: any) => {
     setSelectedData(data);
-    setIsModalOpen(true);
+    toggle();
   };
 
   const handleDelete = async (data: ICompany) => {
     try {
       await deleteCompany(data.id);
+      toggle();
     } catch {
       toast.error("Company is used in other collections!");
     }
@@ -98,14 +99,12 @@ export const Company = () => {
         headerClass: "company-header-cell",
         cellClass: "company-cell",
         cellRenderer: (p: any) => (
-          <>
-            <button
-                onClick={() => openDeleteModal(p.data)}
-                className="company-button"
-            >
-              <i className="bi bi-x-circle" style={{ color: "red" }}></i>
-            </button>
-          </>
+          <button
+            onClick={() => openDeleteModal(p.data)}
+            className="company-button"
+          >
+            <i className="bi bi-x-circle" style={{ color: "red" }}></i>
+          </button>
         ),
       },
     ],
@@ -155,7 +154,7 @@ export const Company = () => {
           <Button color="danger" onClick={() => handleDelete(selectedData)}>
             Delete
           </Button>{" "}
-          <Button color="secondary" onClick={toggle}>
+          <Button color="primary" onClick={toggle}>
             Cancel
           </Button>
         </ModalFooter>
