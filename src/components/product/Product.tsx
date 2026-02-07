@@ -148,7 +148,7 @@ export const Product = () => {
           <Input
             type="select"
             value={selectedCompanyId}
-            className={`${selectedCompanyId === "" && 'text-secondary'}`}
+            className={`${selectedCompanyId === "" && "text-secondary"}`}
             onChange={(e) => setSelectedCompanyId(e.target.value)}
           >
             <option value="">Select company name...</option>
