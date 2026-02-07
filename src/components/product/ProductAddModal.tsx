@@ -29,6 +29,10 @@ export const ProductAddModal = ({ isModalOpen, toggle }: IModal) => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [regions, setRegion] = useState<IRegion[]>([]);
   const [amount, setAmount] = useState("");
+  const [selectedCompanyId, setSelectedCompanyId] = useState("");
+  const [selectedManagerId, setSelectedManagerId] = useState("");
+  const [selectedProductId, setSelectedProductId] = useState("");
+  const [selectedRegionId, setSelectedRegionId] = useState("");
 
   useEffect(() => {
     const unsubManagers = subscribeToManagers(setManagers);
@@ -50,8 +54,13 @@ export const ProductAddModal = ({ isModalOpen, toggle }: IModal) => {
         <ModalBody>
           <FormGroup>
             <Label for="company">Company</Label>
-            <Input id="company" type="select">
-              <option value="">Select company name...</option>
+            <Input
+              id="company"
+              type="select"
+              value={selectedCompanyId}
+              onChange={(e) => setSelectedCompanyId(e.target.value)}
+            >
+              <option value="" hidden>Select company name...</option>
               {companies.map(({ id, name }) => (
                 <option key={id} value={id}>
                   {name}
@@ -61,30 +70,49 @@ export const ProductAddModal = ({ isModalOpen, toggle }: IModal) => {
           </FormGroup>
           <FormGroup>
             <Label for="manager">Manager</Label>
-            <Input id="manager" type="select">
-              <option value="">Select manager name...</option>
-              {managers.map(({ id, name }) => (
-                <option key={id} value={id}>
-                  {name}
-                </option>
-              ))}
+            <Input
+              id="manager"
+              type="select"
+              value={selectedManagerId}
+              onChange={(e) => setSelectedManagerId(e.target.value)}
+            >
+              <option value="" hidden>Select manager name...</option>
+              {managers
+                .filter(({ companyId }) => companyId === selectedCompanyId)
+                .map(({ id, name }) => (
+                  <option key={id} value={id}>
+                    {name}
+                  </option>
+                ))}
             </Input>
           </FormGroup>
           <FormGroup>
             <Label for="product">Product</Label>
-            <Input id="product" type="select">
-              <option value="">Select product name...</option>
-              {products.map(({ id, name }) => (
-                <option key={id} value={id}>
-                  {name}
-                </option>
-              ))}
+            <Input
+              id="product"
+              type="select"
+              value={selectedProductId}
+              onChange={(e) => setSelectedProductId(e.target.value)}
+            >
+              <option value="" hidden>Select product name...</option>
+              {products
+                .filter(({ companyId }) => companyId === selectedCompanyId)
+                .map(({ id, name }) => (
+                  <option key={id} value={id}>
+                    {name}
+                  </option>
+                ))}
             </Input>
           </FormGroup>
           <FormGroup>
             <Label for="region">Region</Label>
-            <Input id="region" type="select">
-              <option value="">Select region name...</option>
+            <Input
+              id="region"
+              type="select"
+              value={selectedRegionId}
+              onChange={(e) => setSelectedRegionId(e.target.value)}
+            >
+              <option value="" hidden>Select region name...</option>
               {regions.map(({ id, name }) => (
                 <option key={id} value={id}>
                   {name}
