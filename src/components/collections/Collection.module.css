@@ -1,4 +1,4 @@
-.client-wrapper {
+.wrapper {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -7,29 +7,37 @@
   padding: 20px;
 }
 
-.client-title {
+.title {
   margin: 0;
   font-size: 30px;
   font-weight: 350;
 }
 
-.client-header {
+.header {
   display: flex;
   justify-content: space-between;
 }
 
-.client-add {
+.form {
   display: flex;
+  justify-content: end;
   gap: 10px;
 }
 
-.client-button {
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.deleteButton,
+.openButton {
   background: none;
   border: none;
 }
 
-.client-header-cell,
-.client-cell {
+.cellHeader,
+.cell {
   display: flex;
   justify-content: center;
 }

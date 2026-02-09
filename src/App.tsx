@@ -1,11 +1,11 @@
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
-import { Manager } from "./components/manager/Manager.tsx";
-import { Company } from "./components/company/Company.tsx";
-import { Product } from "./components/product/Product.tsx";
-import { Region } from "./components/region/Region.tsx";
-import { Client } from "./components/client/Client.tsx";
-import { Plan } from "./components/Plan/Plan.tsx";
-import { Version } from "./components/version/Version.tsx";
+import { Manager } from "./components/collections/manager/Manager.tsx";
+import { Company } from "./components/collections/company/Company.tsx";
+import { Product } from "./components/collections/product/Product.tsx";
+import { Region } from "./components/collections/region/Region.tsx";
+import { Client } from "./components/collections/client/Client.tsx";
+import { Version } from "./components/collections/plan/Version.tsx";
+import { Plan } from "./components/collections/plan/Plan.tsx";
 import { ToastContainer } from "react-toastify";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/header/Header.tsx";
@@ -23,8 +23,8 @@ function App() {
         <Route path="/products" element={<Product />} />
         <Route path="/clients" element={<Client />} />
         <Route path="/regions" element={<Region />} />
-        <Route path="/versions" element={<Version />} />
         <Route path="/plan" element={<Plan />} />
+        <Route path="/plan/version/:name/:id" element={<Version />} />
       </Routes>
       <ToastContainer />
     </div>

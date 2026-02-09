@@ -8,68 +8,82 @@ import {
   ModalFooter,
   ModalHeader,
 } from "reactstrap";
+import {
+  addDocument,
+  updateDocument,
+  subscribeToCollection,
+  PRODUCTS_COLLECTION,
+  MANAGERS_COLLECTION,
+  REGION_COLLECTION,
+  PLAN_COLLECTION,
+} from "../../../firebase/services.ts";
 import { useEffect, useState } from "react";
-import { subscribeToManagers } from "../manager/utils/managerService.ts";
-import { subscribeToCompany } from "../company/utils/companyService.ts";
-import { subscribeToProducts } from "./utils/productService.ts";
-import { subscribeToRegion } from "../region/utils/regionService.ts";
-import type { ICompany } from "../company/Company.tsx";
-import type { IManager } from "../manager/Manager.tsx";
-import type { IRegion } from "../region/Region.tsx";
-import type { IProduct } from "./Product.tsx";
+import type { IProduct, IManager, IRegion } from "../../../type/type.ts";
+import { serverTimestamp } from "firebase/firestore";
+import { useParams } from "react-router-dom";
 
 interface IModal {
   isModalOpen: boolean;
   toggle: () => void;
+  selectedCompanyId: string;
 }
 
-export const ProductAddModal = ({ isModalOpen, toggle }: IModal) => {
-  const [companies, setCompanies] = useState<ICompany[]>([]);
+export const PlanModal = ({
+  isModalOpen,
+  toggle,
+  selectedCompanyId,
+}: IModal) => {
   const [managers, setManagers] = useState<IManager[]>([]);
   const [products, setProducts] = useState<IProduct[]>([]);
   const [regions, setRegion] = useState<IRegion[]>([]);
   const [amount, setAmount] = useState("");
-  const [selectedCompanyId, setSelectedCompanyId] = useState("");
   const [selectedManagerId, setSelectedManagerId] = useState("");
   const [selectedProductId, setSelectedProductId] = useState("");
   const [selectedRegionId, setSelectedRegionId] = useState("");
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    const unsubManagers = subscribeToManagers(setManagers);
-    const unsubCompanies = subscribeToCompany(setCompanies);
-    const unsubProducts = subscribeToProducts(setProducts);
-    const unsubRegions = subscribeToRegion(setRegion);
+    const unsubManagers = subscribeToCollection(
+      MANAGERS_COLLECTION,
+      setManagers,
+    );
+    const unsubProducts = subscribeToCollection(
+      PRODUCTS_COLLECTION,
+      setProducts,
+    );
+    const unsubRegions = subscribeToCollection(REGION_COLLECTION, setRegion);
     return () => {
       unsubManagers();
-      unsubCompanies();
       unsubProducts();
       unsubRegions();
     };
   }, []);
+
+  const addVersionData = async () => {
+    if (!id) return;
+
+    const path = `${PLAN_COLLECTION}/${id}/items`;
+
+    const newItem = {
+      regionId: selectedRegionId,
+      managerId: selectedManagerId,
+      productId: selectedProductId,
+      amount,
+    };
+
+    await addDocument(path, newItem);
+
+    await updateDocument(PLAN_COLLECTION, id, {
+      lastEditedAt: serverTimestamp(),
+    });
+    toggle();
+  };
 
   return (
     <Modal isOpen={isModalOpen} toggle={toggle}>
       <ModalHeader toggle={toggle}>Add Plan</ModalHeader>
       <form>
         <ModalBody>
-          <FormGroup>
-            <Label for="company">Company</Label>
-            <Input
-              id="company"
-              type="select"
-              value={selectedCompanyId}
-              onChange={(e) => setSelectedCompanyId(e.target.value)}
-            >
-              <option value="" hidden>
-                Select company name...
-              </option>
-              {companies.map(({ id, name }) => (
-                <option key={id} value={id}>
-                  {name}
-                </option>
-              ))}
-            </Input>
-          </FormGroup>
           <FormGroup>
             <Label for="manager">Manager</Label>
             <Input
@@ -140,7 +154,17 @@ export const ProductAddModal = ({ isModalOpen, toggle }: IModal) => {
           </FormGroup>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>
+          <Button
+            type="submit"
+            color="primary"
+            disabled={
+              !selectedRegionId ||
+              !selectedRegionId ||
+              !selectedManagerId ||
+              !amount
+            }
+            onClick={addVersionData}
+          >
             Add
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
