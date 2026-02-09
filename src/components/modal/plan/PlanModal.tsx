@@ -6,7 +6,7 @@ import {
   Modal,
   ModalBody,
   ModalFooter,
-  ModalHeader,
+  ModalHeader, Spinner,
 } from "reactstrap";
 import {
   addDocument,
@@ -41,6 +41,7 @@ export const PlanModal = ({
   const [selectedProductId, setSelectedProductId] = useState("");
   const [selectedRegionId, setSelectedRegionId] = useState("");
   const { id } = useParams<{ id: string }>();
+  const [isAdding, setIsAdding] = useState(false);
 
   useEffect(() => {
     const unsubManagers = subscribeToCollection(
@@ -71,12 +72,18 @@ export const PlanModal = ({
       amount,
     };
 
+    setIsAdding(true);
     await addDocument(path, newItem);
 
     await updateDocument(PLAN_COLLECTION, id, {
       lastEditedAt: serverTimestamp(),
     });
+    setIsAdding(false);
     toggle();
+    setSelectedManagerId("");
+    setSelectedProductId("");
+    setSelectedRegionId("");
+    setAmount("");
   };
 
   return (
@@ -155,9 +162,9 @@ export const PlanModal = ({
         </ModalBody>
         <ModalFooter>
           <Button
-            type="submit"
             color="primary"
             disabled={
+              isAdding ||
               !selectedRegionId ||
               !selectedRegionId ||
               !selectedManagerId ||
@@ -165,7 +172,7 @@ export const PlanModal = ({
             }
             onClick={addVersionData}
           >
-            Add
+            Add {<Spinner size="sm" hidden={!isAdding} />}
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
             Cancel
