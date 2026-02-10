@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ag-charts-react": "^13.0.1",
     "ag-grid-community": "^35.0.1",
     "ag-grid-enterprise": "^35.0.1",
     "ag-grid-react": "^35.0.1",

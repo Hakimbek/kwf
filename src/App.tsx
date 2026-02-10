@@ -8,6 +8,7 @@ import { Version } from "./components/collections/version/Version.tsx";
 import { Fact } from "./components/collections/fact/Fact.tsx";
 import { Plan } from "./components/collections/plan/Plan.tsx";
 import { FactItems } from "./components/collections/fact/FactItems.tsx";
+import { Analytics } from "./components/analytics/Analytics.tsx";
 import { ToastContainer } from "react-toastify";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/header/Header.tsx";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/regions" element={<Region />} />
         <Route path="/plan" element={<Plan />} />
         <Route path="/fact" element={<Fact />} />
+        <Route path="/analytics" element={<Analytics />} />
         <Route path="/plan/version/:name/:id" element={<Version />} />
         <Route path="/fact/:year/:month/:id" element={<FactItems />} />
       </Routes>

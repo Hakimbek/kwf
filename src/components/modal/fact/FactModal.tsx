@@ -20,7 +20,12 @@ import {
   FACT_COLLECTION,
 } from "../../../firebase/services.ts";
 import { useEffect, useState } from "react";
-import type { IProduct, IManager, IRegion, IClient } from "../../../type/type.ts";
+import type {
+  IProduct,
+  IManager,
+  IRegion,
+  IClient,
+} from "../../../type/type.ts";
 import { serverTimestamp } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 
@@ -53,10 +58,7 @@ export const FactModal = ({
       MANAGERS_COLLECTION,
       setManagers,
     );
-    const unsubClients = subscribeToCollection(
-        CLIENT_COLLECTION,
-        setClients,
-    );
+    const unsubClients = subscribeToCollection(CLIENT_COLLECTION, setClients);
     const unsubProducts = subscribeToCollection(
       PRODUCTS_COLLECTION,
       setProducts,
@@ -169,19 +171,19 @@ export const FactModal = ({
           <FormGroup>
             <Label for="client">Client</Label>
             <Input
-                id="client"
-                type="select"
-                value={selectedClientId}
-                className={`${selectedClientId === "" && "text-secondary"}`}
-                onChange={(e) => setSelectedClientId(e.target.value)}
+              id="client"
+              type="select"
+              value={selectedClientId}
+              className={`${selectedClientId === "" && "text-secondary"}`}
+              onChange={(e) => setSelectedClientId(e.target.value)}
             >
               <option value="" hidden>
                 Select client name...
               </option>
               {clients.map(({ id, name }) => (
-                  <option key={id} value={id} className="text-black">
-                    {name}
-                  </option>
+                <option key={id} value={id} className="text-black">
+                  {name}
+                </option>
               ))}
             </Input>
           </FormGroup>
@@ -198,11 +200,11 @@ export const FactModal = ({
           <FormGroup>
             <Label for="margin">Margin</Label>
             <Input
-                id="margin"
-                type="number"
-                value={margin}
-                onChange={(e) => setMargin(e.target.value)}
-                placeholder="Type margin..."
+              id="margin"
+              type="number"
+              value={margin}
+              onChange={(e) => setMargin(e.target.value)}
+              placeholder="Type margin..."
             />
           </FormGroup>
         </ModalBody>
