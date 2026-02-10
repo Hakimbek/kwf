@@ -72,8 +72,6 @@ export const createActionColumn = <T,>(
     resizable: false,
     sortable: false,
     filter: false,
-    headerClass: styles.cellHeader,
-    cellClass: styles.cell,
     cellRenderer: (params: any) => (
       <button
         className={styles.deleteButton}

@@ -4,7 +4,7 @@ import { Company } from "./components/collections/company/Company.tsx";
 import { Product } from "./components/collections/product/Product.tsx";
 import { Region } from "./components/collections/region/Region.tsx";
 import { Client } from "./components/collections/client/Client.tsx";
-import { Version } from "./components/collections/plan/Version.tsx";
+import { Version } from "./components/collections/version/Version.tsx";
 import { Plan } from "./components/collections/plan/Plan.tsx";
 import { ToastContainer } from "react-toastify";
 import { Routes, Route } from "react-router-dom";

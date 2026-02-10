@@ -98,6 +98,7 @@ export const PlanModal = ({
               id="manager"
               type="select"
               value={selectedManagerId}
+              className={`${selectedManagerId === "" && "text-secondary"}`}
               onChange={(e) => setSelectedManagerId(e.target.value)}
             >
               <option value="" hidden>
@@ -106,7 +107,7 @@ export const PlanModal = ({
               {managers
                 .filter(({ companyId }) => companyId === selectedCompanyId)
                 .map(({ id, name }) => (
-                  <option key={id} value={id}>
+                  <option key={id} value={id} className="text-black">
                     {name}
                   </option>
                 ))}
@@ -118,9 +119,10 @@ export const PlanModal = ({
               id="product"
               type="select"
               value={selectedProductId}
+              className={`${selectedProductId === "" && "text-secondary"}`}
               onChange={(e) => setSelectedProductId(e.target.value)}
             >
-              <option value="" hidden>
+              <option value="" hidden className="text-black">
                 Select product name...
               </option>
               {products
@@ -138,9 +140,10 @@ export const PlanModal = ({
               id="region"
               type="select"
               value={selectedRegionId}
+              className={`${selectedRegionId === "" && "text-secondary"}`}
               onChange={(e) => setSelectedRegionId(e.target.value)}
             >
-              <option value="" hidden>
+              <option value="" hidden className="text-black">
                 Select region name...
               </option>
               {regions.map(({ id, name }) => (
@@ -173,10 +176,10 @@ export const PlanModal = ({
             }
             onClick={addVersionData}
           >
-            Add {<Spinner size="sm" hidden={!isAdding} />}
+            {isAdding ? <Spinner size="sm" /> : <i className="bi bi-plus-lg"></i>}
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
-            Cancel
+            <i className="bi bi-x-lg"></i>
           </Button>
         </ModalFooter>
       </form>
