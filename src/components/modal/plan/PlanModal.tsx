@@ -6,7 +6,8 @@ import {
   Modal,
   ModalBody,
   ModalFooter,
-  ModalHeader, Spinner,
+  ModalHeader,
+  Spinner,
 } from "reactstrap";
 import {
   addDocument,

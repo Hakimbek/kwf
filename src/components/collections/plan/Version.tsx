@@ -25,9 +25,9 @@ import {
   createSelectColumn,
   createActionColumn,
 } from "../../../utils/columnFactory.tsx";
-import styles from "../Collection.module.css";
 import { toast } from "react-toastify";
 import { documentId, where } from "firebase/firestore";
+import styles from "../Collection.module.css";
 
 export const Version = () => {
   const [plan, setPlan] = useState<IPlan[]>([]);
@@ -44,9 +44,10 @@ export const Version = () => {
   useEffect(() => {
     if (!id) return;
 
-    const path = `${PLAN_COLLECTION}/${id}/items`;
-
-    const unsubVersion = subscribeToCollection(path, setVersion);
+    const unsubVersion = subscribeToCollection(
+      `${PLAN_COLLECTION}/${id}/items`,
+      setVersion,
+    );
     const unsubPlan = subscribeToCollection(
       PLAN_COLLECTION,
       setPlan,
@@ -119,7 +120,7 @@ export const Version = () => {
       }),
       createActionColumn<IPlanVersion>((data) => openDeleteModal(data)),
     ],
-    [region, managers, products],
+    [region, managers, products, plan],
   );
 
   return (
