@@ -75,9 +75,7 @@ export const CollectionHeader = ({
             color="primary"
             onClick={(e) => handleAdd(e)}
           >
-            <div className="d-flex align-items-center gap-2">
-              Add {<Spinner size="sm" hidden={!isAdding} />}
-            </div>
+            {!isAdding ? <i className="bi bi-plus-lg"></i> : <Spinner size="sm"/>}
           </Button>
         </form>
       </div>

@@ -70,7 +70,7 @@ export const PlanModal = ({
       regionId: selectedRegionId,
       managerId: selectedManagerId,
       productId: selectedProductId,
-      amount,
+      amount: Number(amount),
     };
 
     setIsAdding(true);
@@ -154,7 +154,7 @@ export const PlanModal = ({
             <Label for="amount">Amount</Label>
             <Input
               id="amount"
-              type="text"
+              type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               placeholder="Type amount..."

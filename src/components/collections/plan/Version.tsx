@@ -39,6 +39,7 @@ export const Version = () => {
   const [isPlanModalOpen, setIsPlanModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedData, setSelectedData] = useState<any>(null);
+  const [totalAmount, setTotalAmount] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -94,10 +95,31 @@ export const Version = () => {
     }
   };
 
+  const onModelUpdated = (event: any) => {
+    const api = event.api;
+    let sum = 0;
+
+    api.forEachNodeAfterFilter((node: any) => {
+      if (node.data && node.data.amount) {
+        const amt = parseFloat(node.data.amount);
+        if (!isNaN(amt)) {
+          sum += amt;
+        }
+      }
+    });
+
+    setTotalAmount(sum);
+  };
+
   const itemColumnDefs = useMemo<ColDef<IPlanVersion>[]>(
     () => [
       createSelectColumn("regionId", "Region", region, {
         editable: true,
+        filter: true,
+        filterValueGetter: (params) => {
+          const selected = region.find((r) => r.id === params.data?.regionId);
+          return selected ? selected.name : "";
+        },
       }),
       createSelectColumn(
         "managerId",
@@ -105,6 +127,11 @@ export const Version = () => {
         managers.filter(({ companyId }) => companyId === plan[0]?.companyId),
         {
           editable: true,
+          filter: true,
+          filterValueGetter: (params) => {
+            const selected = managers.find((m) => m.id === params.data?.managerId);
+            return selected ? selected.name : "";
+          },
         },
       ),
       createSelectColumn(
@@ -113,33 +140,58 @@ export const Version = () => {
         products.filter(({ companyId }) => companyId === plan[0]?.companyId),
         {
           editable: true,
+          filter: true,
+          filterValueGetter: (params) => {
+            const selected = products.find((p) => p.id === params.data?.productId);
+            return selected ? selected.name : "";
+          },
         },
       ),
       createColumn("amount", "Amount", {
         editable: true,
+        filter: 'agNumberColumnFilter',
       }),
       createActionColumn<IPlanVersion>((data) => openDeleteModal(data)),
     ],
     [region, managers, products, plan],
   );
 
+  const defaultColDef = useMemo(() => ({
+    flex: 1,
+    filter: true,
+    floatingFilter: true,
+    sortable: true,
+  }), []);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <Button onClick={() => navigate("/plan")}>Back</Button>
-        <h2 className={styles.title}>{name}</h2>
-        <Button
-          className={styles.addButton}
-          color="primary"
-          onClick={togglePlanModal}
-        >
-          Add
-        </Button>
+        <div>
+          <h2 className={styles.title}>{name}</h2>
+          <div>
+            <span>Total Amount: </span>
+            <span>{totalAmount.toLocaleString()}</span>
+          </div>
+        </div>
+        <div className="d-flex align-items-center gap-2">
+          <Button onClick={() => navigate("/plan")}>
+            <i className="bi bi-arrow-left"></i>
+          </Button>
+          <Button
+              className={styles.addButton}
+              color="primary"
+              onClick={togglePlanModal}
+          >
+            <i className="bi bi-plus-lg"></i>
+          </Button>
+        </div>
       </div>
       <AgGridReact<IPlanVersion>
         rowData={version}
         columnDefs={itemColumnDefs}
+        defaultColDef={defaultColDef}
         onCellValueChanged={onCellValueChanged}
+        onModelUpdated={onModelUpdated}
         stopEditingWhenCellsLoseFocus={true}
       />
       <PlanModal

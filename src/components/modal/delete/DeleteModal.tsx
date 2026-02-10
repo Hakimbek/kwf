@@ -56,10 +56,10 @@ export const DeleteModal = ({
       <ModalBody>Are you sure you want to delete this record?</ModalBody>
       <ModalFooter>
         <Button color="danger" onClick={handleDelete} disabled={isDeleting}>
-          Delete {isDeleting && <Spinner size="sm" />}
+          {isDeleting ? <Spinner size="sm"/> : <i className="bi bi-trash3"></i>}
         </Button>{" "}
         <Button color="secondary" onClick={toggle}>
-          Cancel
+          <i className="bi bi-x-lg"></i>
         </Button>
       </ModalFooter>
     </Modal>
