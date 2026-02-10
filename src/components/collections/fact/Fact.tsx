@@ -3,12 +3,13 @@ import { Button, Input, Spinner } from "reactstrap";
 import {
   addDocument,
   subscribeToCollection,
+  updateDocument,
   COMPANY_COLLECTION,
   FACT_COLLECTION,
 } from "../../../firebase/services.ts";
 import type { ICompany, IFact } from "../../../type/type.ts";
 import { AgGridReact } from "ag-grid-react";
-import type { ColDef } from "ag-grid-community";
+import type { CellValueChangedEvent, ColDef } from "ag-grid-community";
 import { useNavigate } from "react-router-dom";
 import {
   createColumn,
@@ -17,6 +18,7 @@ import {
 } from "../../../utils/columnFactory.tsx";
 import styles from "../Collection.module.css";
 import { DeleteModal } from "../../modal/delete/DeleteModal.tsx";
+import { toast } from "react-toastify";
 
 const monthList = [
   { id: "january", name: "January" },
@@ -78,10 +80,31 @@ export const Fact = () => {
     setSelectedCompanyId("");
   };
 
+  const onCellValueChanged = async (event: CellValueChangedEvent) => {
+    const { data, colDef, newValue, oldValue, node } = event;
+    if (oldValue === newValue) return;
+
+    const trimmedValue = newValue?.trim() || "";
+
+    if (trimmedValue === "" && colDef.field === "name") {
+      toast.error("Name cannot be empty!");
+      node.setDataValue("name", oldValue);
+      return;
+    }
+
+    try {
+      await updateDocument(FACT_COLLECTION, data.id, {
+        [colDef.field!]: newValue,
+      });
+    } catch (error) {
+      toast.error("Failed to update manager");
+    }
+  };
+
   const columnDefs = useMemo<ColDef<IFact>[]>(
     () => [
       createColumn("year", "Year", { editable: true }),
-      createSelectColumn("month", "Month", companies, { editable: true }),
+      createSelectColumn("month", "Month", monthList, { editable: true }),
       createSelectColumn("companyId", "Company", companies, { editable: true }),
       createDateColumn("createdAt", "Created At"),
       createDateColumn("lastEditedAt", "Last Edited At"),
@@ -96,7 +119,7 @@ export const Fact = () => {
             <button
               className={styles.deleteButton}
               onClick={() =>
-                navigate(`version/${p?.data?.name}/${p?.data?.id}`)
+                navigate(`${p?.data?.year}/${p?.data?.month}/${p?.data?.id}`)
               }
             >
               <i className="bi bi-arrow-up-right-circle text-primary"></i>
@@ -182,7 +205,7 @@ export const Fact = () => {
         rowData={fact}
         columnDefs={columnDefs}
         quickFilterText={searchText}
-        // onCellValueChanged={onCellValueChanged}
+        onCellValueChanged={onCellValueChanged}
         stopEditingWhenCellsLoseFocus={true}
       />
       <DeleteModal

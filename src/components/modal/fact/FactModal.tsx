@@ -16,10 +16,11 @@ import {
   PRODUCTS_COLLECTION,
   MANAGERS_COLLECTION,
   REGION_COLLECTION,
-  PLAN_COLLECTION,
+  CLIENT_COLLECTION,
+  FACT_COLLECTION,
 } from "../../../firebase/services.ts";
 import { useEffect, useState } from "react";
-import type { IProduct, IManager, IRegion } from "../../../type/type.ts";
+import type { IProduct, IManager, IRegion, IClient } from "../../../type/type.ts";
 import { serverTimestamp } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 
@@ -37,10 +38,13 @@ export const FactModal = ({
   const [managers, setManagers] = useState<IManager[]>([]);
   const [products, setProducts] = useState<IProduct[]>([]);
   const [regions, setRegion] = useState<IRegion[]>([]);
+  const [clients, setClients] = useState<IClient[]>([]);
   const [amount, setAmount] = useState("");
+  const [margin, setMargin] = useState("");
   const [selectedManagerId, setSelectedManagerId] = useState("");
   const [selectedProductId, setSelectedProductId] = useState("");
   const [selectedRegionId, setSelectedRegionId] = useState("");
+  const [selectedClientId, setSelectedClientId] = useState("");
   const { id } = useParams<{ id: string }>();
   const [isAdding, setIsAdding] = useState(false);
 
@@ -49,6 +53,10 @@ export const FactModal = ({
       MANAGERS_COLLECTION,
       setManagers,
     );
+    const unsubClients = subscribeToCollection(
+        CLIENT_COLLECTION,
+        setClients,
+    );
     const unsubProducts = subscribeToCollection(
       PRODUCTS_COLLECTION,
       setProducts,
@@ -56,6 +64,7 @@ export const FactModal = ({
     const unsubRegions = subscribeToCollection(REGION_COLLECTION, setRegion);
     return () => {
       unsubManagers();
+      unsubClients();
       unsubProducts();
       unsubRegions();
     };
@@ -64,19 +73,21 @@ export const FactModal = ({
   const addVersionData = async () => {
     if (!id) return;
 
-    const path = `${PLAN_COLLECTION}/${id}/items`;
+    const path = `${FACT_COLLECTION}/${id}/items`;
 
     const newItem = {
       regionId: selectedRegionId,
       managerId: selectedManagerId,
       productId: selectedProductId,
+      clientId: selectedClientId,
       amount: Number(amount),
+      margin: Number(margin),
     };
 
     setIsAdding(true);
     await addDocument(path, newItem);
 
-    await updateDocument(PLAN_COLLECTION, id, {
+    await updateDocument(FACT_COLLECTION, id, {
       lastEditedAt: serverTimestamp(),
     });
     setIsAdding(false);
@@ -84,7 +95,9 @@ export const FactModal = ({
     setSelectedManagerId("");
     setSelectedProductId("");
     setSelectedRegionId("");
+    setSelectedClientId("");
     setAmount("");
+    setMargin("");
   };
 
   return (
@@ -122,13 +135,13 @@ export const FactModal = ({
               className={`${selectedProductId === "" && "text-secondary"}`}
               onChange={(e) => setSelectedProductId(e.target.value)}
             >
-              <option value="" hidden className="text-black">
+              <option value="" hidden>
                 Select product name...
               </option>
               {products
                 .filter(({ companyId }) => companyId === selectedCompanyId)
                 .map(({ id, name }) => (
-                  <option key={id} value={id}>
+                  <option key={id} value={id} className="text-black">
                     {name}
                   </option>
                 ))}
@@ -143,13 +156,32 @@ export const FactModal = ({
               className={`${selectedRegionId === "" && "text-secondary"}`}
               onChange={(e) => setSelectedRegionId(e.target.value)}
             >
-              <option value="" hidden className="text-black">
+              <option value="" hidden>
                 Select region name...
               </option>
               {regions.map(({ id, name }) => (
-                <option key={id} value={id}>
+                <option key={id} value={id} className="text-black">
                   {name}
                 </option>
+              ))}
+            </Input>
+          </FormGroup>
+          <FormGroup>
+            <Label for="client">Client</Label>
+            <Input
+                id="client"
+                type="select"
+                value={selectedClientId}
+                className={`${selectedClientId === "" && "text-secondary"}`}
+                onChange={(e) => setSelectedClientId(e.target.value)}
+            >
+              <option value="" hidden>
+                Select client name...
+              </option>
+              {clients.map(({ id, name }) => (
+                  <option key={id} value={id} className="text-black">
+                    {name}
+                  </option>
               ))}
             </Input>
           </FormGroup>
@@ -161,6 +193,16 @@ export const FactModal = ({
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               placeholder="Type amount..."
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="margin">Margin</Label>
+            <Input
+                id="margin"
+                type="number"
+                value={margin}
+                onChange={(e) => setMargin(e.target.value)}
+                placeholder="Type margin..."
             />
           </FormGroup>
         </ModalBody>
