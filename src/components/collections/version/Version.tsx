@@ -129,7 +129,9 @@ export const Version = () => {
           editable: true,
           filter: true,
           filterValueGetter: (params) => {
-            const selected = managers.find((m) => m.id === params.data?.managerId);
+            const selected = managers.find(
+              (m) => m.id === params.data?.managerId,
+            );
             return selected ? selected.name : "";
           },
         },
@@ -142,26 +144,31 @@ export const Version = () => {
           editable: true,
           filter: true,
           filterValueGetter: (params) => {
-            const selected = products.find((p) => p.id === params.data?.productId);
+            const selected = products.find(
+              (p) => p.id === params.data?.productId,
+            );
             return selected ? selected.name : "";
           },
         },
       ),
       createColumn("amount", "Amount", {
         editable: true,
-        filter: 'agNumberColumnFilter',
+        filter: "agNumberColumnFilter",
       }),
       createActionColumn<IPlanVersion>((data) => openDeleteModal(data)),
     ],
     [region, managers, products, plan],
   );
 
-  const defaultColDef = useMemo(() => ({
-    flex: 1,
-    filter: true,
-    floatingFilter: true,
-    sortable: true,
-  }), []);
+  const defaultColDef = useMemo(
+    () => ({
+      flex: 1,
+      filter: true,
+      floatingFilter: true,
+      sortable: true,
+    }),
+    [],
+  );
 
   return (
     <div className={styles.wrapper}>
@@ -178,9 +185,9 @@ export const Version = () => {
             <i className="bi bi-arrow-left"></i>
           </Button>
           <Button
-              className={styles.addButton}
-              color="primary"
-              onClick={togglePlanModal}
+            className={styles.addButton}
+            color="primary"
+            onClick={togglePlanModal}
           >
             <i className="bi bi-plus-lg"></i>
           </Button>

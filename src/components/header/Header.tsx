@@ -53,6 +53,14 @@ export const Header = () => {
         >
           Plan
         </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `header-link ${isActive && "header-link_active"}`
+          }
+          to="/fact"
+        >
+          Fact
+        </NavLink>
       </div>
     </header>
   );

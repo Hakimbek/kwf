@@ -29,7 +29,7 @@ interface IModal {
   selectedCompanyId: string;
 }
 
-export const PlanModal = ({
+export const FactModal = ({
   isModalOpen,
   toggle,
   selectedCompanyId,

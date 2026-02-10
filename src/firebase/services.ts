@@ -20,6 +20,7 @@ export const PRODUCTS_COLLECTION = "products";
 export const REGION_COLLECTION = "region";
 export const CLIENT_COLLECTION = "client";
 export const PLAN_COLLECTION = "plan";
+export const FACT_COLLECTION = "fact";
 
 /**
  * Generic function to add a document to any collection with timestamps.

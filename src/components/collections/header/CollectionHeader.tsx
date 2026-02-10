@@ -75,7 +75,11 @@ export const CollectionHeader = ({
             color="primary"
             onClick={(e) => handleAdd(e)}
           >
-            {!isAdding ? <i className="bi bi-plus-lg"></i> : <Spinner size="sm"/>}
+            {!isAdding ? (
+              <i className="bi bi-plus-lg"></i>
+            ) : (
+              <Spinner size="sm" />
+            )}
           </Button>
         </form>
       </div>
