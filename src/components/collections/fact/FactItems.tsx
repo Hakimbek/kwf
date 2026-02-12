@@ -150,9 +150,7 @@ export const FactItems = () => {
         editable: true,
         filter: true,
         filterValueGetter: (params) => {
-          const selected = clients.find(
-            (p) => p.id === params.data?.clientId,
-          );
+          const selected = clients.find((p) => p.id === params.data?.clientId);
           return selected ? selected.name : "";
         },
       }),

@@ -9,10 +9,11 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
-  Tooltip,
   Legend,
   Bar,
   ResponsiveContainer,
+  LabelList,
+  Cell,
 } from "recharts";
 
 interface IRegionProps {
@@ -23,16 +24,21 @@ interface IRegionProps {
 interface IRegionSales {
   region: string;
   plan: number;
+  dynamic: number;
   fact: number;
 }
 
-// interface IRegionClients {
-//   region: string;
-//   [key: string]: number | string;
-// }
-
 export const Region = ({ plan, fact }: IRegionProps) => {
   const [regions, setRegions] = useState<IRegion[]>([]);
+  const [isDynamicVisible, setIsDynamicVisible] = useState(false);
+
+  const now = new Date();
+  const currentDay = now.getDate();
+  const totalDays = new Date(
+    now.getFullYear(),
+    now.getMonth() + 1,
+    0,
+  ).getDate();
 
   useEffect(() => {
     const unsubscribe = subscribeToCollection(REGION_COLLECTION, setRegions);
@@ -42,67 +48,71 @@ export const Region = ({ plan, fact }: IRegionProps) => {
 
   const sales = useMemo(() => {
     return regions.map(({ id, name }): IRegionSales => {
-      const regionPlan = plan
-        .filter((p) => p.regionId === id)
-        .reduce((sum, p) => sum + (Number(p.amount) || 0), 0);
-      const regionFact = fact
-        .filter((f) => f.regionId === id)
-        .reduce((sum, p) => sum + (Number(p.amount) || 0), 0);
+      const regionPlan = plan.reduce((sum, p) => {
+        return p.regionId === id ? sum + (Number(p.amount) || 0) : sum;
+      }, 0);
+
+      const regionFact = fact.reduce((sum, p) => {
+        return p.regionId === id ? sum + (Number(p.amount) || 0) : sum;
+      }, 0);
 
       return {
         region: name || "Unknown",
         plan: regionPlan,
+        dynamic: Math.round((regionPlan / totalDays) * currentDay),
         fact: regionFact,
       };
     });
   }, [plan, fact, regions]);
 
-  // const clients = useMemo(() => {
-  //   return regions.map(({ id, name }) => {
-  //     const result: Record<string, string | number> = {
-  //       region: name || "Unknown",
-  //     };
-  //
-  //     const regionFacts = fact.filter((f) => f.regionId === id);
-  //
-  //     regionFacts.forEach(({ clientId }) => {
-  //       if (!clientId) return;
-  //
-  //       if (typeof result[clientId] === "number") {
-  //         (result[clientId] as number) += 1;
-  //       } else {
-  //         result[clientId] = 1;
-  //       }
-  //     });
-  //
-  //     return result;
-  //   });
-  // }, [regions, fact]);
+  const getBarColor = (fact: number, plan: number, dynamic: number) => {
+    const performance = isDynamicVisible ? fact / dynamic : fact / plan;
+
+    if (performance < 0.8) return "#ff7675";
+
+    if (performance >= 0.8 && performance <= 1.2) return "#82ca9d";
+
+    return "#22a6b3";
+  };
 
   return (
-    <div style={{ width: "100%", height: "400px" }}>
+    <div style={{ width: "100%", height: "500px" }}>
+      <div className="d-flex gap-3">
+        <h3 style={{ fontWeight: "350" }}>Region Sales</h3>
+        <button
+          className="border-0 rounded bg-transparent text-primary"
+          onClick={() => setIsDynamicVisible(!isDynamicVisible)}
+        >
+          {isDynamicVisible ? (
+            <i className="bi bi-toggle-on"></i>
+          ) : (
+            <i className="bi bi-toggle-off"></i>
+          )}
+        </button>
+      </div>
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={sales}>
+        <BarChart data={sales} margin={{ top: 50 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="region" />
           <YAxis width="auto" />
-          <Tooltip />
           <Legend />
-          <Bar dataKey="plan" fill="#8884d8" isAnimationActive={true} />
-          <Bar dataKey="fact" fill="#82ca9d" isAnimationActive={true} />
+          <Bar dataKey="plan" fill="#b2bec3" isAnimationActive={true}>
+            <LabelList dataKey="plan" position="top" />
+          </Bar>
+          <Bar hide={!isDynamicVisible} dataKey="dynamic" fill="#b2bec3" isAnimationActive={true}>
+            <LabelList dataKey="dynamic" position="top" />
+          </Bar>
+          <Bar dataKey="fact" fill="#82ca9d" isAnimationActive={true}>
+            {sales.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={getBarColor(entry.fact, entry.plan, entry.dynamic)}
+              />
+            ))}
+            <LabelList dataKey="fact" position="top" />
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
-      {/*<ResponsiveContainer width="100%" height="100%">*/}
-      {/*    <BarChart data={sales}>*/}
-      {/*        <CartesianGrid strokeDasharray="3 3" />*/}
-      {/*        <XAxis dataKey="region" />*/}
-      {/*        <YAxis width="auto" />*/}
-      {/*        <Tooltip />*/}
-      {/*        <Legend />*/}
-      {/*        <Bar dataKey="plan" fill="#8884d8" isAnimationActive={true} />*/}
-      {/*        <Bar dataKey="fact" fill="#82ca9d" isAnimationActive={true} />*/}
-      {/*    </BarChart>*/}
-      {/*</ResponsiveContainer>*/}
     </div>
   );
 };
