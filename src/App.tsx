@@ -10,7 +10,7 @@ import { Plan } from "./components/collections/plan/Plan.tsx";
 import { FactItems } from "./components/collections/fact/FactItems.tsx";
 import { Analytics } from "./components/analytics/Analytics.tsx";
 import { ToastContainer } from "react-toastify";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Header } from "./components/header/Header.tsx";
 import "./App.css";
 
@@ -21,6 +21,7 @@ function App() {
     <div className="app">
       <Header />
       <Routes>
+        <Route path="/" element={<Navigate to="/analytics" />} />
         <Route path="/managers" element={<Manager />} />
         <Route path="/company" element={<Company />} />
         <Route path="/products" element={<Product />} />

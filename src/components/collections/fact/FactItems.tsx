@@ -148,6 +148,13 @@ export const FactItems = () => {
       ),
       createSelectColumn("clientId", "Client", clients, {
         editable: true,
+        filter: true,
+        filterValueGetter: (params) => {
+          const selected = clients.find(
+            (p) => p.id === params.data?.clientId,
+          );
+          return selected ? selected.name : "";
+        },
       }),
       createColumn("amount", "Amount", {
         editable: true,

@@ -122,13 +122,13 @@ export const PlanModal = ({
               className={`${selectedProductId === "" && "text-secondary"}`}
               onChange={(e) => setSelectedProductId(e.target.value)}
             >
-              <option value="" hidden className="text-black">
+              <option value="" hidden>
                 Select product name...
               </option>
               {products
                 .filter(({ companyId }) => companyId === selectedCompanyId)
                 .map(({ id, name }) => (
-                  <option key={id} value={id}>
+                  <option key={id} value={id} className="text-black">
                     {name}
                   </option>
                 ))}
@@ -143,11 +143,11 @@ export const PlanModal = ({
               className={`${selectedRegionId === "" && "text-secondary"}`}
               onChange={(e) => setSelectedRegionId(e.target.value)}
             >
-              <option value="" hidden className="text-black">
+              <option value="" hidden>
                 Select region name...
               </option>
               {regions.map(({ id, name }) => (
-                <option key={id} value={id}>
+                <option key={id} value={id} className="text-black">
                   {name}
                 </option>
               ))}
