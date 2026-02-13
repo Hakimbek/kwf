@@ -60,7 +60,7 @@ export const RegionMargin = ({ fact }: IRegionProps) => {
   }, [regions, fact]);
 
   return (
-    <div style={{ width: "100%", height: "600px" }}>
+    <div style={{ width: "100%", height: "700px" }}>
       <h3 style={{ fontWeight: "350" }}>Region Margin</h3>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={margin} margin={{ top: 50 }}>

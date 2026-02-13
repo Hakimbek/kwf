@@ -12,3 +12,21 @@
   font-size: 30px;
   font-weight: 350;
 }
+
+.filterButton {
+  border: none;
+  background: none;
+  color: gray;
+  border-bottom: 2px solid transparent;
+}
+
+.filterButton:hover {
+  transition: all 0.3s ease-in-out;
+  color: var(--black);
+}
+
+.filterButton_active {
+  transition: all 0.3s ease-in-out;
+  border-bottom: 2px solid var(--blue);
+  color: var(--black);
+}

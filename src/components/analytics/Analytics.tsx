@@ -4,12 +4,14 @@ import type {
   ICompany,
   IPlanVersion,
   IFactItem,
+  IManager,
 } from "../../type/type.ts";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   FACT_COLLECTION,
   PLAN_COLLECTION,
   COMPANY_COLLECTION,
+  MANAGERS_COLLECTION,
   subscribeToCollection,
 } from "../../firebase/services.ts";
 import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter.ts";
@@ -23,6 +25,7 @@ export const Analytics = () => {
   const [companies, setCompanies] = useState<ICompany[]>([]);
   const [facts, setFacts] = useState<IFact[]>([]);
   const [plans, setPlans] = useState<IPlan[]>([]);
+  const [managers, setManagers] = useState<IManager[]>([]);
 
   const [planItems, setPlanItems] = useState<IPlanVersion[]>([]);
   const [factItems, setFactItems] = useState<IFactItem[]>([]);
@@ -30,6 +33,10 @@ export const Analytics = () => {
   const [selectedCompanyId, setSelectedCompanyId] = useState("");
   const [selectedPlanId, setSelectedPlanId] = useState("");
   const [selectedFactId, setSelectedFactId] = useState("");
+  const [selectedManagerId, setSelectedManagerId] = useState("");
+  const [filter, setFilter] = useState<"region" | "product" | "client">(
+    "region",
+  );
 
   useEffect(() => {
     const unsubCompanies = subscribeToCollection(
@@ -38,11 +45,16 @@ export const Analytics = () => {
     );
     const unsubFacts = subscribeToCollection(FACT_COLLECTION, setFacts);
     const unsubPlans = subscribeToCollection(PLAN_COLLECTION, setPlans);
+    const unsubManagers = subscribeToCollection(
+      MANAGERS_COLLECTION,
+      setManagers,
+    );
 
     return () => {
       unsubCompanies();
       unsubFacts();
       unsubPlans();
+      unsubManagers();
     };
   }, []);
 
@@ -67,6 +79,17 @@ export const Analytics = () => {
 
     return () => unsubscribe();
   }, [selectedFactId]);
+
+  const filteredData = useMemo(() => {
+    if (selectedManagerId === "All") {
+      return { facts: factItems, plans: planItems };
+    }
+
+    return {
+      facts: factItems.filter((f) => f.managerId === selectedManagerId),
+      plans: planItems.filter((p) => p.managerId === selectedManagerId),
+    };
+  }, [selectedManagerId, planItems, factItems]);
 
   return (
     <div className={styles.wrapper}>
@@ -134,13 +157,59 @@ export const Analytics = () => {
                 ))}
             </Input>
           </FormGroup>
+          <FormGroup>
+            <Label for="manager">Manager</Label>
+            <Input
+              id="manager"
+              type="select"
+              value={selectedManagerId}
+              className={`${selectedManagerId === "" && "text-secondary"}`}
+              onChange={(e) => setSelectedManagerId(e.target.value)}
+            >
+              <option value="" hidden>
+                Select manager...
+              </option>
+              <option value="All" className="text-black">
+                All
+              </option>
+              {managers
+                .filter(({ companyId }) => companyId === selectedCompanyId)
+                .map(({ id, name }) => (
+                  <option key={id} value={id} className="text-black">
+                    {capitalizeFirstLetter(name)}
+                  </option>
+                ))}
+            </Input>
+          </FormGroup>
         </div>
       </div>
-      <div className="d-flex flex-column gap-4">
-        <RegionSales plan={planItems} fact={factItems} />
-        <RegionClients fact={factItems} />
-        <RegionMargin fact={factItems} />
+      <div className="d-flex gap-2">
+        <button
+          className={`${styles.filterButton} ${filter === "region" && styles.filterButton_active}`}
+          onClick={() => setFilter("region")}
+        >
+          Region
+        </button>
+        <button
+          className={`${styles.filterButton} ${filter === "product" && styles.filterButton_active}`}
+          onClick={() => setFilter("product")}
+        >
+          Product
+        </button>
+        <button
+          className={`${styles.filterButton} ${filter === "client" && styles.filterButton_active}`}
+          onClick={() => setFilter("client")}
+        >
+          Client
+        </button>
       </div>
+      {filter === "region" && (
+        <div className="d-flex flex-column gap-5">
+          <RegionSales plan={filteredData.plans} fact={filteredData.facts} />
+          <RegionClients fact={filteredData.facts} />
+          <RegionMargin fact={filteredData.facts} />
+        </div>
+      )}
     </div>
   );
 };
