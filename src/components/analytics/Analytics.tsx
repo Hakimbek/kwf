@@ -136,11 +136,9 @@ export const Analytics = () => {
           </FormGroup>
         </div>
       </div>
-      <div className="d-flex gap-3">
+      <div className="d-flex flex-column gap-4">
         <RegionSales plan={planItems} fact={factItems} />
         <RegionClients fact={factItems} />
-      </div>
-      <div className="d-flex gap-3">
         <RegionMargin fact={factItems} />
       </div>
     </div>

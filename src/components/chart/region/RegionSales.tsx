@@ -76,7 +76,7 @@ export const RegionSales = ({ plan, fact }: IRegionProps) => {
   };
 
   return (
-    <div style={{ width: "100%", height: "500px" }}>
+    <div style={{ width: "100%", height: "600px" }}>
       <div className="d-flex gap-3">
         <h3 style={{ fontWeight: "350" }}>Region Sales</h3>
         <button

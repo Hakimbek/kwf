@@ -49,7 +49,7 @@ export const RegionClients = ({ fact }: IRegionProps) => {
   const getBarColor = (amount: number) => (amount < 3 ? "#ff7675" : "#82ca9d");
 
   return (
-    <div style={{ width: "100%", height: "500px" }}>
+    <div style={{ width: "100%", height: "600px" }}>
       <h3 style={{ fontWeight: "350" }}>Region Clients</h3>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={clients} margin={{ top: 50 }}>
