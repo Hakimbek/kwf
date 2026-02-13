@@ -113,7 +113,7 @@ export const Version = () => {
 
   const itemColumnDefs = useMemo<ColDef<IPlanVersion>[]>(
     () => [
-      createSelectColumn("regionId", "Region", region, {
+      createSelectColumn("regionId", "RegionSales", region, {
         editable: true,
         filter: true,
         filterValueGetter: (params) => {

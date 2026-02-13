@@ -28,7 +28,7 @@ interface IRegionSales {
   fact: number;
 }
 
-export const Region = ({ plan, fact }: IRegionProps) => {
+export const RegionSales = ({ plan, fact }: IRegionProps) => {
   const [regions, setRegions] = useState<IRegion[]>([]);
   const [isDynamicVisible, setIsDynamicVisible] = useState(false);
 
@@ -60,7 +60,7 @@ export const Region = ({ plan, fact }: IRegionProps) => {
         region: name || "Unknown",
         plan: regionPlan,
         dynamic: Math.round((regionPlan / totalDays) * currentDay),
-        fact: regionFact,
+        fact: Math.round(regionFact),
       };
     });
   }, [plan, fact, regions]);
@@ -99,7 +99,12 @@ export const Region = ({ plan, fact }: IRegionProps) => {
           <Bar dataKey="plan" fill="#b2bec3" isAnimationActive={true}>
             <LabelList dataKey="plan" position="top" />
           </Bar>
-          <Bar hide={!isDynamicVisible} dataKey="dynamic" fill="#b2bec3" isAnimationActive={true}>
+          <Bar
+            hide={!isDynamicVisible}
+            dataKey="dynamic"
+            fill="#b2bec3"
+            isAnimationActive={true}
+          >
             <LabelList dataKey="dynamic" position="top" />
           </Bar>
           <Bar dataKey="fact" fill="#82ca9d" isAnimationActive={true}>

@@ -14,7 +14,7 @@ import {
 } from "../../firebase/services.ts";
 import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter.ts";
 import { FormGroup, Input, Label } from "reactstrap";
-import { Region } from "../chart/region/Region.tsx";
+import { RegionSales } from "../chart/region/RegionSales.tsx";
 import styles from "./Analytics.module.css";
 
 export const Analytics = () => {
@@ -135,7 +135,7 @@ export const Analytics = () => {
         </div>
       </div>
       <div>
-        <Region plan={planItems} fact={factItems} />
+        <RegionSales plan={planItems} fact={factItems} />
       </div>
     </div>
   );

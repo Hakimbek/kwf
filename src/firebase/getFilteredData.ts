@@ -23,7 +23,7 @@ export const getFilteredData = (
     constraints.push(where("Type", "==", filters.type));
   }
   if (filters.region && filters.region !== "All") {
-    constraints.push(where("Region", "==", filters.region));
+    constraints.push(where("RegionSales", "==", filters.region));
   }
   if (filters.manager && filters.manager !== "All") {
     constraints.push(where("Manager", "==", filters.manager));

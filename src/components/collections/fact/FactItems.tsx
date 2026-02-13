@@ -108,7 +108,7 @@ export const FactItems = () => {
 
   const itemColumnDefs = useMemo<ColDef<IFactItem>[]>(
     () => [
-      createSelectColumn("regionId", "Region", region, {
+      createSelectColumn("regionId", "RegionSales", region, {
         editable: true,
         filter: true,
         filterValueGetter: (params) => {
