@@ -36,8 +36,8 @@ export const RegionClients = ({ fact }: IRegionProps) => {
 
   const clients = useMemo(() => {
     return regions.map(({ id, name }): IRegionClients => {
-      const regionFacts = fact.filter(f => f.regionId === id);
-      const uniqueClientIds = new Set(regionFacts.map(fact => fact.clientId));
+      const regionFacts = fact.filter((f) => f.regionId === id);
+      const uniqueClientIds = new Set(regionFacts.map((fact) => fact.clientId));
 
       return {
         region: name || "Unknown",

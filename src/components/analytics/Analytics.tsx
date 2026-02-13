@@ -16,6 +16,7 @@ import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter.ts";
 import { FormGroup, Input, Label } from "reactstrap";
 import { RegionSales } from "../chart/region/RegionSales.tsx";
 import { RegionClients } from "../chart/region/RegionClients.tsx";
+import { RegionMargin } from "../chart/region/RegionMargin.tsx";
 import styles from "./Analytics.module.css";
 
 export const Analytics = () => {
@@ -138,6 +139,9 @@ export const Analytics = () => {
       <div className="d-flex gap-3">
         <RegionSales plan={planItems} fact={factItems} />
         <RegionClients fact={factItems} />
+      </div>
+      <div className="d-flex gap-3">
+        <RegionMargin fact={factItems} />
       </div>
     </div>
   );
