@@ -19,6 +19,9 @@ import { FormGroup, Input, Label } from "reactstrap";
 import { RegionSales } from "../chart/region/RegionSales.tsx";
 import { RegionClients } from "../chart/region/RegionClients.tsx";
 import { RegionMargin } from "../chart/region/RegionMargin.tsx";
+import { ProductSales } from "../chart/product/ProductSales.tsx";
+import { ProductClients } from "../chart/product/ProductClients.tsx";
+import { ProductMargin } from "../chart/product/ProductMargin.tsx";
 import styles from "./Analytics.module.css";
 
 export const Analytics = () => {
@@ -34,9 +37,7 @@ export const Analytics = () => {
   const [selectedPlanId, setSelectedPlanId] = useState("");
   const [selectedFactId, setSelectedFactId] = useState("");
   const [selectedManagerId, setSelectedManagerId] = useState("");
-  const [filter, setFilter] = useState<"region" | "product" | "client">(
-    "region",
-  );
+  const [filter, setFilter] = useState<"region" | "product">("region");
 
   useEffect(() => {
     const unsubCompanies = subscribeToCollection(
@@ -196,18 +197,29 @@ export const Analytics = () => {
         >
           Product
         </button>
-        <button
-          className={`${styles.filterButton} ${filter === "client" && styles.filterButton_active}`}
-          onClick={() => setFilter("client")}
-        >
-          Client
-        </button>
       </div>
       {filter === "region" && (
         <div className="d-flex flex-column gap-5">
           <RegionSales plan={filteredData.plans} fact={filteredData.facts} />
           <RegionClients fact={filteredData.facts} />
           <RegionMargin fact={filteredData.facts} />
+        </div>
+      )}
+      {filter === "product" && (
+        <div className="d-flex flex-column gap-5">
+          <ProductSales
+            plan={filteredData.plans}
+            fact={filteredData.facts}
+            companyId={selectedCompanyId}
+          />
+          <ProductClients
+            fact={filteredData.facts}
+            companyId={selectedCompanyId}
+          />
+          <ProductMargin
+            fact={filteredData.facts}
+            companyId={selectedCompanyId}
+          />
         </div>
       )}
     </div>
