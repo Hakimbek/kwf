@@ -22,6 +22,8 @@ import { RegionMargin } from "../chart/region/RegionMargin.tsx";
 import { ProductSales } from "../chart/product/ProductSales.tsx";
 import { ProductClients } from "../chart/product/ProductClients.tsx";
 import { ProductMargin } from "../chart/product/ProductMargin.tsx";
+import { AllSales } from "../chart/all/AllSales.tsx";
+import { AllMargin } from "../chart/all/AllMargin.tsx";
 import styles from "./Analytics.module.css";
 
 export const Analytics = () => {
@@ -37,7 +39,7 @@ export const Analytics = () => {
   const [selectedPlanId, setSelectedPlanId] = useState("");
   const [selectedFactId, setSelectedFactId] = useState("");
   const [selectedManagerId, setSelectedManagerId] = useState("");
-  const [filter, setFilter] = useState<"region" | "product">("region");
+  const [filter, setFilter] = useState<"region" | "product" | "all">("all");
 
   useEffect(() => {
     const unsubCompanies = subscribeToCollection(
@@ -186,6 +188,12 @@ export const Analytics = () => {
       </div>
       <div className="d-flex gap-2">
         <button
+          className={`${styles.filterButton} ${filter === "all" && styles.filterButton_active}`}
+          onClick={() => setFilter("all")}
+        >
+          All
+        </button>
+        <button
           className={`${styles.filterButton} ${filter === "region" && styles.filterButton_active}`}
           onClick={() => setFilter("region")}
         >
@@ -198,6 +206,12 @@ export const Analytics = () => {
           Product
         </button>
       </div>
+      {filter === "all" && (
+        <div className="d-flex gap-5">
+          <AllSales plan={filteredData.plans} fact={filteredData.facts} />
+          <AllMargin fact={filteredData.facts} />
+        </div>
+      )}
       {filter === "region" && (
         <div className="d-flex flex-column gap-5">
           <RegionSales plan={filteredData.plans} fact={filteredData.facts} />
