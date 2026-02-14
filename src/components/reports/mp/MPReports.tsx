@@ -1,8 +1,15 @@
 import { BarChartComponent } from "../../chart/BarChartComponent.tsx";
 import "../Reports.css";
 import { Title } from "../../title/Title.tsx";
+import { StorageName } from "../../../type/storage.ts";
+import { ManagerName } from "../../../type/manager.ts";
+import useLocalStorage from "use-local-storage";
 
 export const MPReports = () => {
+  const { MANAGER } = StorageName;
+  const { ALL } = ManagerName;
+  const [manager] = useLocalStorage(MANAGER, ALL);
+
   return (
     <>
       <div className="d-flex align-items-center gap-3 px-3">
@@ -10,10 +17,12 @@ export const MPReports = () => {
           <Title name="Сотув" />
           <BarChartComponent type="Sum" title="ЖАМИ" />
         </div>
-        <div className="w-100 d-flex flex-column gap-3">
-          <Title name="KPI" />
-          <BarChartComponent type="KPI" title="KPI" />
-        </div>
+        {manager !== "All" && (
+          <div className="w-100 d-flex flex-column gap-3">
+            <Title name="KPI" />
+            <BarChartComponent type="KPI" title="KPI" />
+          </div>
+        )}
         <div className="w-100 d-flex flex-column gap-3">
           <Title name="АКБ" />
           <BarChartComponent type="AKB" title="ЖАМИ" />

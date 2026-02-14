@@ -1,8 +1,15 @@
 import { BarChartComponent } from "../../chart/BarChartComponent.tsx";
 import { Title } from "../../title/Title.tsx";
+import useLocalStorage from "use-local-storage";
+import { StorageName } from "../../../type/storage.ts";
+import { ManagerName } from "../../../type/manager.ts";
 import "../Reports.css";
 
 export const KWFReports = () => {
+  const { MANAGER } = StorageName;
+  const { ALL } = ManagerName;
+  const [manager] = useLocalStorage(MANAGER, ALL);
+
   return (
     <>
       <div className="d-flex align-items-center gap-3 px-3">
@@ -10,10 +17,12 @@ export const KWFReports = () => {
           <Title name="Сотув" />
           <BarChartComponent type="Sum" title="ЖАМИ" />
         </div>
-        <div className="w-100 d-flex flex-column gap-3">
-          <Title name="KPI" />
-          <BarChartComponent type="KPI" title="KPI" />
-        </div>
+        {manager !== "All" && (
+          <div className="w-100 d-flex flex-column gap-3">
+            <Title name="KPI" />
+            <BarChartComponent type="KPI" title="KPI" />
+          </div>
+        )}
         <div className="w-100 d-flex flex-column gap-3">
           <Title name="АКБ" />
           <BarChartComponent type="AKB" title="ЖАМИ" />

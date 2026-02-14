@@ -78,7 +78,9 @@ export const BarChartComponent = ({
         let percent = 1;
 
         if (type === "KPI") {
-          let num = Number(document.querySelector('.percent')?.textContent.slice(0, -1));
+          let num = Number(
+            document.querySelector(".percent")?.textContent.slice(0, -1),
+          );
 
           if (num < 70) {
             percent = 0;
@@ -91,23 +93,23 @@ export const BarChartComponent = ({
           }
         }
         setData(
-            type !== "KPI"
-                ? results
-                : [
-                  {
-                    Fact_Kun: KPI * percent,
-                    Plan_Kun:
-                        (salary * new Date().getDate()) /
-                        new Date(
-                            new Date().getFullYear(),
-                            new Date().getMonth() + 1,
-                            0,
-                        ).getDate(),
-                    Plan_Oy: salary,
-                  },
-                ],
-        )
-      }
+          type !== "KPI"
+            ? results
+            : [
+                {
+                  Fact_Kun: KPI * percent,
+                  Plan_Kun:
+                    (salary * new Date().getDate()) /
+                    new Date(
+                      new Date().getFullYear(),
+                      new Date().getMonth() + 1,
+                      0,
+                    ).getDate(),
+                  Plan_Oy: salary,
+                },
+              ],
+        );
+      },
     );
 
     return () => unsubscribe();
